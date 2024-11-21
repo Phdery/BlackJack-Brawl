@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ba1jh5kg03t1l"]
+
+[ext_resource type="Script" path="res://scripts/status_card.gd" id="1_kit52"]
+
+[node name="StatusCard" type="Node2D"]
+script = ExtResource("1_kit52")
