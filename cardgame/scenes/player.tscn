@@ -1,20 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://bcjxs6ha8opch"]
+[gd_scene load_steps=5 format=3 uid="uid://bcjxs6ha8opch"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_5ynjo"]
-[ext_resource type="PackedScene" uid="uid://bdl8cf6iei7ss" path="res://scenes/score_card.tscn" id="1_ixb4q"]
-[ext_resource type="PackedScene" uid="uid://ba1jh5kg03t1l" path="res://scenes/status_card.tscn" id="2_yf4oc"]
-[ext_resource type="PackedScene" uid="uid://bcfhfpi0fsxos" path="res://scenes/displayed_cards.tscn" id="3_vrjib"]
-[ext_resource type="PackedScene" uid="uid://kq24ujwnhrf2" path="res://scenes/card_deck.tscn" id="4_ny672"]
+[ext_resource type="Script" path="res://scripts/score_card.gd" id="2_axeik"]
+[ext_resource type="Script" path="res://scripts/status_card.gd" id="3_0hnqr"]
+[ext_resource type="Script" path="res://scripts/card_deck.gd" id="4_46yqj"]
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_5ynjo")
 
-[node name="PlayerScoreCard" parent="." instance=ExtResource("1_ixb4q")]
+[node name="PlayerScoreCard" type="Node2D" parent="."]
+script = ExtResource("2_axeik")
 
-[node name="PlayerStatusCard" parent="." instance=ExtResource("2_yf4oc")]
+[node name="PlayerStatusCard" type="Node2D" parent="."]
+script = ExtResource("3_0hnqr")
 
-[node name="PlayerDisplayedCards" parent="." instance=ExtResource("3_vrjib")]
+[node name="PlayerDisplayedCardDeck" type="Node2D" parent="."]
+script = ExtResource("4_46yqj")
 
-[node name="PlayerCardDeck" parent="." instance=ExtResource("4_ny672")]
+[node name="PlayerCardDeck" type="Node2D" parent="."]
+script = ExtResource("4_46yqj")
 
-[node name="PlayerUsedCardDeck" parent="." instance=ExtResource("4_ny672")]
+[node name="PlayerUsedCardDeck" type="Node2D" parent="."]
+script = ExtResource("4_46yqj")
