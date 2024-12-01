@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbuliqqe0kwnh"]
+
+[ext_resource type="Script" path="res://user interface/start_menu.gd" id="1_pdp0y"]
+
+[sub_resource type="Theme" id="Theme_sljvt"]
+
+[node name="StartMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 2.0
+offset_right = 1.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_sljvt")
+script = ExtResource("1_pdp0y")
+
+[node name="GameTitle" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 44.0
+offset_bottom = 159.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 84
+text = "Blackjack Brawl"
+horizontal_alignment = 1
+vertical_alignment = 2
+uppercase = true
+
+[node name="ButtonContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 903.0
+offset_top = 374.0
+offset_right = 1080.0
+offset_bottom = 498.0
+theme_override_constants/separation = 20
+
+[node name="NewGame" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 31
+text = "Start Game"
+
+[node name="ExitGame" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 31
+text = "Exit Game"
+
+[connection signal="pressed" from="ButtonContainer/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="ButtonContainer/ExitGame" to="." method="_on_exit_game_pressed"]
