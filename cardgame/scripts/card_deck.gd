@@ -18,6 +18,7 @@ func generate_random_card() -> Card:
 #TODO function to add card to the card list
 func add_card(card: Card) -> void:
 	cards.append(card)
+	# if display deck, change texture to most recent card
 	
 #TODO function to move card from one carddeck to the other
 # use for after you draw a card from your deck?
