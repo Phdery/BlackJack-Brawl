@@ -1,6 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://kq24ujwnhrf2"]
+[gd_scene load_steps=3 format=3 uid="uid://kq24ujwnhrf2"]
 
 [ext_resource type="Script" path="res://scripts/card_deck.gd" id="1_7su5i"]
+[ext_resource type="Script" path="res://scripts/deck_click.gd" id="2_qh86n"]
 
-[node name="CardDeck" type="Node2D"]
+[node name="CardDeck" type="Sprite2D"]
 script = ExtResource("1_7su5i")
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("2_qh86n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Timer" type="Timer" parent="."]
