@@ -2,6 +2,8 @@ extends Node
 
 @onready var sound_effect: Node = $SoundEffect
 @onready var bgm_player: AudioStreamPlayer = $BGM
+@onready var sfx: Node = $SFX
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -22,3 +24,9 @@ func play_bgm(stream: AudioStream) -> void:
 		return
 	bgm_player.stream = stream
 	bgm_player.play()
+
+func play_sfx(name: String) -> void:
+	var player := sfx.get_node(name) as AudioStreamPlayer
+	if not player:
+		return
+	player.play()

@@ -12,8 +12,17 @@ func _process(delta: float) -> void:
 
 
 func _on_new_game_pressed() -> void:
-	pass # Replace with function body.
+	SoundManager.play_sfx("ButtonStart")
 
 
 func _on_exit_game_pressed() -> void:
+	SoundManager.play_sfx("ButtonPress")
 	get_tree().quit()
+
+
+func _on_new_game_focus_entered() -> void:
+	SoundManager.play_sfx("ButtonFocus")
+
+
+func _on_exit_game_focus_entered() -> void:
+	SoundManager.play_sfx("ButtonFocus")

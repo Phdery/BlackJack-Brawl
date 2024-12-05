@@ -49,5 +49,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 31
 text = "Exit Game"
 
+[connection signal="focus_entered" from="ButtonContainer/NewGame" to="." method="_on_new_game_focus_entered"]
 [connection signal="pressed" from="ButtonContainer/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="focus_entered" from="ButtonContainer/ExitGame" to="." method="_on_exit_game_focus_entered"]
 [connection signal="pressed" from="ButtonContainer/ExitGame" to="." method="_on_exit_game_pressed"]
