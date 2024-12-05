@@ -1,0 +1,76 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6f7rhacrbhsn"]
+
+[ext_resource type="Script" path="res://scripts/table.gd" id="1_ylqy0"]
+[ext_resource type="PackedScene" uid="uid://bcjxs6ha8opch" path="res://scenes/player.tscn" id="2_a2xkj"]
+[ext_resource type="PackedScene" uid="uid://24xvop2usi1i" path="res://scenes/enemy.tscn" id="3_jkpep"]
+
+[node name="Table" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ylqy0")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+offset_right = 1200.0
+offset_bottom = 600.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+localize_numeral_system = false
+color = Color(0.494118, 0.494118, 0.494118, 1)
+
+[node name="MainLayout" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="PlayerBox" type="CenterContainer" parent="MainLayout"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+
+[node name="Player" parent="MainLayout/PlayerBox" instance=ExtResource("2_a2xkj")]
+position = Vector2(250, 0)
+
+[node name="CenterLayout" type="VBoxContainer" parent="MainLayout"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="RoundAnimation" type="CenterContainer" parent="MainLayout/CenterLayout"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+
+[node name="HitButton" type="Button" parent="MainLayout/CenterLayout"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Hit"
+
+[node name="StandButton" type="Button" parent="MainLayout/CenterLayout"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Stand"
+
+[node name="EnemyBox" type="CenterContainer" parent="MainLayout"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+
+[node name="Enemy" parent="MainLayout/EnemyBox" instance=ExtResource("3_jkpep")]
+unique_name_in_owner = true
+
+[connection signal="pressed" from="MainLayout/CenterLayout/HitButton" to="." method="_on_hit_button_pressed"]
+[connection signal="pressed" from="MainLayout/CenterLayout/StandButton" to="." method="_on_stand_button_pressed"]
