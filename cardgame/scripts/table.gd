@@ -3,8 +3,6 @@ extends Control
 
 @onready var player:Player = $Player
 @onready var enemy:Enemy = $Enemy
-@onready var player_cards_area: HBoxContainer = $PlayerCardsArea
-@onready var enemy_cards_area: HBoxContainer = $DealerCardsArea
 
 #TODO Build Main Logic
 var player_turn: bool = false
@@ -106,8 +104,7 @@ func enemy_turn():
 # multiple enemy logic
 func load_enemy(enemy_scene: PackedScene) -> void:
 	# clear UI for next enemy
-	enemy_cards_area.clear_children()  
 	if enemy != null:
 		enemy.queue_free()  # free old enemy
-	enemy = enemy_scene.instance()
+	enemy = enemy_scene.instantiate()
 	add_child(enemy) # add new enemy
