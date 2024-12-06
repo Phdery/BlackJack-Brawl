@@ -1,5 +1,5 @@
 class_name Card
-extends Node2D
+extends Sprite2D
 
 # Every card must has a score
 @export var score:int

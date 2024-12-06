@@ -1,31 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://bgr315x3mdceh"]
+[gd_scene load_steps=5 format=3 uid="uid://bgr315x3mdceh"]
 
 [ext_resource type="Script" path="res://scripts/card.gd" id="1_pvm8x"]
+[ext_resource type="Texture2D" uid="uid://dbgtjmjqu3enn" path="res://assets/cards/club/club_2.png" id="1_y780n"]
 [ext_resource type="Script" path="res://scripts/card_click.gd" id="2_xrf24"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gtmgk"]
+size = Vector2(477, 680)
 
 [node name="Card" type="Sprite2D"]
 position = Vector2(239, 119)
+texture = ExtResource("1_y780n")
 script = ExtResource("1_pvm8x")
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-239, -118)
 script = ExtResource("2_xrf24")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-
-[node name="Timer" type="Timer" parent="."]
-
-[node name="Label" type="Label" parent="."]
-visible = false
-anchors_preset = -1
-anchor_left = -0.207
-anchor_top = 1.044
-anchor_right = 1.218
-anchor_bottom = 1.403
-offset_left = -63.504
-offset_top = -62.632
-offset_right = -23.904
-offset_bottom = -65.584
-scale = Vector2(0.892838, 0.998175)
-autowrap_mode = 3
-
-[connection signal="timeout" from="Timer" to="Area2D" method="_on_timer_timeout"]
+position = Vector2(239, 119)
+shape = SubResource("RectangleShape2D_gtmgk")
