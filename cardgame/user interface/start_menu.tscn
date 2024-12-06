@@ -1,8 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://dbuliqqe0kwnh"]
+[gd_scene load_steps=12 format=3 uid="uid://dbuliqqe0kwnh"]
 
 [ext_resource type="Script" path="res://user interface/start_menu.gd" id="1_pdp0y"]
+[ext_resource type="Texture2D" uid="uid://duecv2df36yh1" path="res://assets/title/background.jpg" id="2_5x58y"]
+[ext_resource type="Texture2D" uid="uid://6nksengv0w0u" path="res://assets/title/start_button.png" id="3_xfsas"]
+[ext_resource type="Script" path="res://user interface/new_game_button.gd" id="4_0q3h7"]
+[ext_resource type="Texture2D" uid="uid://d0bl2d3wxosi7" path="res://assets/title/quit_button.png" id="4_84tkr"]
+[ext_resource type="Script" path="res://user interface/exit_game_button.gd" id="6_paooi"]
 
 [sub_resource type="Theme" id="Theme_sljvt"]
+
+[sub_resource type="Theme" id="Theme_x6bb7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ov33"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Theme" id="Theme_vdgjq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hus0j"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="StartMenu" type="Control"]
 layout_mode = 3
@@ -31,25 +46,45 @@ horizontal_alignment = 1
 vertical_alignment = 2
 uppercase = true
 
-[node name="ButtonContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 903.0
-offset_top = 374.0
-offset_right = 1080.0
-offset_bottom = 498.0
-theme_override_constants/separation = 20
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(576, 322)
+texture = ExtResource("2_5x58y")
 
-[node name="NewGame" type="Button" parent="ButtonContainer"]
+[node name="NewGame" type="Button" parent="."]
 layout_mode = 2
+offset_left = 244.0
+offset_top = 439.0
+offset_right = 572.0
+offset_bottom = 647.0
+scale = Vector2(0.6, 0.6)
+theme = SubResource("Theme_x6bb7")
 theme_override_font_sizes/font_size = 31
-text = "Start Game"
+theme_override_styles/hover = SubResource("StyleBoxFlat_2ov33")
+icon = ExtResource("3_xfsas")
+script = ExtResource("4_0q3h7")
 
-[node name="ExitGame" type="Button" parent="ButtonContainer"]
+[node name="ExitGame" type="Button" parent="."]
 layout_mode = 2
+offset_left = 677.0
+offset_top = 436.0
+offset_right = 1005.0
+offset_bottom = 644.0
+scale = Vector2(0.6, 0.6)
+theme = SubResource("Theme_vdgjq")
 theme_override_font_sizes/font_size = 31
-text = "Exit Game"
+theme_override_styles/hover = SubResource("StyleBoxFlat_hus0j")
+icon = ExtResource("4_84tkr")
+script = ExtResource("6_paooi")
 
-[connection signal="focus_entered" from="ButtonContainer/NewGame" to="." method="_on_new_game_focus_entered"]
-[connection signal="pressed" from="ButtonContainer/NewGame" to="." method="_on_new_game_pressed"]
-[connection signal="focus_entered" from="ButtonContainer/ExitGame" to="." method="_on_exit_game_focus_entered"]
-[connection signal="pressed" from="ButtonContainer/ExitGame" to="." method="_on_exit_game_pressed"]
+[connection signal="focus_entered" from="NewGame" to="." method="_on_new_game_focus_entered"]
+[connection signal="mouse_entered" from="NewGame" to="." method="_on_new_game_mouse_entered"]
+[connection signal="mouse_entered" from="NewGame" to="NewGame" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="NewGame" to="." method="_on_new_game_mouse_exited"]
+[connection signal="mouse_exited" from="NewGame" to="NewGame" method="_on_mouse_exited"]
+[connection signal="pressed" from="NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="NewGame" to="NewGame" method="_on_pressed"]
+[connection signal="focus_entered" from="ExitGame" to="." method="_on_exit_game_focus_entered"]
+[connection signal="mouse_entered" from="ExitGame" to="ExitGame" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ExitGame" to="ExitGame" method="_on_mouse_exited"]
+[connection signal="pressed" from="ExitGame" to="." method="_on_exit_game_pressed"]
+[connection signal="pressed" from="ExitGame" to="ExitGame" method="_on_pressed"]
