@@ -1,5 +1,4 @@
 class_name Player
-
 extends Controller
 
 @onready var player_score_card: ScoreCard = $PlayerScoreCard
@@ -8,29 +7,20 @@ extends Controller
 @onready var player_card_deck: CardDeck = $PlayerCardDeck
 @onready var player_used_card_deck: CardDeck = $PlayerUsedCardDeck
 
-# Enum for card suits
-enum Suit { HEARTS, DIAMONDS, CLUBS, SPADES }
-var suit: Suit
+var is_stopped: bool = false  # Tracks if the player's turn is stopped
 
-var is_stopped: bool = false
-
-### Health and Damage Management
-# Takes damage or heals the player
+# Modifies the player's health (damage or heal) and updates the status card
 func modify_health(amount: int) -> void:
-	# Negative amount = damage, Positive amount = heal
-	player_status_card.health += amount
-	if player_status_card.health > player_status_card.max_health:
-		player_status_card.health = player_status_card.max_health
-	elif player_status_card.health <= 0:
+	player_status_card.update_hp(clamp(player_status_card.current_hp + amount, 0, player_status_card.max_hp))
+	if player_status_card.current_hp <= 0:
 		_on_player_death()
 
-# Handles player's death
+# Handles the player's death
 func _on_player_death() -> void:
 	is_stopped = true
-	emit_signal("player_died") # Signal to notify other systems of death
+	emit_signal("player_died")
 
-### Deck Management
-# Move all cards from the used deck back to the main card deck when it's empty
+# Moves all cards from the used deck back to the main card deck when it's empty
 func refill_card_deck() -> void:
 	if player_card_deck.is_empty():
 		for card in player_used_card_deck.cards:
@@ -38,7 +28,7 @@ func refill_card_deck() -> void:
 		player_used_card_deck.clear()
 		player_card_deck.shuffle()
 
-# Randomly draw a card from the deck, move to the displayed deck, and execute its mechanism
+# Draws a random card from the deck, moves it to the displayed deck, and executes its mechanism
 func draw_and_execute_card() -> void:
 	if player_card_deck.is_empty():
 		refill_card_deck()
@@ -48,26 +38,36 @@ func draw_and_execute_card() -> void:
 		player_displayed_cards.add_card(drawn_card)
 		execute_card_mechanism(drawn_card)
 
-# Execute a card's specific effect
+# Executes the mechanism of the drawn card
 func execute_card_mechanism(card: Card) -> void:
-	card.apply_effect(self)
+	card.mechanism(self, null)  # Replace null with a target controller if needed
 
-### Helper Functions
+# Updates scores for both player and enemy at the end of a turn
+func update_scores() -> void:
+	# Set player's score and max_score to default
+	player_score_card.update_score(0)
+	player_score_card.update_max(21)
+
+func move_displayed_cards_to_used() -> void:
+	# Move player's displayed cards to used deck
+	for card in player_displayed_cards.cards:
+		card.move_card_to(card, player_used_card_deck)
+		
 # Returns whether the player has stopped (for turn management)
 func has_stopped() -> bool:
 	return is_stopped
 
-# Stop player's turn
+# Stops the player's turn
 func stop_turn() -> void:
 	is_stopped = true
 
-# Reset the player's turn state
+# Resets the player's turn state
 func reset_turn() -> void:
 	is_stopped = false
 
-# Shuffle the player's deck
+# Shuffles the player's deck
 func shuffle_deck() -> void:
 	player_card_deck.shuffle()
 
-### Signals
+# Signal emitted when the player dies
 signal player_died
