@@ -3,7 +3,7 @@ extends Card
 
 @export var suit:String
 	
-func costum_init(new_score:int, new_suit:String) -> void:
+func custom_init(new_score:int, new_suit:String) -> void:
 	score = new_score
 	suit = new_suit
 	var texture_path:String = "res://assets/cards/" + suit + "/" + suit + "_" + str(score) + ".png"

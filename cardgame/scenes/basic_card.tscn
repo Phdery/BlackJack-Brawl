@@ -2,12 +2,13 @@
 
 [ext_resource type="Script" path="res://scripts/basic_card.gd" id="1_2e076"]
 [ext_resource type="Texture2D" uid="uid://dbgtjmjqu3enn" path="res://assets/cards/club/club_2.png" id="1_ja5pf"]
-[ext_resource type="Script" path="res://scripts/card_click.gd" id="3_a6e5o"]
+[ext_resource type="Script" path="res://scripts/card_hover.gd" id="3_a6e5o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fu60n"]
 size = Vector2(477, 680)
 
 [node name="BasicCard" type="Sprite2D"]
+position = Vector2(253, 353)
 texture = ExtResource("1_ja5pf")
 script = ExtResource("1_2e076")
 
@@ -16,7 +17,8 @@ position = Vector2(-239, -118)
 script = ExtResource("3_a6e5o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(239, 119)
+position = Vector2(240, 119)
 shape = SubResource("RectangleShape2D_fu60n")
 
 [connection signal="mouse_entered" from="Area2D" to="Area2D" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="Area2D" method="_on_mouse_exited"]
