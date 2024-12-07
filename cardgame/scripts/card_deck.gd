@@ -1,40 +1,27 @@
 class_name CardDeck
+
 extends Node2D
 
-
 var cards:Array[Card]
-var display_deck:bool
-
-
-func _init(new_cards:Array[Card], display:bool) -> void:
-	cards = new_cards
-	display_deck = display
-	if cards.size() > 0: # set texture to back of card
-		pass
-	else: # no texture if deck is empty
-		self.texture = null
 
 #TODO function to generate random card
 # draws a card from a random spot in the deck
+# deletes that card from the deck?
 func generate_random_card() -> Card:
 	randomize()
-	var random:int = randi() % cards.size()
-	var return_card:Card = cards[random]
+	var random = randi() % cards.size()
+	var return_card = cards[random]
+	# cards.remove_at(random)
 	return return_card
 
 
 #TODO function to add card to the card list
 func add_card(card: Card) -> void:
 	cards.append(card)
-	# if display deck, change texture to most recent card
-	if display_deck:
-		self.texture = card.texture
-	else: # set texture to back of card
-		pass
 	
 #TODO function to move card from one carddeck to the other
-# use for after you draw a card from your deck
-# erases card from previous deck
+# use for after you draw a card from your deck?
+# assume card already removed from previous carddeck?
 func move_card_to(card:Card, card_deck:CardDeck) -> void:
 	card_deck.add_card(card)
 	cards.erase(card)
@@ -49,3 +36,9 @@ func swap_decks(card_deck:CardDeck) -> void:
 	card_deck.cards = temp_cards_1
 
 #TODO some other helper function
+# func that displays deck's contents when clicked?
+# func that sets deck's texture? or just set elsewhere?
+# func that displays cards at play in center of screen?
+
+
+	
