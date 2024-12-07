@@ -47,7 +47,8 @@ vertical_alignment = 2
 uppercase = true
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(576, 322)
+position = Vector2(596, 304)
+scale = Vector2(1.035, 0.94)
 texture = ExtResource("2_5x58y")
 
 [node name="NewGame" type="Button" parent="."]

@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 SoundManager="*res://scenes/sound_manager.tscn"
-MainGame="*res://scripts/table.gd"
 
 [display]
 

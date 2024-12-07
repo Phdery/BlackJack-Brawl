@@ -40,6 +40,7 @@ func _on_stand_button_pressed() -> void:
 
 func _player_win():
 	print("Enemy defeated!")
+	SoundManager.play_sfx("game_win")
 	#TODO beat enemy animation
 	current_enemy += 1
 	if enemies[current_enemy] != null:
@@ -51,6 +52,7 @@ func _player_win():
 	
 func _enemy_win():
 	print("Player lost!")
+	SoundManager.play_sfx("game_fail")
 	#TODO player lose scene
 
 func check_winner() -> void:
