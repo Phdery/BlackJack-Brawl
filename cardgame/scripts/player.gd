@@ -9,6 +9,9 @@ extends Controller
 
 var is_stopped: bool = false  # Tracks if the player's turn is stopped
 
+func _ready() -> void:
+	modify_health(100.0)
+
 # Modifies the player's health (damage or heal) and updates the status card
 func modify_health(amount: int) -> void:
 	player_status_card.update_hp(clamp(player_status_card.current_hp + amount, 0, player_status_card.max_hp))

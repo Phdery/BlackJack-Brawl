@@ -3,10 +3,14 @@ extends Node2D
 @onready var label: Label = $TextLabel
 @onready var label2: Label = $TextLabel2
 @onready var label3: Label = $TextLabel3
+
 @onready var diamond: Button = $CardSuit/DiamondSuit
 @onready var club: Button = $CardSuit/ClubSuit
 @onready var heart: Button = $CardSuit/HeartSuit
 @onready var spade: Button = $CardSuit/SpadeSuit
+
+@onready var player = preload("res://scenes/player.tscn")
+@onready var table = preload("res://scenes/table.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -57,30 +61,31 @@ func _process(delta: float) -> void:
 func _on_diamond_suit_mouse_entered() -> void:
 	SoundManager.play_sfx("ButtonFocus")
 	var animation := create_tween()
-	animation.tween_property($CardSuit/DiamondSuit, "scale", Vector2(0.5, 0.5), 0.2)
+	animation.tween_property($CardSuit/DiamondSuit, "scale", Vector2(0.5, 0.5), 0.1)
 	await animation.finished
 
 
 func _on_diamond_suit_mouse_exited() -> void:
 	var animation := create_tween()
-	animation.tween_property($CardSuit/DiamondSuit, "scale", Vector2(0.4, 0.4), 0.2)
+	animation.tween_property($CardSuit/DiamondSuit, "scale", Vector2(0.4, 0.4), 0.1)
 	await animation.finished
 
 
 func _on_diamond_suit_pressed() -> void:
 	SoundManager.play_sfx("ButtonStart")
+	get_tree().change_scene_to_file("res://scenes/player.tscn")
 
 
 func _on_club_suit_mouse_entered() -> void:
 	SoundManager.play_sfx("ButtonFocus")
 	var animation := create_tween()
-	animation.tween_property($CardSuit/ClubSuit, "scale", Vector2(0.5, 0.5), 0.2)
+	animation.tween_property($CardSuit/ClubSuit, "scale", Vector2(0.5, 0.5), 0.1)
 	await animation.finished
 
 
 func _on_club_suit_mouse_exited() -> void:
 	var animation := create_tween()
-	animation.tween_property($CardSuit/ClubSuit, "scale", Vector2(0.4, 0.4), 0.2)
+	animation.tween_property($CardSuit/ClubSuit, "scale", Vector2(0.4, 0.4), 0.1)
 	await animation.finished
 
 
@@ -91,13 +96,13 @@ func _on_club_suit_pressed() -> void:
 func _on_heart_suit_mouse_entered() -> void:
 	SoundManager.play_sfx("ButtonFocus")
 	var animation := create_tween()
-	animation.tween_property($CardSuit/HeartSuit, "scale", Vector2(0.5, 0.5), 0.2)
+	animation.tween_property($CardSuit/HeartSuit, "scale", Vector2(0.5, 0.5), 0.1)
 	await animation.finished
 
 
 func _on_heart_suit_mouse_exited() -> void:
 	var animation := create_tween()
-	animation.tween_property($CardSuit/HeartSuit, "scale", Vector2(0.4, 0.4), 0.2)
+	animation.tween_property($CardSuit/HeartSuit, "scale", Vector2(0.4, 0.4), 0.1)
 	await animation.finished
 
 
@@ -108,13 +113,13 @@ func _on_heart_suit_pressed() -> void:
 func _on_spade_suit_mouse_entered() -> void:
 	SoundManager.play_sfx("ButtonFocus")
 	var animation := create_tween()
-	animation.tween_property($CardSuit/SpadeSuit, "scale", Vector2(0.5, 0.5), 0.2)
+	animation.tween_property($CardSuit/SpadeSuit, "scale", Vector2(0.5, 0.5), 0.1)
 	await animation.finished
 
 
 func _on_spade_suit_mouse_exited() -> void:
 	var animation := create_tween()
-	animation.tween_property($CardSuit/SpadeSuit, "scale", Vector2(0.4, 0.4), 0.2)
+	animation.tween_property($CardSuit/SpadeSuit, "scale", Vector2(0.4, 0.4), 0.1)
 	await animation.finished
 
 

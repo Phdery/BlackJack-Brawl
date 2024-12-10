@@ -4,7 +4,7 @@ extends Node2D
 
 @export var current_score:int = 0
 @export var max_score:int = 21
-@onready var label = $"../Label"
+@onready var label = $Label
 
 #TODO animasion to show the score
 
