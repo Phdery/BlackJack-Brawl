@@ -1,10 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://c77r73vo4xq36"]
+[gd_scene load_steps=12 format=3 uid="uid://c77r73vo4xq36"]
 
 [ext_resource type="Script" path="res://scripts/select_menu.gd" id="1_f7shh"]
 [ext_resource type="Texture2D" uid="uid://d1v12mhe2bm8h" path="res://assets/images/UCDavis_name.jpg" id="2_1qjg3"]
 [ext_resource type="FontFile" uid="uid://coxmjx3kjpyrr" path="res://assets/font/chalk_font.otf" id="3_n5cmi"]
+[ext_resource type="StyleBox" uid="uid://rb3ht43m5b7q" path="res://ui/button_box.tres" id="4_anuv8"]
+[ext_resource type="Texture2D" uid="uid://dav1se1w7efqb" path="res://assets/cards/diamond/diamond_ace.png" id="5_g6g1p"]
+[ext_resource type="Texture2D" uid="uid://dpanxug38effo" path="res://assets/cards/club/club_ace.png" id="6_nchr6"]
+[ext_resource type="Texture2D" uid="uid://boxmxdx3oryv3" path="res://assets/cards/heart/heart_ace.png" id="7_av1gb"]
+[ext_resource type="Texture2D" uid="uid://dc0o2ngopj22d" path="res://assets/cards/spade/spade_ace.png" id="8_aseb1"]
 
-[node name="select_menu" type="Node2D"]
+[sub_resource type="Theme" id="Theme_6fmvu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xnfst"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o77xu"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="SeletMenu" type="Node2D"]
 script = ExtResource("1_f7shh")
 
 [node name="UCDavisName" type="Sprite2D" parent="."]
@@ -38,3 +51,88 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_n5cmi")
 theme_override_font_sizes/font_size = 60
 text = "Test"
+
+[node name="TextLabel3" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 196.0
+offset_top = 33.0
+offset_right = 982.0
+offset_bottom = 275.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_n5cmi")
+theme_override_font_sizes/font_size = 90
+text = "Choose Your Card Suit"
+
+[node name="CardSuit" type="Node2D" parent="."]
+
+[node name="DiamondSuit" type="Button" parent="CardSuit"]
+offset_left = -58.0
+offset_top = -30.0
+offset_right = 442.0
+offset_bottom = 670.0
+scale = Vector2(0.4, 0.4)
+pivot_offset = Vector2(252.5, 350)
+theme = SubResource("Theme_6fmvu")
+theme_override_font_sizes/font_size = 31
+theme_override_styles/focus = ExtResource("4_anuv8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xnfst")
+theme_override_styles/normal = SubResource("StyleBoxFlat_o77xu")
+icon = ExtResource("5_g6g1p")
+
+[node name="ClubSuit" type="Button" parent="CardSuit"]
+offset_left = 226.5
+offset_top = -26.5
+offset_right = 726.5
+offset_bottom = 673.5
+scale = Vector2(0.4, 0.4)
+pivot_offset = Vector2(247.5, 345)
+theme = SubResource("Theme_6fmvu")
+theme_override_font_sizes/font_size = 31
+theme_override_styles/focus = ExtResource("4_anuv8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xnfst")
+theme_override_styles/normal = SubResource("StyleBoxFlat_o77xu")
+icon = ExtResource("6_nchr6")
+
+[node name="HeartSuit" type="Button" parent="CardSuit"]
+offset_left = 506.5
+offset_top = -23.5
+offset_right = 1006.5
+offset_bottom = 676.5
+scale = Vector2(0.4, 0.4)
+pivot_offset = Vector2(252.5, 340)
+theme = SubResource("Theme_6fmvu")
+theme_override_font_sizes/font_size = 31
+theme_override_styles/focus = ExtResource("4_anuv8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xnfst")
+theme_override_styles/normal = SubResource("StyleBoxFlat_o77xu")
+icon = ExtResource("7_av1gb")
+
+[node name="SpadeSuit" type="Button" parent="CardSuit"]
+offset_left = 793.5
+offset_top = -22.5
+offset_right = 1293.5
+offset_bottom = 677.5
+scale = Vector2(0.4, 0.4)
+pivot_offset = Vector2(250, 337.5)
+theme = SubResource("Theme_6fmvu")
+theme_override_font_sizes/font_size = 31
+theme_override_styles/focus = ExtResource("4_anuv8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xnfst")
+theme_override_styles/normal = SubResource("StyleBoxFlat_o77xu")
+icon = ExtResource("8_aseb1")
+
+[connection signal="mouse_entered" from="CardSuit/DiamondSuit" to="." method="_on_diamond_suit_mouse_entered"]
+[connection signal="mouse_exited" from="CardSuit/DiamondSuit" to="." method="_on_diamond_suit_mouse_exited"]
+[connection signal="pressed" from="CardSuit/DiamondSuit" to="." method="_on_diamond_suit_pressed"]
+[connection signal="mouse_entered" from="CardSuit/ClubSuit" to="." method="_on_club_suit_mouse_entered"]
+[connection signal="mouse_exited" from="CardSuit/ClubSuit" to="." method="_on_club_suit_mouse_exited"]
+[connection signal="pressed" from="CardSuit/ClubSuit" to="." method="_on_club_suit_pressed"]
+[connection signal="mouse_entered" from="CardSuit/HeartSuit" to="." method="_on_heart_suit_mouse_entered"]
+[connection signal="mouse_exited" from="CardSuit/HeartSuit" to="." method="_on_heart_suit_mouse_exited"]
+[connection signal="pressed" from="CardSuit/HeartSuit" to="." method="_on_heart_suit_pressed"]
+[connection signal="mouse_entered" from="CardSuit/SpadeSuit" to="." method="_on_spade_suit_mouse_entered"]
+[connection signal="mouse_exited" from="CardSuit/SpadeSuit" to="." method="_on_spade_suit_mouse_exited"]
+[connection signal="pressed" from="CardSuit/SpadeSuit" to="." method="_on_spade_suit_pressed"]

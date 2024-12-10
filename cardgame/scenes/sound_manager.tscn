@@ -21,6 +21,9 @@ script = ExtResource("1_n6x3i")
 
 [node name="SFX" type="Node" parent="."]
 
+[node name="StoryAudio" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("11_2rwq5")
+
 [node name="StartBGM" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("2_8gmoi")
 
@@ -50,6 +53,3 @@ stream = ExtResource("9_sw74n")
 
 [node name="GameWin" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("10_4fbgm")
-
-[node name="StoryAudio" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("11_2rwq5")
