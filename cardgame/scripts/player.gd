@@ -7,6 +7,10 @@ extends Controller
 @onready var player_card_deck: CardDeck = $PlayerCardDeck
 @onready var player_used_card_deck: CardDeck = $PlayerUsedCardDeck
 
+# Enum for card suits
+enum Suit { HEARTS, DIAMONDS, CLUBS, SPADES }
+var suit: Suit
+
 var is_stopped: bool = false  # Tracks if the player's turn is stopped
 
 func _ready() -> void:
