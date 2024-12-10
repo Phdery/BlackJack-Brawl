@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://c77r73vo4xq36"]
+
+[ext_resource type="Script" path="res://scripts/select_menu.gd" id="1_f7shh"]
+[ext_resource type="Texture2D" uid="uid://d1v12mhe2bm8h" path="res://assets/images/UCDavis_name.jpg" id="2_1qjg3"]
+[ext_resource type="FontFile" uid="uid://coxmjx3kjpyrr" path="res://assets/font/chalk_font.otf" id="3_n5cmi"]
+
+[node name="select_menu" type="Node2D"]
+script = ExtResource("1_f7shh")
+
+[node name="UCDavisName" type="Sprite2D" parent="."]
+position = Vector2(589, 213)
+texture = ExtResource("2_1qjg3")
+
+[node name="TextLabel" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 368.0
+offset_top = 42.0
+offset_right = 541.0
+offset_bottom = 284.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_n5cmi")
+theme_override_font_sizes/font_size = 60
+text = "Test"
+
+[node name="TextLabel2" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 439.0
+offset_top = 160.0
+offset_right = 612.0
+offset_bottom = 402.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_n5cmi")
+theme_override_font_sizes/font_size = 60
+text = "Test"
