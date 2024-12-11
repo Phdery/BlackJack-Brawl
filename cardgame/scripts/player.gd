@@ -7,7 +7,31 @@ extends Controller
 @onready var player_card_deck: CardDeck = $PlayerCardDeck
 @onready var player_used_card_deck: CardDeck = $PlayerUsedCardDeck
 
+# Enum for card suits
+const Suit = GameGlobal.Suit
+var suit: Suit
+
 var is_stopped: bool = false  # Tracks if the player's turn is stopped
+
+# Initializes the player's deck based on the chosen suit
+func initialize_deck(suit: Suit) -> void:
+	
+	var ranks = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
+	var card_resource = preload("res://scenes/card.tscn")
+	
+	for rank in ranks:
+		var new_card = card_resource.instantiate() as Card
+		new_card.suit = suit
+		new_card.rank = rank
+		new_card.set_card_texture() # If you have a method to set the texture or properties.
+		player_card_deck.add_card(new_card)
+
+	player_card_deck.shuffle()
+
+func _ready() -> void:
+	modify_health(100.0)
+	suit = GameGlobal.chosen_suit
+	initialize_deck(suit)
 
 # Modifies the player's health (damage or heal) and updates the status card
 func modify_health(amount: int) -> void:

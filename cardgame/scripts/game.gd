@@ -1,8 +1,12 @@
-extends Control
+extends Node
+
+@onready var player_card_deck: CardDeck = $PlayerCardDeck
+enum Suit { HEARTS, DIAMONDS, CLUBS, SPADES }
+var chosen_suit: Suit = Suit.HEARTS
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	SoundManager.play_bgm(preload("res://assets/bgm/start_bgm.mp3"))
+	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

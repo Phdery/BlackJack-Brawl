@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://wba6dcl7st62"]
+[gd_scene load_steps=13 format=3 uid="uid://wba6dcl7st62"]
 
 [ext_resource type="Script" path="res://scripts/sound_manager.gd" id="1_n6x3i"]
 [ext_resource type="AudioStream" uid="uid://bg0yx1rgao0mf" path="res://assets/sfx/button_press.mp3" id="2_03d1y"]
+[ext_resource type="AudioStream" uid="uid://bjihrdmi480qb" path="res://assets/bgm/start_bgm.mp3" id="2_8gmoi"]
 [ext_resource type="AudioStream" uid="uid://d4ilt7vkrmp26" path="res://assets/sfx/button_focus.mp3" id="3_82u7q"]
 [ext_resource type="AudioStream" uid="uid://biuf4q8lt6xat" path="res://assets/sfx/card_flip.mp3" id="4_0np18"]
 [ext_resource type="AudioStream" uid="uid://bvxvqm4hm0fom" path="res://assets/sfx/card_sound.mp3" id="5_l1dgh"]
@@ -10,16 +11,21 @@
 [ext_resource type="AudioStream" uid="uid://d3mu5doh2lgu" path="res://assets/sfx/card_place.ogg" id="7_j4v0s"]
 [ext_resource type="AudioStream" uid="uid://bl8u2ksh7bvfo" path="res://assets/sfx/game_fail.mp3" id="9_sw74n"]
 [ext_resource type="AudioStream" uid="uid://dppvjdtfjwmwk" path="res://assets/sfx/game_win.mp3" id="10_4fbgm"]
+[ext_resource type="AudioStream" uid="uid://d3fdg7vf0sbes" path="res://assets/sfx/background_story.mp3" id="11_2rwq5"]
 
 [node name="SoundManager" type="Node"]
 process_mode = 3
 script = ExtResource("1_n6x3i")
 
-[node name="BGM" type="AudioStreamPlayer" parent="."]
-
 [node name="SoundEffect" type="Node" parent="."]
 
 [node name="SFX" type="Node" parent="."]
+
+[node name="StoryAudio" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("11_2rwq5")
+
+[node name="StartBGM" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("2_8gmoi")
 
 [node name="ButtonFocus" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("2_03d1y")
