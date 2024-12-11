@@ -12,26 +12,28 @@ const Suit = GameGlobal.Suit
 var suit: Suit
 
 var is_stopped: bool = false  # Tracks if the player's turn is stopped
+var score_card = preload("res://scenes/score_card.tscn").instantiate()
+var basic_card = preload("res://scenes/basic_card.tscn")
 
 # Initializes the player's deck based on the chosen suit
-func initialize_deck(suit: Suit) -> void:
+func initialize_deck(suit: String) -> void:
 	
-	var ranks = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
-	var card_resource = preload("res://scenes/card.tscn")
+	var scores = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+	var card_resource = preload("res://scenes/basic_card.tscn")
 	
-	for rank in ranks:
-		var new_card = card_resource.instantiate() as Card
-		new_card.suit = suit
-		new_card.rank = rank
-		new_card.set_card_texture() # If you have a method to set the texture or properties.
+	for score in scores:
+		var new_card = card_resource.instantiate() as BasicCard
+		new_card.custom_init(score, suit)
 		player_card_deck.add_card(new_card)
-
+	
 	player_card_deck.shuffle()
 
 func _ready() -> void:
 	modify_health(100.0)
 	suit = GameGlobal.chosen_suit
-	initialize_deck(suit)
+	var suit_string: String = ""
+	suit_string = GameGlobal.suit_string(suit)
+	initialize_deck(suit_string)
 
 # Modifies the player's health (damage or heal) and updates the status card
 func modify_health(amount: int) -> void:
@@ -92,6 +94,14 @@ func reset_turn() -> void:
 # Shuffles the player's deck
 func shuffle_deck() -> void:
 	player_card_deck.shuffle()
+
+func shuffle(deck: Array) -> void:
+	for i in range(deck.size() - 1, 0, -1):
+		var j = randi() % (i + 1)
+		# Perform the swap using a temporary variable
+		var temp = deck[i]
+		deck[i] = deck[j]
+		deck[j] = temp
 
 # Signal emitted when the player dies
 signal player_died

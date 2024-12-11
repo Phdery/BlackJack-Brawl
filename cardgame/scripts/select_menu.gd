@@ -79,7 +79,7 @@ func _on_diamond_suit_mouse_exited() -> void:
 func _on_diamond_suit_pressed() -> void:
 	SoundManager.play_sfx("ButtonStart")
 	GameGlobal.chosen_suit = GameGlobal.Suit.DIAMONDS
-	get_tree().change_scene_to_file("res://scenes/player.tscn")
+	get_tree().change_scene_to_file("res://scenes/table.tscn")
 
 
 func _on_club_suit_mouse_entered() -> void:
