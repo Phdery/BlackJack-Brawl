@@ -8,15 +8,34 @@
 [node name="Player" type="Node2D"]
 script = ExtResource("1_5ynjo")
 
-[node name="PlayerDisplayedCardDeck" type="Node2D" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(500, 500)
+offset_right = 500.0
+offset_bottom = 500.0
+
+[node name="CenterContainer" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="PlayerScoreCard" parent="VBoxContainer/CenterContainer" instance=ExtResource("4_blbev")]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="PlayerStatusCard" parent="VBoxContainer/CenterContainer" instance=ExtResource("4_1o48l")]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="CenterContainer2" type="CenterContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="PlayerUsedCardDeck" type="Node2D" parent="VBoxContainer/CenterContainer2"]
+position = Vector2(615, 173)
 script = ExtResource("4_46yqj")
 
-[node name="PlayerCardDeck" type="Node2D" parent="."]
+[node name="PlayerCardDeck" type="Node2D" parent="VBoxContainer/CenterContainer2"]
+position = Vector2(0, -104)
 script = ExtResource("4_46yqj")
 
-[node name="PlayerUsedCardDeck" type="Node2D" parent="."]
+[node name="PlayerDisplayedCardDeck" type="Node2D" parent="VBoxContainer/CenterContainer2"]
+position = Vector2(165, 112)
 script = ExtResource("4_46yqj")
-
-[node name="PlayerScoreCard" parent="." instance=ExtResource("4_blbev")]
-
-[node name="PlayerStatusCard" parent="." instance=ExtResource("4_1o48l")]

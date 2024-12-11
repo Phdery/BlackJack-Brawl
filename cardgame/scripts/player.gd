@@ -1,11 +1,11 @@
 class_name Player
 extends Controller
 
-@onready var player_score_card: ScoreCard = $PlayerScoreCard
-@onready var player_status_card: StatusCard = $PlayerStatusCard
-@onready var player_displayed_cards: CardDeck = $PlayerDisplayedCardDeck
-@onready var player_card_deck: CardDeck = $PlayerCardDeck
-@onready var player_used_card_deck: CardDeck = $PlayerUsedCardDeck
+@onready var player_score_card: ScoreCard = $VBoxContainer/CenterContainer/PlayerScoreCard
+@onready var player_status_card: StatusCard = $VBoxContainer/CenterContainer/PlayerStatusCard
+@onready var player_displayed_cards: CardDeck = $VBoxContainer/CenterContainer2/PlayerDisplayedCardDeck
+@onready var player_card_deck: CardDeck = $VBoxContainer/CenterContainer2/PlayerCardDeck
+@onready var player_used_card_deck: CardDeck = $VBoxContainer/CenterContainer2/PlayerUsedCardDeck
 
 # Enum for card suits
 const Suit = GameGlobal.Suit
