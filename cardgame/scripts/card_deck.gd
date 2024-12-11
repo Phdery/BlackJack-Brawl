@@ -10,9 +10,9 @@ func custom_init(new_cards:Array[Card], is_display:bool):
 	cards = new_cards
 	display = is_display
 	if display:
-		# set texture to empty
+		self.texture = null
 	else:
-		# set texture to back of card
+		self.texture = load("res://assets/cards/carb_back_1.png")
 
 #TODO function to generate random card
 # draws a card from a random spot in the deck

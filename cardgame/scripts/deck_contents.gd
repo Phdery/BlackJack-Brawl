@@ -87,6 +87,9 @@ func _ready() -> void:
 
 func display_cards(deck:Array[Card]) -> void:
 	cards = deck
+	self.visible = true
+	label.global_position = Vector2(150 + 310 * 6, 200)
+	button.global_position = Vector2(150 + 310 * 6, 500)
 	var start_position = Vector2(150,200)
 	var num_per_row:int = 6
 	var i:int = 0

@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://bgr315x3mdceh"]
 
-[ext_resource type="Script" path="res://scripts/card.gd" id="1_pvm8x"]
-[ext_resource type="Texture2D" uid="uid://dbgtjmjqu3enn" path="res://assets/cards/club/club_2.png" id="1_y780n"]
+[ext_resource type="Texture2D" uid="uid://dbgtjmjqu3enn" path="res://assets/cards/club/club_2.png" id="1_c610w"]
+[ext_resource type="Script" path="res://scripts/card.gd" id="2_27eir"]
 
 [node name="Card" type="Sprite2D"]
 position = Vector2(239, 119)
-texture = ExtResource("1_y780n")
-script = ExtResource("1_pvm8x")
+texture = ExtResource("1_c610w")
+script = ExtResource("2_27eir")
