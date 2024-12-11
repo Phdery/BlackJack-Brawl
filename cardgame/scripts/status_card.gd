@@ -1,10 +1,10 @@
 class_name StatusCard
 
-extends Node2D
+extends Control
 
 @export var current_hp:int = 100
 @export var max_hp:int = 100
-@onready var label = $"../Label"
+@onready var label = $Label
 
 #TODO animasion to show the score
 
