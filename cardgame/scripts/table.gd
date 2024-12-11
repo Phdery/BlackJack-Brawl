@@ -30,7 +30,7 @@ func _start_round():
 	enemy.draw_and_execute_card()
 
 func _on_hit_button_pressed() -> void:
-	player_score = calculate_score(player.player_displayed_cards.cards, player.max_score())
+	player_score = calculate_score(player.player_displayed_cards.cards, player.player_score_card.max_score)
 	if player_turn and player_score < player.player_score_card.max_score:
 		player.draw_and_execute_card()
 		if !enemy.is_stopped:
@@ -38,7 +38,7 @@ func _on_hit_button_pressed() -> void:
 			enemy_turn()
 
 func _on_stand_button_pressed() -> void:
-	player_score = calculate_score(player.player_displayed_cards.cards, player.max_score())
+	player_score = calculate_score(player.player_displayed_cards.cards, player.player_score_card.max_score)
 	#TODO: need to get max score
 	if player_turn and player_score < player.player_score_card.max_score:
 		if !enemy.is_stopped:
@@ -125,7 +125,7 @@ func calculate_score(hand: Array, max_score: int) -> int:
 func enemy_turn():
 	while !player_turn and !enemy.is_stopped:
 		#TODO enemy logic
-		enemy.make_decision_based_on_probabilty()
+		enemy.make_decision_based_on_probability()
 		enemy_score = calculate_score(enemy.enemy_displayed_cards.cards, 21)
 		if !player.is_stopped or enemy_score > 21:
 			player_turn = true

@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bjtephxayc4qv"]
+[gd_scene load_steps=9 format=3 uid="uid://bjtephxayc4qv"]
 
 [ext_resource type="Script" path="res://ui/end_screen.gd" id="1_vf5nt"]
 [ext_resource type="Texture2D" uid="uid://c6y2bppq42t1w" path="res://assets/ending/fail_1.jpg" id="2_1najt"]
 [ext_resource type="StyleBox" uid="uid://rb3ht43m5b7q" path="res://ui/button_box.tres" id="2_y8cus"]
 [ext_resource type="Texture2D" uid="uid://brvujlq5vxpcb" path="res://assets/ending/try_again.png" id="3_s7it8"]
+[ext_resource type="Texture2D" uid="uid://chkkdruc0mv1o" path="res://assets/ending/exit.png" id="5_6y6wi"]
 
 [sub_resource type="Theme" id="Theme_4eh1e"]
 
@@ -28,11 +29,11 @@ scale = Vector2(2.42309, 2.34465)
 texture = ExtResource("2_1najt")
 
 [node name="BackStart" type="Button" parent="."]
-offset_left = 383.0
-offset_top = 279.0
-offset_right = 1033.0
-offset_bottom = 487.0
-scale = Vector2(0.6, 0.6)
+offset_left = 327.0
+offset_top = 269.0
+offset_right = 977.0
+offset_bottom = 477.0
+scale = Vector2(0.79, 0.79)
 theme = SubResource("Theme_4eh1e")
 theme_override_font_sizes/font_size = 31
 theme_override_styles/focus = ExtResource("2_y8cus")
@@ -40,6 +41,22 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_6qykm")
 theme_override_styles/normal = SubResource("StyleBoxFlat_k828b")
 icon = ExtResource("3_s7it8")
 
+[node name="ExitGame" type="Button" parent="."]
+offset_left = 968.0
+offset_top = 474.0
+offset_right = 1618.0
+offset_bottom = 682.0
+scale = Vector2(0.6, 0.6)
+theme = SubResource("Theme_4eh1e")
+theme_override_font_sizes/font_size = 31
+theme_override_styles/focus = ExtResource("2_y8cus")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6qykm")
+theme_override_styles/normal = SubResource("StyleBoxFlat_k828b")
+icon = ExtResource("5_6y6wi")
+
 [connection signal="mouse_entered" from="BackStart" to="." method="_on_back_start_mouse_entered"]
 [connection signal="mouse_exited" from="BackStart" to="." method="_on_back_start_mouse_exited"]
 [connection signal="pressed" from="BackStart" to="." method="_on_back_start_pressed"]
+[connection signal="mouse_entered" from="ExitGame" to="." method="_on_exit_game_mouse_entered"]
+[connection signal="mouse_exited" from="ExitGame" to="." method="_on_exit_game_mouse_exited"]
+[connection signal="pressed" from="ExitGame" to="." method="_on_exit_game_pressed"]

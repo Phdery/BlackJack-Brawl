@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://iox1tqy8xq8f"]
 
 [ext_resource type="Script" path="res://scripts/table.gd" id="1_ylqy0"]
-[ext_resource type="Texture2D" uid="uid://bf54rxx4vijxd" path="res://assets/table/table_background.jpg" id="2_0lnbf"]
 [ext_resource type="PackedScene" uid="uid://bcjxs6ha8opch" path="res://scenes/player.tscn" id="2_a2xkj"]
+[ext_resource type="Texture2D" uid="uid://dqdyngbmsdc0o" path="res://assets/table/table_background_2.jpg" id="2_bxg01"]
 [ext_resource type="PackedScene" uid="uid://24xvop2usi1i" path="res://scenes/enemy.tscn" id="3_jkpep"]
 
 [node name="Table" type="Control"]
@@ -18,7 +18,7 @@ script = ExtResource("1_ylqy0")
 layout_mode = 1
 offset_right = 1200.0
 offset_bottom = 600.0
-texture = ExtResource("2_0lnbf")
+texture = ExtResource("2_bxg01")
 expand_mode = 2
 
 [node name="MainLayout" type="HBoxContainer" parent="."]
