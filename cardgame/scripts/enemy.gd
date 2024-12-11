@@ -31,7 +31,7 @@ func refill_card_deck() -> void:
 		for card in enemy_used_card_deck.cards:
 			enemy_card_deck.add_card(card)
 		enemy_used_card_deck.clear()
-		enemy_card_deck.shuffle()
+		shuffle(enemy_card_deck)
 
 # Randomly draw a card from the deck, move to the displayed deck, and execute its mechanism
 func draw_and_execute_card() -> void:
@@ -110,10 +110,6 @@ func has_stopped() -> bool:
 # Reset the enemy's turn state
 func reset_turn() -> void:
 	is_stopped = false
-
-# Shuffle the enemy's deck
-func shuffle_deck() -> void:
-	enemy_card_deck.shuffle()
 	
 func shuffle(deck: Array) -> void:
 	for i in range(deck.size() - 1, 0, -1):

@@ -25,8 +25,7 @@ func initialize_deck(suit: Suit) -> void:
 		new_card.rank = rank
 		new_card.set_card_texture() # If you have a method to set the texture or properties.
 		player_card_deck.add_card(new_card)
-
-	player_card_deck.shuffle()
+	shuffle(player_card_deck)
 
 func _ready() -> void:
 	modify_health(100.0)
@@ -50,7 +49,7 @@ func refill_card_deck() -> void:
 		for card in player_used_card_deck.cards:
 			player_card_deck.add_card(card)
 		player_used_card_deck.clear()
-		player_card_deck.shuffle()
+		shuffle(player_card_deck)
 
 # Draws a random card from the deck, moves it to the displayed deck, and executes its mechanism
 func draw_and_execute_card() -> void:
@@ -88,10 +87,6 @@ func stop_turn() -> void:
 # Resets the player's turn state
 func reset_turn() -> void:
 	is_stopped = false
-
-# Shuffles the player's deck
-func shuffle_deck() -> void:
-	player_card_deck.shuffle()
 
 func shuffle(deck: Array) -> void:
 	for i in range(deck.size() - 1, 0, -1):
