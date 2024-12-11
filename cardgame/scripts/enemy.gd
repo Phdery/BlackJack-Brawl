@@ -114,7 +114,15 @@ func reset_turn() -> void:
 # Shuffle the enemy's deck
 func shuffle_deck() -> void:
 	enemy_card_deck.shuffle()
-
+	
+func shuffle(deck: Array) -> void:
+	for i in range(deck.size() - 1, 0, -1):
+		var j = randi() % (i + 1)
+		# Perform the swap using a temporary variable
+		var temp = deck[i]
+		deck[i] = deck[j]
+		deck[j] = temp
+		
 ### Signals
 signal enemy_died
 signal enemy_turn_ended
