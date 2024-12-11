@@ -38,7 +38,7 @@ func draw_and_execute_card() -> void:
 	if enemy_card_deck.is_empty():
 		refill_card_deck()
 	
-	var drawn_card = enemy_card_deck.draw_card()
+	var drawn_card = enemy_card_deck.generate_random_card()
 	if drawn_card:
 		enemy_displayed_cards.add_card(drawn_card)
 		execute_card_mechanism(drawn_card)
