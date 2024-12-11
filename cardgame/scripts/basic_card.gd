@@ -1,7 +1,6 @@
 class_name BasicCard
 extends Card
 
-@export var suit:String
 	
 func custom_init(new_score:int, new_suit:String) -> void:
 	score = new_score

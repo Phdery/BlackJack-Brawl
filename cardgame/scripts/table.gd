@@ -12,8 +12,16 @@ var enemy_score: int
 #TODO maybe have 2 different enemy scenes?
 var enemies = [preload("res://scenes/enemy.tscn")]
 var current_enemy: int = 0
+var score_card = preload("res://scenes/score_card.tscn").instantiate()
+
+signal player_win
+signal player_fail
 
 func _ready():
+	print("ScoreCard Instance Type: ", score_card)
+	print("ScoreCard Instance Children: ", score_card.get_children())
+	var player_box: CenterContainer = $MainLayout/PlayerBox
+	player_box.add_child(score_card)
 	# load first enemy
 	load_enemy(enemies[current_enemy])
 	# initialize and start
@@ -53,11 +61,13 @@ func _player_win():
 		_start_round()
 	else:
 		print("Player defeated all enemies! Victory!")
+		player_win.emit()
 		#TODO victory scene
 	
 func _enemy_win():
 	print("Player lost!")
 	SoundManager.play_sfx("game_fail")
+	player_fail.emit()
 	#TODO player lose scene
 
 func check_winner() -> void:

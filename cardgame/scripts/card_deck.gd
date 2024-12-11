@@ -53,5 +53,11 @@ func swap_decks(card_deck:CardDeck) -> void:
 # func that sets deck's texture? or just set elsewhere?
 # func that displays cards at play in center of screen?
 
+func is_empty() -> bool:
+	if cards.size() == 0:
+		return true
+	else:
+		return false
 
-	
+func clear() -> void:
+	cards.clear()

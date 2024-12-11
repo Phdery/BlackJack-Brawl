@@ -1,6 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://bjtephxayc4qv"]
+[gd_scene load_steps=8 format=3 uid="uid://bjtephxayc4qv"]
 
 [ext_resource type="Script" path="res://ui/end_screen.gd" id="1_vf5nt"]
+[ext_resource type="Texture2D" uid="uid://c6y2bppq42t1w" path="res://assets/ending/fail_1.jpg" id="2_1najt"]
+[ext_resource type="StyleBox" uid="uid://rb3ht43m5b7q" path="res://ui/button_box.tres" id="2_y8cus"]
+[ext_resource type="Texture2D" uid="uid://brvujlq5vxpcb" path="res://assets/ending/try_again.png" id="3_s7it8"]
+
+[sub_resource type="Theme" id="Theme_4eh1e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6qykm"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k828b"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="EndScreen" type="Control"]
 layout_mode = 3
@@ -11,44 +22,24 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vf5nt")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -4.0
-offset_bottom = -2.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.27451)
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(592, 296)
+scale = Vector2(2.42309, 2.34465)
+texture = ExtResource("2_1najt")
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 61
-text = "You Failed.
-But Never Stop Trying"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="BackStart" type="Button" parent="."]
+offset_left = 383.0
+offset_top = 279.0
+offset_right = 1033.0
+offset_bottom = 487.0
+scale = Vector2(0.6, 0.6)
+theme = SubResource("Theme_4eh1e")
+theme_override_font_sizes/font_size = 31
+theme_override_styles/focus = ExtResource("2_y8cus")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6qykm")
+theme_override_styles/normal = SubResource("StyleBoxFlat_k828b")
+icon = ExtResource("3_s7it8")
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -155.0
-offset_top = 132.0
-offset_right = -49.0
-offset_bottom = 163.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(2.795, 2.795)
-text = "back to start"
-
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="mouse_entered" from="BackStart" to="." method="_on_back_start_mouse_entered"]
+[connection signal="mouse_exited" from="BackStart" to="." method="_on_back_start_mouse_exited"]
+[connection signal="pressed" from="BackStart" to="." method="_on_back_start_pressed"]
