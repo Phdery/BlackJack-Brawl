@@ -1,6 +1,33 @@
-[gd_scene load_steps=2 format=3 uid="uid://24xvop2usi1i"]
+[gd_scene load_steps=5 format=3 uid="uid://24xvop2usi1i"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_01k7d"]
+[ext_resource type="Script" path="res://scripts/card_deck.gd" id="2_a0gde"]
+[ext_resource type="PackedScene" uid="uid://bdl8cf6iei7ss" path="res://scenes/score_card.tscn" id="3_2b4mx"]
+[ext_resource type="PackedScene" uid="uid://ba1jh5kg03t1l" path="res://scenes/status_card.tscn" id="4_cbnlh"]
 
 [node name="Enemy" type="Node2D"]
 script = ExtResource("1_01k7d")
+
+[node name="EnemyCardDeck" type="Node2D" parent="."]
+position = Vector2(914, 33)
+script = ExtResource("2_a0gde")
+
+[node name="EnemyDisplayedCardDeck" type="Node2D" parent="."]
+position = Vector2(953, 42)
+script = ExtResource("2_a0gde")
+
+[node name="EnemyUsedCardDeck" type="Node2D" parent="."]
+position = Vector2(932, 8)
+script = ExtResource("2_a0gde")
+
+[node name="EnemyScoreCard" parent="." instance=ExtResource("3_2b4mx")]
+offset_left = 983.0
+offset_top = 3.0
+offset_right = 983.0
+offset_bottom = 3.0
+
+[node name="EnemyStatusCard" parent="." instance=ExtResource("4_cbnlh")]
+offset_left = 1058.0
+offset_top = 20.0
+offset_right = 1058.0
+offset_bottom = 20.0

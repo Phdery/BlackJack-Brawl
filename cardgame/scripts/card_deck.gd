@@ -9,10 +9,10 @@ var display:bool = false
 func custom_init(new_cards:Array[Card], is_display:bool):
 	cards = new_cards
 	display = is_display
-	if display:
-		# set texture to empty
-	else:
-		# set texture to back of card
+	#if display:
+		## set texture to empty
+	#else:
+		## set texture to back of card
 
 #TODO function to generate random card
 # draws a card from a random spot in the deck
@@ -53,5 +53,11 @@ func swap_decks(card_deck:CardDeck) -> void:
 # func that sets deck's texture? or just set elsewhere?
 # func that displays cards at play in center of screen?
 
+func is_empty() -> bool:
+	if cards.size() == 0:
+		return true
+	else:
+		return false
 
-	
+func clear() -> void:
+	cards.clear()
