@@ -2,20 +2,24 @@ extends Control
 
 
 @onready var back_button: Button = $BackStart
+@onready var exit_button: Button = $ExitGame
 @onready var background: Sprite2D = $Background
 
 var back_to_start = preload("res://assets/ending/try_again.png")
-var back_to_start_hover = preload("res://assets/ending/try_again_hover.png")
+var back_to_start_hover = preload("res://assets/ending/lets_go_hover.png")
+var back_start_win = preload("res://assets/ending/return_main.png")
 var background_fail = preload("res://assets/ending/fail_1.jpg")
 var background_win = preload("res://assets/ending/win_2.jpg")
+var exit_normal = preload("res://assets/ending/exit.png")
+var exit_hover = preload("res://assets/ending/exit_hover.png")
 var table = preload("res://scenes/table.tscn")
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	back_button.icon = back_to_start
-	table.connect("player_win", _on_player_win())
-	table.connect("player_fail", _on_player_fail())
+	#table.connect("player_win", _on_player_win())
+	#table.connect("player_fail", _on_player_fail())
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -51,7 +55,24 @@ func _on_back_start_mouse_exited() -> void:
 
 func _on_player_win():
 	background.texture = background_win
+	back_button.icon = back_start_win
 
 
 func _on_player_fail():
 	background.texture = background_fail
+	back_button.icon = back_to_start
+
+
+func _on_exit_game_pressed() -> void:
+	SoundManager.play_sfx("ButtonPress")
+	get_tree().quit()
+
+
+func _on_exit_game_mouse_entered() -> void:
+	SoundManager.play_sfx("ButtonFocus")
+	exit_button.icon = exit_hover
+	
+
+
+func _on_exit_game_mouse_exited() -> void:
+	exit_button.icon = exit_normal
