@@ -27,10 +27,13 @@ func _ready():
 # deletes that card from the deck?
 func generate_random_card() -> Card:
 	randomize()
-	var random = randi() % cards.size()
-	var return_card = cards[random]
-	# cards.remove_at(random)
-	return return_card
+	if cards.size() != 0:
+		var random = randi() % cards.size()
+		var return_card = cards[random]
+		# cards.remove_at(random)
+		return return_card
+	else:
+		return null
 
 
 #TODO function to add card to the card list

@@ -14,7 +14,8 @@ func _ready() -> void:
 	label.text = "HP = " + str(current_hp) + " out of " + str(max_hp)
 
 func update_hp(new_hp:int) -> void:
-	current_hp = new_hp
+	# Ensure current_hp does not exceed max_hp
+	current_hp = clamp(new_hp, 0, max_hp)
 	label.text = "HP = " + str(current_hp) + " out of " + str(max_hp)
 
 func update_max(new_max:int) -> void:

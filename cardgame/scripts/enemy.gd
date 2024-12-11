@@ -33,12 +33,28 @@ func refill_card_deck() -> void:
 		enemy_used_card_deck.clear()
 		shuffle(enemy_card_deck.cards)
 
+# Draws a random card from the player's card deck
+func generate_random_card() -> BasicCard:
+	if enemy_card_deck.cards.size() == 0:
+		return null  # Return null if no cards are left in the deck
+
+	# Generate a random index within the range of available cards
+	var random_index = randi() % enemy_card_deck.cards.size()
+
+	# Get the card at the random index
+	var random_card = enemy_card_deck.cards[random_index]
+
+	# Remove the card from the deck to ensure it isn't drawn again
+	enemy_card_deck.cards.erase(random_card)
+
+	return random_card  # Return the selected card
+
 # Randomly draw a card from the deck, move to the displayed deck, and execute its mechanism
 func draw_and_execute_card() -> void:
 	if enemy_card_deck.is_empty():
 		refill_card_deck()
 	
-	var drawn_card = enemy_card_deck.draw_card()
+	var drawn_card = enemy_card_deck.generate_random_card()
 	if drawn_card:
 		enemy_displayed_cards.add_card(drawn_card)
 		execute_card_mechanism(drawn_card)
@@ -49,21 +65,21 @@ func execute_card_mechanism(card: Card) -> void:
 
 ### Enemy Behavior
 # Makes a decision based on aggression level or probability
-func decide_action(player: Player) -> void:
-	if aggression_level == 1: # Cautious
-		if enemy_status_card.current_hp < enemy_status_card.max_hp / 2:
-			draw_and_execute_card()  # Use a card to heal or defend
-		else:
-			stop_turn()
-	elif aggression_level == 2: # Balanced
-		if randi() % 2 == 0:
-			draw_and_execute_card()
-		else:
-			stop_turn()
-	elif aggression_level == 3: # Aggressive
-		draw_and_execute_card()
-	elif aggression_level == 4: # Probability-based behavior
-		make_decision_based_on_probability()
+func decide_action() -> void:
+	#if aggression_level == 1: # Cautious
+		#if enemy_status_card.current_hp < enemy_status_card.max_hp / 2:
+			#draw_and_execute_card()  # Use a card to heal or defend
+		#else:
+			#stop_turn()
+	#elif aggression_level == 2: # Balanced
+		#if randi() % 2 == 0:
+			#draw_and_execute_card()
+		#else:
+			#stop_turn()
+	#elif aggression_level == 3: # Aggressive
+		#draw_and_execute_card()
+	#elif aggression_level == 4: # Probability-based behavior
+	make_decision_based_on_probability()
 
 # Makes a decision based on proximity to 21
 func make_decision_based_on_probability() -> void:

@@ -55,12 +55,28 @@ func refill_card_deck() -> void:
 		player_used_card_deck.clear()
 		shuffle(player_card_deck.cards)
 
+# Draws a random card from the player's card deck
+func generate_random_card() -> BasicCard:
+	if player_card_deck.cards.size() == 0:
+		return null  # Return null if no cards are left in the deck
+		
+	# Generate a random index within the range of available cards
+	var random_index = randi() % player_card_deck.cards.size()
+
+	# Get the card at the random index
+	var random_card = player_card_deck.cards[random_index]
+
+	# Remove the card from the deck to ensure it isn't drawn again
+	player_card_deck.cards.erase(random_card)
+
+	return random_card  # Return the selected card
+
 # Draws a random card from the deck, moves it to the displayed deck, and executes its mechanism
 func draw_and_execute_card() -> void:
 	if player_card_deck.is_empty():
 		refill_card_deck()
 	
-	var drawn_card = player_card_deck.draw_card()
+	var drawn_card = player_card_deck.generate_random_card()
 	if drawn_card:
 		player_displayed_cards.add_card(drawn_card)
 		execute_card_mechanism(drawn_card)
