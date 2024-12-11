@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-[gd_scene load_steps=5 format=3 uid="uid://xh3gfy6dtt5w"]
-=======
-[gd_scene load_steps=2 format=3 uid="uid://b73bghxwwsa7a"]
->>>>>>> 6485d6440365f49ab2ea8c3ea518c27d9e93ec33
+[gd_scene load_steps=5 format=3 uid="uid://yyhlwwtcd2cr"]
 
 [ext_resource type="Script" path="res://scripts/deck_contents.gd" id="1_q0fop"]
 [ext_resource type="Script" path="res://scripts/deck_scene_exit.gd" id="2_5xd42"]

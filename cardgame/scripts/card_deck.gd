@@ -4,15 +4,23 @@ extends Node2D
 
 var cards:Array[Card]
 var display:bool = false
+signal clicked
+@export var deckContents:PackedScene
+var deck_contents:DeckContents
 
-
-func custom_init(new_cards:Array[Card], is_display:bool):
-	cards = new_cards
+func custom_init(is_display:bool):
 	display = is_display
 	if display:
 		self.texture = null
 	else:
 		self.texture = load("res://assets/cards/carb_back_1.png")
+	deck_contents = deckContents.instantiate() as DeckContents
+
+
+
+func _ready():
+	custom_init(false)
+	
 
 #TODO function to generate random card
 # draws a card from a random spot in the deck
@@ -61,3 +69,12 @@ func is_empty() -> bool:
 
 func clear() -> void:
 	cards.clear()
+
+
+func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event.is_action_pressed("click"):
+		print("clicked")
+		$".".add_child(deck_contents)
+		deck_contents.display_cards()
+		# make current scene invisble
+		# call display cards function in deckcontents scene, pass in cards array

@@ -1,3 +1,4 @@
+class_name DeckContents
 extends Node2D
 
 var cards:Array[Card]
@@ -5,11 +6,13 @@ var basic_card_scene = preload("res://scenes/basic_card.tscn")
 # Called when the node enters the scene tree for the first time.
 @onready var label:Label = $Label
 @onready var button:Button = $Button
+@onready var deck = $".."
 
 func _ready() -> void:
 	self.visible = true
-	label.global_position = Vector2(150 + 310 * 6, 200)
-	button.global_position = Vector2(150 + 310 * 6, 500)
+	self.label.global_position = Vector2(150 + 310 * 6, 200)
+	self.button.global_position = Vector2(150 + 310 * 6, 500)
+	cards = deck.cards
 	# test code for adding card children
 	var test_card_1 = basic_card_scene.instantiate()
 	test_card_1.custom_init(2,"heart")
@@ -83,10 +86,27 @@ func _ready() -> void:
 	test_card_18.custom_init(10,"heart")
 	cards.append(test_card_18)
 	
-	display_cards(cards)
+	for card in cards:
+		#card.connect("mouse_entered", _on_card_hovered)
+		#card.connect("mouse_exited", _on_card_exited)
+		card.mouse_entered.connect(_on_card_hovered.bind(card))
+		card.mouse_exited.connect(_on_card_exited)
+	
+	
+	deck.connect("clicked", display_cards)	#
+	#display_cards(cards)
+	
+func _on_card_hovered(card:Card):
+	print("hi")
+	label.text = card.description
+	
+func _on_card_exited():
+	print("bye")
+	label.text = ""
 
-func display_cards(deck:Array[Card]) -> void:
-	cards = deck
+func display_cards() -> void:
+	print("it worked!")
+	cards = deck.cards
 	self.visible = true
 	label.global_position = Vector2(150 + 310 * 6, 200)
 	button.global_position = Vector2(150 + 310 * 6, 500)
@@ -110,10 +130,11 @@ func change_label(text:String) -> void:
 	label.text = text
 	
 func exit_scene() -> void:
-	for card in cards:
-		card.queue_free()
-	self.visible = false
 	print("done!")
+	self.visible = false
+	remove_child(self)
+	
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

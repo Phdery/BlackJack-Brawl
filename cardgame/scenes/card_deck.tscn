@@ -1,12 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://kq24ujwnhrf2"]
+[gd_scene load_steps=6 format=3 uid="uid://kq24ujwnhrf2"]
 
 [ext_resource type="Script" path="res://scripts/card_deck.gd" id="1_7su5i"]
+[ext_resource type="Texture2D" uid="uid://dj12bmvmxj3cg" path="res://assets/cards/carb_back_1.png" id="1_oyest"]
 [ext_resource type="Script" path="res://scripts/deck_click.gd" id="2_qh86n"]
+[ext_resource type="PackedScene" uid="uid://yyhlwwtcd2cr" path="res://scenes/deck_contents.tscn" id="3_2olid"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nesfu"]
+size = Vector2(470, 674)
 
 [node name="CardDeck" type="Sprite2D"]
+texture = ExtResource("1_oyest")
 script = ExtResource("1_7su5i")
+deckContents = ExtResource("3_2olid")
 
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource("2_qh86n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2, 3)
+shape = SubResource("RectangleShape2D_nesfu")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
