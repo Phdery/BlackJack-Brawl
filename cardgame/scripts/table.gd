@@ -1,14 +1,16 @@
 class_name Table
 extends Control
 
-@onready var player:Player = $Player
-@onready var enemy:Enemy = $Enemy
+@onready var player:Player = $MainLayout/PlayerBox/Player
+@onready var enemy:Enemy = $MainLayout/EnemyBox/Enemy
 
-#TODO Build Main Logic
+var _have_ace: bool = false
 var player_turn: bool = false
+var player_score: int
+var enemy_score: int
 
-#TODO 2 different enemy scenes?
-var enemies = [preload("res://scenes/enemy.tscn"), preload("res://scenes/enemy.tscn")]
+#TODO maybe have 2 different enemy scenes?
+var enemies = [preload("res://scenes/enemy.tscn")]
 var current_enemy: int = 0
 
 func _ready():
@@ -24,14 +26,17 @@ func _start_round():
 	enemy.draw_and_execute_card()
 
 func _on_hit_button_pressed() -> void:
-	if player_turn:
+	player_score = calculate_score(player.player_displayed_cards.cards, player.max_score())
+	if player_turn and player_score < 21:
 		player.draw_and_execute_card()
 		if !enemy.is_stopped:
 			player_turn = false
 			enemy_turn()
 
 func _on_stand_button_pressed() -> void:
-	if player_turn:
+	player_score = calculate_score(player.player_displayed_cards.cards, player.max_score())
+	#TODO: need to get max score
+	if player_turn and player_score < player.max_score():
 		if !enemy.is_stopped:
 			player_turn = false
 			enemy_turn()
@@ -56,19 +61,20 @@ func _enemy_win():
 	#TODO player lose scene
 
 func check_winner() -> void:
-	var player_score = calculate_score(player.player_displayed_cards.cards)
-	var enemy_score = calculate_score(enemy.enemy_displayed_cards.cards)
+	player_score = calculate_score(player.player_displayed_cards.cards, player.max_score())
+	enemy_score = calculate_score(enemy.enemy_displayed_cards.cards, 21)
 	var score_difference = player_score - enemy_score
 	# same score or both bust
-	if score_difference == 0 or player_score > 21 and enemy_score > 21:
+	if score_difference == 0 or (player_score > player.max_score() and enemy_score > 21):
 		#TODO: tie animation
 		pass
 	# only enemy bust
 	elif enemy_score > 21:
 		#TODO: player win animation
+		#TODO: suit effect
 		enemy.modify_health(-player_score)
 	# only player bust
-	elif player_score > 21:
+	elif player_score > player.max_score():
 		#TODO: enemy win animation
 		player.modify_health(-enemy_score)
 	# both didn't bust
@@ -76,6 +82,7 @@ func check_winner() -> void:
 		# player win
 		if score_difference > 0:
 			#TODO: player win animation
+			#TODO: suit effect
 			enemy.modify_health(-score_difference)
 		# enemy win
 		else:
@@ -84,20 +91,28 @@ func check_winner() -> void:
 	# check signals
 	enemy.enemy_died.connect(_player_win)
 	player.player_died.connect(_enemy_win)
+	# reset turn
+	player.reset_turn()
+	enemy.reset_turn()
 	
-func calculate_score(hand: Array) -> int:
+func calculate_score(hand: Array, max_score: int) -> int:
 	var score: int = 0
 	# Calculate the total score logic
 	for card in hand:
 		score += card.score
-	#TODO ace logic here?
+		if card.score == 11:
+			_have_ace = true
+	# Ace logic
+	if _have_ace and score > max_score:
+		score -= 10
 	return score
 
 func enemy_turn():
 	while !player_turn and !enemy.is_stopped:
 		#TODO enemy logic
-		#enemy.decide_action()
-		if !player.is_stopped:
+		enemy.make_decision_based_on_probabilty()
+		enemy_score = calculate_score(enemy.enemy_displayed_cards.cards, 21)
+		if !player.is_stopped or enemy_score > 21:
 			player_turn = true
 	if player.is_stopped and enemy.is_stopped:
 		check_winner()
