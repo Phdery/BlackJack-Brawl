@@ -65,21 +65,21 @@ func execute_card_mechanism(card: Card) -> void:
 
 ### Enemy Behavior
 # Makes a decision based on aggression level or probability
-func decide_action(player: Player) -> void:
-	if aggression_level == 1: # Cautious
-		if enemy_status_card.current_hp < enemy_status_card.max_hp / 2:
-			draw_and_execute_card()  # Use a card to heal or defend
-		else:
-			stop_turn()
-	elif aggression_level == 2: # Balanced
-		if randi() % 2 == 0:
-			draw_and_execute_card()
-		else:
-			stop_turn()
-	elif aggression_level == 3: # Aggressive
-		draw_and_execute_card()
-	elif aggression_level == 4: # Probability-based behavior
-		make_decision_based_on_probability()
+func decide_action() -> void:
+	#if aggression_level == 1: # Cautious
+		#if enemy_status_card.current_hp < enemy_status_card.max_hp / 2:
+			#draw_and_execute_card()  # Use a card to heal or defend
+		#else:
+			#stop_turn()
+	#elif aggression_level == 2: # Balanced
+		#if randi() % 2 == 0:
+			#draw_and_execute_card()
+		#else:
+			#stop_turn()
+	#elif aggression_level == 3: # Aggressive
+		#draw_and_execute_card()
+	#elif aggression_level == 4: # Probability-based behavior
+	make_decision_based_on_probability()
 
 # Makes a decision based on proximity to 21
 func make_decision_based_on_probability() -> void:

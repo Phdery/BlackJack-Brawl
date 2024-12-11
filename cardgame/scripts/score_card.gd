@@ -16,7 +16,7 @@ func _ready() -> void:
 
 	
 func update_score(new_score:int) -> void:
-	current_score = new_score
+	current_score = clamp(new_score, 0, max_score)
 	label.text = "Total = " + str(current_score) + " out of " + str(max_score)
 
 func update_max(new_max:int) -> void:
