@@ -26,7 +26,7 @@ func initialize_deck(suit: String) -> void:
 		new_card.custom_init(score, suit)
 		player_card_deck.add_card(new_card)
 
-	shuffle(player_card_deck)
+	shuffle(player_card_deck.cards)
 
 
 func _ready() -> void:
@@ -53,7 +53,7 @@ func refill_card_deck() -> void:
 		for card in player_used_card_deck.cards:
 			player_card_deck.add_card(card)
 		player_used_card_deck.clear()
-		shuffle(player_card_deck)
+		shuffle(player_card_deck.cards)
 
 # Draws a random card from the deck, moves it to the displayed deck, and executes its mechanism
 func draw_and_execute_card() -> void:
@@ -91,14 +91,6 @@ func stop_turn() -> void:
 # Resets the player's turn state
 func reset_turn() -> void:
 	is_stopped = false
-
-func shuffle(deck: Array) -> void:
-	for i in range(deck.size() - 1, 0, -1):
-		var j = randi() % (i + 1)
-		# Perform the swap using a temporary variable
-		var temp = deck[i]
-		deck[i] = deck[j]
-		deck[j] = temp
 
 func shuffle(deck: Array) -> void:
 	for i in range(deck.size() - 1, 0, -1):
