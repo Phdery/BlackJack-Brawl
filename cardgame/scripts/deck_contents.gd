@@ -3,7 +3,13 @@ extends Node2D
 var cards:Array[Card]
 var basic_card_scene = preload("res://scenes/basic_card.tscn")
 # Called when the node enters the scene tree for the first time.
+@onready var label:Label = $Label
+@onready var button:Button = $Button
+
 func _ready() -> void:
+	self.visible = true
+	label.global_position = Vector2(150 + 310 * 6, 200)
+	button.global_position = Vector2(150 + 310 * 6, 500)
 	# test code for adding card children
 	var test_card_1 = basic_card_scene.instantiate()
 	test_card_1.custom_init(2,"heart")
@@ -77,6 +83,10 @@ func _ready() -> void:
 	test_card_18.custom_init(10,"heart")
 	cards.append(test_card_18)
 	
+	display_cards(cards)
+
+func display_cards(deck:Array[Card]) -> void:
+	cards = deck
 	var start_position = Vector2(150,200)
 	var num_per_row:int = 6
 	var i:int = 0
@@ -89,8 +99,18 @@ func _ready() -> void:
 		if (i % num_per_row == 0):
 			y += 1
 		card.global_position = start_position + Vector2(310 * (i % num_per_row), 410 * y)
-		print(card.global_position)
 		i += 1
+		
+	change_label("testing!!!!!!")
+
+func change_label(text:String) -> void:
+	label.text = text
+	
+func exit_scene() -> void:
+	for card in cards:
+		card.queue_free()
+	self.visible = false
+	print("done!")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
