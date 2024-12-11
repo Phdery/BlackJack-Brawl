@@ -11,9 +11,6 @@ size = Vector2(477, 680)
 position = Vector2(253, 353)
 texture = ExtResource("1_ja5pf")
 script = ExtResource("1_2e076")
-suit = null
-score = null
-description = null
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(-239, -118)

@@ -3,16 +3,6 @@ class_name CardDeck
 extends Node2D
 
 var cards:Array[Card]
-var display:bool = false
-
-
-func custom_init(new_cards:Array[Card], is_display:bool):
-	cards = new_cards
-	display = is_display
-	if display:
-		# set texture to empty
-	else:
-		# set texture to back of card
 
 #TODO function to generate random card
 # draws a card from a random spot in the deck
@@ -28,9 +18,6 @@ func generate_random_card() -> Card:
 #TODO function to add card to the card list
 func add_card(card: Card) -> void:
 	cards.append(card)
-	if display:
-		self.texture = card.texture
-	
 	
 #TODO function to move card from one carddeck to the other
 # use for after you draw a card from your deck?

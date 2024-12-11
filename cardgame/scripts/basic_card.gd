@@ -7,11 +7,8 @@ func custom_init(new_score:int, new_suit:String) -> void:
 	suit = new_suit
 	var texture_path:String = "res://assets/cards/" + suit + "/" + suit + "_" + str(score) + ".png"
 	self.texture = load(texture_path)
-	description = str(score) + " of " + suit
 
 func update_texture() -> void:
 	var texture_path:String = "res://assets/cards/" + suit + "/" + suit + "_" + str(score) + ".png"
 	self.texture = load(texture_path)
-	
-	
 	
