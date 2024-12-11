@@ -125,7 +125,7 @@ func calculate_score(hand: Array, max_score: int) -> int:
 func enemy_turn():
 	while !player_turn and !enemy.is_stopped:
 		#TODO enemy logic
-		enemy.make_decision_based_on_probability()
+		enemy.decide_action()
 		enemy_score = calculate_score(enemy.enemy_displayed_cards.cards, 21)
 		if !player.is_stopped or enemy_score > 21:
 			player_turn = true
