@@ -93,5 +93,13 @@ func reset_turn() -> void:
 func shuffle_deck() -> void:
 	player_card_deck.shuffle()
 
+func shuffle(deck: Array) -> void:
+	for i in range(deck.size() - 1, 0, -1):
+		var j = randi() % (i + 1)
+		# Perform the swap using a temporary variable
+		var temp = deck[i]
+		deck[i] = deck[j]
+		deck[j] = temp
+
 # Signal emitted when the player dies
 signal player_died
