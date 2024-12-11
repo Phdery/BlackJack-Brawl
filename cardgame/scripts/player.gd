@@ -27,6 +27,7 @@ func initialize_deck(suit: String) -> void:
 		player_card_deck.add_card(new_card)
 
 	shuffle(player_card_deck.cards)
+	print(player_card_deck.cards)
 
 
 func _ready() -> void:
