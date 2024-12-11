@@ -22,3 +22,9 @@ func _input(event: InputEvent) -> void:
 
 func show_game_over() -> void:
 	show()
+
+
+
+func _on_button_pressed() -> void:
+	SoundManager.play_sfx("ButtonStart")
+	get_tree().change_scene_to_file("res://ui/start_menu.tscn")

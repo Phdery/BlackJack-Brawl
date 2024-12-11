@@ -1,11 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://dbuliqqe0kwnh"]
+[gd_scene load_steps=15 format=3 uid="uid://dbuliqqe0kwnh"]
 
-[ext_resource type="Script" path="res://user interface/start_menu.gd" id="1_pdp0y"]
+[ext_resource type="Script" path="res://ui/start_menu.gd" id="1_pdp0y"]
 [ext_resource type="Texture2D" uid="uid://duecv2df36yh1" path="res://assets/title/background.jpg" id="2_5x58y"]
+[ext_resource type="StyleBox" uid="uid://rb3ht43m5b7q" path="res://ui/button_box.tres" id="3_8jpw2"]
 [ext_resource type="Texture2D" uid="uid://6nksengv0w0u" path="res://assets/title/start_button.png" id="3_xfsas"]
-[ext_resource type="Script" path="res://user interface/new_game_button.gd" id="4_0q3h7"]
+[ext_resource type="Script" path="res://ui/new_game_button.gd" id="4_0q3h7"]
 [ext_resource type="Texture2D" uid="uid://d0bl2d3wxosi7" path="res://assets/title/quit_button.png" id="4_84tkr"]
-[ext_resource type="Script" path="res://user interface/exit_game_button.gd" id="6_paooi"]
+[ext_resource type="Script" path="res://ui/exit_game_button.gd" id="6_paooi"]
 
 [sub_resource type="Theme" id="Theme_sljvt"]
 
@@ -14,9 +15,15 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ov33"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l0nsg"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [sub_resource type="Theme" id="Theme_vdgjq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hus0j"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_euns7"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="StartMenu" type="Control"]
@@ -60,7 +67,9 @@ offset_bottom = 647.0
 scale = Vector2(0.6, 0.6)
 theme = SubResource("Theme_x6bb7")
 theme_override_font_sizes/font_size = 31
+theme_override_styles/focus = ExtResource("3_8jpw2")
 theme_override_styles/hover = SubResource("StyleBoxFlat_2ov33")
+theme_override_styles/normal = SubResource("StyleBoxFlat_l0nsg")
 icon = ExtResource("3_xfsas")
 script = ExtResource("4_0q3h7")
 
@@ -73,7 +82,9 @@ offset_bottom = 644.0
 scale = Vector2(0.6, 0.6)
 theme = SubResource("Theme_vdgjq")
 theme_override_font_sizes/font_size = 31
+theme_override_styles/focus = ExtResource("3_8jpw2")
 theme_override_styles/hover = SubResource("StyleBoxFlat_hus0j")
+theme_override_styles/normal = SubResource("StyleBoxFlat_euns7")
 icon = ExtResource("4_84tkr")
 script = ExtResource("6_paooi")
 
