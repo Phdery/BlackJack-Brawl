@@ -1,6 +1,40 @@
+<<<<<<< HEAD
+[gd_scene load_steps=5 format=3 uid="uid://xh3gfy6dtt5w"]
+=======
 [gd_scene load_steps=2 format=3 uid="uid://b73bghxwwsa7a"]
+>>>>>>> 6485d6440365f49ab2ea8c3ea518c27d9e93ec33
 
 [ext_resource type="Script" path="res://scripts/deck_contents.gd" id="1_q0fop"]
+[ext_resource type="Script" path="res://scripts/deck_scene_exit.gd" id="2_5xd42"]
+
+[sub_resource type="SystemFont" id="SystemFont_ct0vc"]
+
+[sub_resource type="Theme" id="Theme_v8dko"]
+default_font = SubResource("SystemFont_ct0vc")
+default_font_size = 100
 
 [node name="DeckContents" type="Node2D"]
 script = ExtResource("1_q0fop")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 1875.0
+offset_top = -19.0
+offset_right = 2113.0
+offset_bottom = 118.0
+theme = SubResource("Theme_v8dko")
+text = "hello
+"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2241.25, 1163.85)
+scale = Vector2(4477.49, 2322.3)
+
+[node name="Button" type="Button" parent="."]
+offset_left = 1910.0
+offset_top = 271.0
+offset_right = 2297.0
+offset_bottom = 486.0
+text = "exit"
+script = ExtResource("2_5xd42")
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

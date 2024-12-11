@@ -122,7 +122,11 @@ func shuffle(deck: Array) -> void:
 		var temp = deck[i]
 		deck[i] = deck[j]
 		deck[j] = temp
+<<<<<<< HEAD
 
+=======
+		
+>>>>>>> 0dcf15d92aec4bfe117ca2c4ab42cfd0317f4f1d
 ### Signals
 signal enemy_died
 signal enemy_turn_ended
