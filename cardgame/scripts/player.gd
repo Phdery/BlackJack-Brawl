@@ -47,6 +47,7 @@ func modify_health(amount: int) -> void:
 func _on_player_death() -> void:
 	is_stopped = true
 	emit_signal("player_died")
+	GameGlobal.player_fail.emit()
 
 # Moves all cards from the used deck back to the main card deck when it's empty
 func refill_card_deck() -> void:
