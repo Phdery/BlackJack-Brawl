@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://24xvop2usi1i"]
+[gd_scene load_steps=5 format=3 uid="uid://24xvop2usi1i"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_01k7d"]
 [ext_resource type="PackedScene" uid="uid://bdl8cf6iei7ss" path="res://scenes/score_card.tscn" id="3_2b4mx"]
 [ext_resource type="PackedScene" uid="uid://ba1jh5kg03t1l" path="res://scenes/status_card.tscn" id="4_cbnlh"]
 [ext_resource type="PackedScene" uid="uid://kq24ujwnhrf2" path="res://scenes/card_deck.tscn" id="4_h4oqg"]
-[ext_resource type="Texture2D" uid="uid://dj12bmvmxj3cg" path="res://assets/cards/carb_back_1.png" id="5_koi7s"]
 
 [node name="Enemy" type="Node2D"]
 script = ExtResource("1_01k7d")
@@ -31,7 +30,6 @@ layout_mode = 2
 [node name="EnemyUsedCardDeck2" parent="VBoxContainer/CenterContainer2" instance=ExtResource("4_h4oqg")]
 position = Vector2(63, 302)
 scale = Vector2(0.265, 0.265357)
-texture = ExtResource("5_koi7s")
 display = true
 
 [node name="EnemyDisplayedCardDeck2" parent="VBoxContainer/CenterContainer2" instance=ExtResource("4_h4oqg")]
@@ -41,5 +39,4 @@ scale = Vector2(0.265, 0.265)
 [node name="EnemyCardDeck2" parent="VBoxContainer/CenterContainer2" instance=ExtResource("4_h4oqg")]
 position = Vector2(430.25, 302)
 scale = Vector2(0.265, 0.265)
-texture = ExtResource("5_koi7s")
 display = true

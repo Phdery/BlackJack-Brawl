@@ -14,9 +14,9 @@ var to_card_deck:CardDeck
 func _ready() -> void:
  score_card = $VBoxContainer/CenterContainer/EnemyScoreCard
  status_card = $VBoxContainer/CenterContainer/EnemyStatusCard
- displayed_cards = $VBoxContainer/CenterContainer2/EnemyDisplayedCardDeck
- card_deck = $VBoxContainer/CenterContainer2/EnemyCardDeck
- used_card_deck = $VBoxContainer/CenterContainer2/EnemyUsedCardDeck
+ displayed_cards = $VBoxContainer/CenterContainer2/EnemyDisplayedCardDeck2
+ card_deck = $VBoxContainer/CenterContainer2/EnemyCardDeck2
+ used_card_deck = $VBoxContainer/CenterContainer2/EnemyUsedCardDeck2
  
  modify_health(100.0)
  suit = GameGlobal.chosen_suit
