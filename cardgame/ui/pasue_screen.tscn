@@ -1,0 +1,64 @@
+[gd_scene load_steps=8 format=3 uid="uid://dxmvjhat8lfr3"]
+
+[ext_resource type="Script" path="res://ui/pasue_screen.gd" id="1_8jjqh"]
+[ext_resource type="FontFile" uid="uid://coxmjx3kjpyrr" path="res://assets/font/chalk_font.otf" id="2_c35f6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3nrfi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gcrcc"]
+bg_color = Color(0, 0, 0, 0.682353)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vpsdy"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rnenb"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d7bsc"]
+bg_color = Color(0, 0, 0, 0.682353)
+
+[node name="PauseScreen" type="CanvasLayer"]
+script = ExtResource("1_8jjqh")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.313726)
+
+[node name="ResumeButton" type="Button" parent="."]
+offset_left = 414.0
+offset_top = 130.0
+offset_right = 720.0
+offset_bottom = 330.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_c35f6")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3nrfi")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gcrcc")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vpsdy")
+theme_override_styles/normal = SubResource("StyleBoxFlat_rnenb")
+text = "Resume"
+
+[node name="QuitButton" type="Button" parent="."]
+offset_left = 468.0
+offset_top = 318.0
+offset_right = 620.0
+offset_bottom = 518.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_c35f6")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3nrfi")
+theme_override_styles/hover = SubResource("StyleBoxFlat_d7bsc")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vpsdy")
+theme_override_styles/normal = SubResource("StyleBoxFlat_rnenb")
+text = "Quit"
+
+[connection signal="mouse_entered" from="ResumeButton" to="." method="_on_resume_button_mouse_entered"]
+[connection signal="pressed" from="ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="mouse_entered" from="QuitButton" to="." method="_on_quit_button_mouse_entered"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
