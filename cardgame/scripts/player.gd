@@ -55,7 +55,6 @@ func refill_card_deck() -> void:
 		start_move_card_animation(used_card_deck.cards[0], used_card_deck, card_deck)
 		for card in used_card_deck.cards:
 			used_card_deck.move_card_to(card, card_deck)
-		used_card_deck.clear()
 		shuffle(card_deck.cards)
 
 # Draws a random card from the player's card deck
@@ -165,5 +164,5 @@ func move_card_animation(card:Card, from_card_deck: CardDeck, to_card_deck:CardD
 		to_card_deck = null
 func _process(delta: float) -> void:
 	#print(move_thing.global_position)
-	if start_moving == true:
+	if start_moving == true and !card_deck.cards.is_empty():
 		move_card_animation(card_deck.cards[0], from_card_deck, to_card_deck, delta)

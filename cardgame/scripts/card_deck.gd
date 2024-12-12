@@ -94,6 +94,6 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 func _to_string() -> String:
 	var ret: String
 	ret = str("Length: " , len(cards), "\n")
-	for card in cards:
-		ret += card.description + "\n"
+	#for card in cards:
+		#ret += card.description + "\n"
 	return ret

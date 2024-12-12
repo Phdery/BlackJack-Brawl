@@ -70,7 +70,8 @@ func change_label(text:String) -> void:
 	
 func exit_scene() -> void:
 	self.visible = false
-	remove_child(self)
+	for card in cards:
+		remove_child(card)
 	
 	
 

@@ -56,10 +56,9 @@ func _on_enemy_death() -> void:
 func refill_card_deck() -> void:
 	if card_deck.is_empty():
 		start_move_card_animation(used_card_deck.cards[0], used_card_deck, card_deck)
-	for card in used_card_deck.cards:
-		card_deck.add_card(card)
-		used_card_deck.clear()
-	shuffle(card_deck.cards)
+		for card in used_card_deck.cards:
+			used_card_deck.move_card_to(card, card_deck)
+		shuffle(card_deck.cards)
 
 # Draws a random card from the player's card deck
 func generate_random_card() -> Card:
@@ -192,7 +191,7 @@ func move_card_animation(card:Card, from_card_deck: CardDeck, to_card_deck:CardD
 		
 func _process(delta: float) -> void:
 	#print(move_thing.global_position)
-	if start_moving == true:
+	if start_moving == true and !card_deck.cards.is_empty():
 		move_card_animation(card_deck.cards[0], from_card_deck, to_card_deck, delta)
   
 ### Signals
