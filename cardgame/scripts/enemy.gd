@@ -15,7 +15,6 @@ func _ready() -> void:
 	displayed_cards = $VBoxContainer/CenterContainer2/EnemyDisplayedCardDeck2
 	card_deck = $VBoxContainer/CenterContainer2/EnemyCardDeck2
 	used_card_deck = $VBoxContainer/CenterContainer2/EnemyUsedCardDeck2
-	displayed_cards.display = true
  
 	modify_health(100.0)
 	suit = GameGlobal.chosen_suit
@@ -142,6 +141,7 @@ func has_stopped() -> bool:
 func reset_turn() -> void:
 	is_stopped = false
 	move_displayed_cards_to_used()
+	update_scores()
 	start_move_card_animation(displayed_cards.cards[len(displayed_cards.cards)-1], displayed_cards, used_card_deck)
 	displayed_cards.texture = null
 

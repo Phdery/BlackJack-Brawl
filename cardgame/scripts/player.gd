@@ -119,6 +119,7 @@ func stop_turn() -> void:
 func reset_turn() -> void:
 	is_stopped = false
 	move_displayed_cards_to_used()
+	update_scores()
 	start_move_card_animation(displayed_cards.cards[len(displayed_cards.cards)-1], displayed_cards, used_card_deck)
 	displayed_cards.texture = null
 
