@@ -10,10 +10,10 @@ signal clicked
 
 func custom_init(is_display:bool):
 	display = is_display
-	#if display:
-		#self.texture = null
-	#else:
-		#self.texture = load("res://assets/cards/carb_back_1.png")
+	if display:
+		self.texture = null
+	else:
+		self.texture = load("res://assets/cards/carb_back_1.png")
 	#deck_contents = deckContents.instantiate() as DeckContents
 
 
