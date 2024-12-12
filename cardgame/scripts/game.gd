@@ -19,13 +19,13 @@ func suit_string(suit: Suit) -> String:
 	var suit_string = ""
 	match suit:
 		GameGlobal.Suit.CLUBS:
-			suit_string = "clubs"
+			suit_string = "club"
 		GameGlobal.Suit.DIAMONDS:
-			suit_string = "diamonds"
+			suit_string = "diamond"
 		GameGlobal.Suit.HEARTS:
-			suit_string = "hearts"
+			suit_string = "heart"
 		GameGlobal.Suit.SPADES:
-			suit_string = "spades"
+			suit_string = "spade"
 		_:
 			print("Unknown suit: %s" % suit)
 			return ""
