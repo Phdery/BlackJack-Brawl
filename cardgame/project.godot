@@ -24,6 +24,7 @@ GameGlobal="*res://scripts/game.gd"
 
 window/size/viewport_width=1200
 window/size/viewport_height=600
+window/size/resizable=false
 
 [editor_plugins]
 
