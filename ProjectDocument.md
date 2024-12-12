@@ -1,8 +1,8 @@
-# The title of your game #
+# BlackJack Brawl #
 
 ## Summary ##
 
-**A paragraph-length pitch for your game.**
+BlackJack Brawl is a video game version of the popular poker game BlackJack, but with added twists. It is inspired by the popular indie  game Dungeons & Degenerate Gamblers, another video game version of blackjack. We were inspired to make our own video game version of Blackjack, but with unique mechanics and gameplay systems. The player competes in several rounds of blackjack with a computer enemy, each victory resulting in damage being dealt to one of the players. There are also special cards and power ups that can be applied by either player over the course of the game to enhance the experience. The game continues till one player has won enough to make their opponent's HP hit zero. 
 
 ## Project Resources
 
