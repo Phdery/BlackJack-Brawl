@@ -27,7 +27,6 @@ func initialize_deck(suit: String) -> void:
 		player_card_deck.add_card(new_card)
 
 	shuffle(player_card_deck.cards)
-	print(player_card_deck.cards)
 
 
 func _ready() -> void:
@@ -35,6 +34,7 @@ func _ready() -> void:
 	suit = GameGlobal.chosen_suit
 	var suit_string: String = ""
 	suit_string = GameGlobal.suit_string(suit)
+	print("Card suit selected: ", suit_string)
 	initialize_deck(suit_string)
 
 # Modifies the player's health (damage or heal) and updates the status card

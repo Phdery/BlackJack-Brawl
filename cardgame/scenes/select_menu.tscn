@@ -70,15 +70,16 @@ text = "Choose Your Card Suit"
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 535.0
-offset_top = 476.0
-offset_right = 1321.0
-offset_bottom = 718.0
+offset_left = 885.0
+offset_top = 472.0
+offset_right = 1671.0
+offset_bottom = 714.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(63, 75)
 theme_override_colors/font_color = Color(0.631373, 1, 0.952941, 1)
 theme_override_fonts/font = ExtResource("3_n5cmi")
-theme_override_font_sizes/font_size = 90
+theme_override_font_sizes/font_size = 70
 text = "test"
 
 [node name="CardSuit" type="Node2D" parent="."]
