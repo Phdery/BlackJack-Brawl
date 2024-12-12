@@ -2,8 +2,8 @@ class_name ScoreCard
 
 extends Control
 
-@export var current_score:int = 0
-@export var max_score:int = 21
+var current_score:int = 0
+var max_score:int = 21
 @onready var label = $CenterContainer/Label
 
 #TODO animasion to show the score
@@ -16,7 +16,7 @@ func _ready() -> void:
 
 
 func update_score(new_score:int) -> void:
-	current_score = clamp(new_score, 0, max_score)
+	current_score = new_score
 	label.text = "Total = " + str(current_score) + " / " + str(max_score)
 
 func update_max(new_max:int) -> void:

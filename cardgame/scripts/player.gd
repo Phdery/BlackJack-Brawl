@@ -93,12 +93,13 @@ func draw_and_execute_card() -> void:
 		displayed_cards.add_card(drawn_card)
 		
 		execute_card_mechanism(drawn_card)
+		score_card.update_score(score_card.current_score + drawn_card.score)
 	
 
 # Executes the mechanism of the drawn card
 func execute_card_mechanism(card: Card) -> void:
 	card.mechanism(self, null)  # Replace null with a target controller if needed
-
+	
 # Updates scores for both player and enemy at the end of a turn
 func update_scores() -> void:
 	# Set player's score and max_score to default
