@@ -178,6 +178,7 @@ func round_done():
 		enemy_score = calculate_score(enemy.displayed_cards.cards, 21)
 		enemy.score_card.update_score(enemy_score)
 		player_turn = true
+		_have_ace = false
 	
 ## multiple enemy logic
 func load_new_enemy() -> void:
