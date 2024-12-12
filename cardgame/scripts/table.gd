@@ -26,13 +26,14 @@ func _ready():
 	# initialize and start
 	_start_round()
 
-
 	
 func _start_round():
 	player.refill_card_deck()
 	enemy.refill_card_deck()
 	player_turn = true
 	enemy.draw_and_execute_card()
+	enemy_score = calculate_score(enemy.displayed_cards.cards, 21)
+	enemy.score_card.update_score(enemy_score)
 
 func _on_hit_button_pressed() -> void:
 	print("pressed")
@@ -41,6 +42,8 @@ func _on_hit_button_pressed() -> void:
 		player.draw_and_execute_card()
 		player_score = calculate_score(player.displayed_cards.cards, player.score_card.max_score)
 		player.score_card.update_score(player_score)
+		if player_score >= player.score_card.max_score:
+			player.is_stopped = true
 		if !enemy.is_stopped:
 			player_turn = false
 			enemy_turn()
@@ -49,6 +52,7 @@ func _on_stand_button_pressed() -> void:
 	#player_score = calculate_score(player.displayed_cards.cards, player.score_card.max_score)
 	#TODO: need to get max score
 	if player_turn and player_score < player.score_card.max_score:
+		player.is_stopped = true
 		if !enemy.is_stopped:
 			player_turn = false
 			enemy_turn()
@@ -129,6 +133,7 @@ func check_winner() -> void:
 	# reset turn
 	player.reset_turn()
 	enemy.reset_turn()
+	_start_round()
 	
 func calculate_score(hand: Array, max_score: int) -> int:
 	var score: int = 0
@@ -143,7 +148,6 @@ func calculate_score(hand: Array, max_score: int) -> int:
 	return score
 
 func enemy_turn():
-	await get_tree().create_timer(2).timeout
 	while !player_turn and !enemy.is_stopped:
 		#TODO enemy logic
 		enemy.decide_action()
