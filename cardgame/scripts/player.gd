@@ -54,7 +54,7 @@ func refill_card_deck() -> void:
 	if card_deck.is_empty():
 		start_move_card_animation(used_card_deck.cards[0], used_card_deck, card_deck)
 		for card in used_card_deck.cards:
-			card_deck.add_card(card)
+			used_card_deck.move_card_to(card, card_deck)
 		used_card_deck.clear()
 		shuffle(card_deck.cards)
 
@@ -82,7 +82,7 @@ func draw_and_execute_card() -> void:
 	var drawn_card = generate_random_card()
 	if drawn_card:
 		start_move_card_animation(drawn_card, card_deck, displayed_cards)
-		displayed_cards.add_card(drawn_card)
+		card_deck.move_card_to(drawn_card, displayed_cards)
 		print("Player card deck: ", card_deck.cards)
 		
 		execute_card_mechanism(drawn_card)

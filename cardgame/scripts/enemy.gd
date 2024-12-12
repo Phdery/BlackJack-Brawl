@@ -62,7 +62,7 @@ func refill_card_deck() -> void:
 	shuffle(card_deck.cards)
 
 # Draws a random card from the player's card deck
-func generate_random_card() -> BasicCard:
+func generate_random_card() -> Card:
 	if card_deck.cards.size() == 0:
 		return null  # Return null if no cards are left in the deck
 
@@ -84,7 +84,7 @@ func draw_and_execute_card() -> void:
  
 	var drawn_card = card_deck.generate_random_card()
 	if drawn_card:
-		displayed_cards.add_card(drawn_card)
+		card_deck.move_card_to(drawn_card, displayed_cards)
 		start_move_card_animation(drawn_card, card_deck, displayed_cards)
 		execute_card_mechanism(drawn_card)
 

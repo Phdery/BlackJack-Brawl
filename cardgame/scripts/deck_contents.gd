@@ -44,7 +44,9 @@ func _on_card_exited():
 	label.text = ""
 
 func display_cards() -> void:
+	
 	cards = deck.cards
+	print("Displaying ", str(len(cards)), " Cards")
 	self.visible = true
 	#label.global_position = Vector2(15 + 31 * 6, 20)
 	#button.global_position = Vector2(15 + 31 * 6, 50)

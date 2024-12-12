@@ -37,6 +37,7 @@ func generate_random_card() -> Card:
 
 
 #TODO function to add card to the card list
+# Never call this externally!!!
 func add_card(card: Card) -> void:
 	cards.append(card)
 	#if display:
