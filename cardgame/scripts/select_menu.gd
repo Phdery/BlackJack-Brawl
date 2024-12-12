@@ -4,6 +4,7 @@ extends Node2D
 @onready var label2: Label = $TextLabel2
 @onready var label3: Label = $TextLabel3
 @onready var label4: Label = $TextLabel4
+@onready var suit_special: Label = $SuitSpecial
 
 @onready var diamond: Button = $CardSuit/DiamondSuit
 @onready var club: Button = $CardSuit/ClubSuit
@@ -21,6 +22,8 @@ func _ready() -> void:
 	spade.hide()
 	label3.hide()
 	label4.hide()
+	suit_special.hide()
+	
 	label.text = "Congratulations, now you successfully"
 	label2.text = "registered Gaming Playing course"
 	
@@ -64,6 +67,8 @@ func _process(delta: float) -> void:
 
 func _on_diamond_suit_mouse_entered() -> void:
 	SoundManager.play_sfx("ButtonFocus")
+	suit_special.text = "  When you win as 21, heal 21"
+	suit_special.show()
 	label4.text = "Diamond"
 	var animation := create_tween()
 	animation.tween_property($CardSuit/DiamondSuit, "scale", Vector2(0.5, 0.5), 0.1)
@@ -85,6 +90,8 @@ func _on_diamond_suit_pressed() -> void:
 func _on_club_suit_mouse_entered() -> void:
 	SoundManager.play_sfx("ButtonFocus")
 	label4.text = "Club"
+	suit_special.text = "  Deal 1.5 damage when you win"
+	suit_special.show()
 	var animation := create_tween()
 	animation.tween_property($CardSuit/ClubSuit, "scale", Vector2(0.5, 0.5), 0.1)
 	await animation.finished
@@ -105,6 +112,8 @@ func _on_club_suit_pressed() -> void:
 func _on_heart_suit_mouse_entered() -> void:
 	SoundManager.play_sfx("ButtonFocus")
 	label4.text = "Heart"
+	suit_special.text = "  Heal half of the damage you deal when you win"
+	suit_special.show()
 	var animation := create_tween()
 	animation.tween_property($CardSuit/HeartSuit, "scale", Vector2(0.5, 0.5), 0.1)
 	await animation.finished
@@ -125,6 +134,8 @@ func _on_heart_suit_pressed() -> void:
 func _on_spade_suit_mouse_entered() -> void:
 	SoundManager.play_sfx("ButtonFocus")
 	label4.text = "Spade"
+	suit_special.text = "  When you win as 21, deal double damage"
+	suit_special.show()
 	var animation := create_tween()
 	animation.tween_property($CardSuit/SpadeSuit, "scale", Vector2(0.5, 0.5), 0.1)
 	await animation.finished
