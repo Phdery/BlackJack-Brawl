@@ -23,12 +23,13 @@ func _ready() -> void:
 	suit = GameGlobal.chosen_suit
 	var suit_string: String = ""
 	suit_string = GameGlobal.suit_string(suit)
+	print("Card suit chosen by the player: ", suit_string)
 	initialize_deck(suit_string)
 	
 	# FIXME
-	print(len(card_deck.cards))
-	print(card_deck.cards[3].description)
-	start_move_card_animation(card_deck.cards[3], used_card_deck, displayed_cards)	
+	#print(len(card_deck.cards))
+	#print(card_deck.cards[3].description)
+	#start_move_card_animation(card_deck.cards[3], used_card_deck, displayed_cards)	
 	
 	
 	
