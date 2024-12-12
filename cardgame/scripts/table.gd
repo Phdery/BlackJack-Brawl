@@ -26,6 +26,8 @@ func _ready():
 	# initialize and start
 	_start_round()
 
+
+	
 func _start_round():
 	player.refill_card_deck()
 	enemy.refill_card_deck()
