@@ -29,6 +29,7 @@ scale = Vector2(2.42309, 2.34465)
 texture = ExtResource("2_1najt")
 
 [node name="BackStart" type="Button" parent="."]
+layout_mode = 0
 offset_left = 327.0
 offset_top = 269.0
 offset_right = 977.0
@@ -42,6 +43,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_k828b")
 icon = ExtResource("3_s7it8")
 
 [node name="ExitGame" type="Button" parent="."]
+layout_mode = 0
 offset_left = 968.0
 offset_top = 474.0
 offset_right = 1618.0

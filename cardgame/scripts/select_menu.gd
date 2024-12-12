@@ -99,6 +99,7 @@ func _on_club_suit_mouse_exited() -> void:
 func _on_club_suit_pressed() -> void:
 	SoundManager.play_sfx("ButtonStart")
 	GameGlobal.chosen_suit = GameGlobal.Suit.CLUBS
+	get_tree().change_scene_to_file("res://scenes/table.tscn")
 
 
 func _on_heart_suit_mouse_entered() -> void:
@@ -118,6 +119,7 @@ func _on_heart_suit_mouse_exited() -> void:
 func _on_heart_suit_pressed() -> void:
 	SoundManager.play_sfx("ButtonStart")
 	GameGlobal.chosen_suit = GameGlobal.Suit.HEARTS
+	get_tree().change_scene_to_file("res://scenes/table.tscn")
 
 
 func _on_spade_suit_mouse_entered() -> void:
@@ -137,3 +139,4 @@ func _on_spade_suit_mouse_exited() -> void:
 func _on_spade_suit_pressed() -> void:
 	SoundManager.play_sfx("ButtonStart")
 	GameGlobal.chosen_suit = GameGlobal.Suit.SPADES
+	get_tree().change_scene_to_file("res://scenes/table.tscn")

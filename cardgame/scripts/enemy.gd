@@ -2,21 +2,22 @@ class_name Enemy
 
 extends Controller
 
-@onready var enemy_score_card: ScoreCard = $EnemyScoreCard
-@onready var enemy_status_card: StatusCard = $EnemyStatusCard
-@onready var enemy_displayed_cards: CardDeck = $EnemyDisplayedCardDeck
-@onready var enemy_card_deck: CardDeck = $EnemyCardDeck
-@onready var enemy_used_card_deck: CardDeck = $EnemyUsedCardDeck
-
 # Enemy-specific behavior variables
 var is_stopped: bool = false
 var aggression_level: int = 1  # Determines the enemy's strategy (1 = cautious, 2 = balanced, 3 = aggressive)
 
+func _ready() -> void:
+	score_card = $EnemyScoreCard
+	status_card = $EnemyStatusCard
+	displayed_cards = $EnemyDisplayedCardDeck
+	card_deck = $EnemyCardDeck
+	used_card_deck = $EnemyUsedCardDeck
+	
 ### Health and Damage Management
 # Takes damage or heals the enemy and updates the status card
 func modify_health(amount: int) -> void:
-	enemy_status_card.update_hp(clamp(enemy_status_card.current_hp + amount, 0, enemy_status_card.max_hp))
-	if enemy_status_card.current_hp <= 0:
+	status_card.update_hp(clamp(status_card.current_hp + amount, 0, status_card.max_hp))
+	if status_card.current_hp <= 0:
 		_on_enemy_death()
 
 # Handles enemy's death
@@ -27,36 +28,36 @@ func _on_enemy_death() -> void:
 ### Deck Management
 # Move all cards from the used deck back to the main card deck when it's empty
 func refill_card_deck() -> void:
-	if enemy_card_deck.is_empty():
-		for card in enemy_used_card_deck.cards:
-			enemy_card_deck.add_card(card)
-		enemy_used_card_deck.clear()
-		shuffle(enemy_card_deck.cards)
+	if card_deck.is_empty():
+		for card in used_card_deck.cards:
+			card_deck.add_card(card)
+		used_card_deck.clear()
+		shuffle(card_deck.cards)
 
 # Draws a random card from the player's card deck
 func generate_random_card() -> BasicCard:
-	if enemy_card_deck.cards.size() == 0:
+	if card_deck.cards.size() == 0:
 		return null  # Return null if no cards are left in the deck
 
 	# Generate a random index within the range of available cards
-	var random_index = randi() % enemy_card_deck.cards.size()
+	var random_index = randi() % card_deck.cards.size()
 
 	# Get the card at the random index
-	var random_card = enemy_card_deck.cards[random_index]
+	var random_card = card_deck.cards[random_index]
 
 	# Remove the card from the deck to ensure it isn't drawn again
-	enemy_card_deck.cards.erase(random_card)
+	card_deck.cards.erase(random_card)
 
 	return random_card  # Return the selected card
 
 # Randomly draw a card from the deck, move to the displayed deck, and execute its mechanism
 func draw_and_execute_card() -> void:
-	if enemy_card_deck.is_empty():
+	if card_deck.is_empty():
 		refill_card_deck()
 	
-	var drawn_card = enemy_card_deck.generate_random_card()
+	var drawn_card = card_deck.generate_random_card()
 	if drawn_card:
-		enemy_displayed_cards.add_card(drawn_card)
+		displayed_cards.add_card(drawn_card)
 		execute_card_mechanism(drawn_card)
 
 # Execute a card's specific effect
@@ -66,19 +67,6 @@ func execute_card_mechanism(card: Card) -> void:
 ### Enemy Behavior
 # Makes a decision based on aggression level or probability
 func decide_action() -> void:
-	#if aggression_level == 1: # Cautious
-		#if enemy_status_card.current_hp < enemy_status_card.max_hp / 2:
-			#draw_and_execute_card()  # Use a card to heal or defend
-		#else:
-			#stop_turn()
-	#elif aggression_level == 2: # Balanced
-		#if randi() % 2 == 0:
-			#draw_and_execute_card()
-		#else:
-			#stop_turn()
-	#elif aggression_level == 3: # Aggressive
-		#draw_and_execute_card()
-	#elif aggression_level == 4: # Probability-based behavior
 	make_decision_based_on_probability()
 
 # Makes a decision based on proximity to 21
@@ -99,19 +87,19 @@ func make_decision_based_on_probability() -> void:
 # Calculates the total value of the enemy's displayed cards
 func calculate_hand_total() -> int:
 	var total = 0
-	for card in enemy_displayed_cards.cards:
+	for card in displayed_cards.cards:
 		total += card.score  # Assuming card.score holds the card's value
 	return total
 
 func update_scores() -> void:
 	# Set player's score and max_score to default
-	enemy_score_card.update_score(0)
-	enemy_score_card.update_max(21)
+	score_card.update_score(0)
+	score_card.update_max(21)
 
 func move_displayed_cards_to_used() -> void:
 	# Move player's displayed cards to used deck
-	for card in enemy_displayed_cards.cards:
-		card.move_card_to(card, enemy_used_card_deck)
+	for card in displayed_cards.cards:
+		card.move_card_to(card, used_card_deck)
 		
 # End the enemy's turn
 func stop_turn() -> void:
