@@ -15,10 +15,43 @@ BlackJack Brawl is a video game version of the popular poker game BlackJack, but
 
 **In this section, explain how the game should be played. Treat this as a manual within a game. Explaining the button mappings and the most optimal gameplay strategy is encouraged.**
 
+In BlackJack Brawl, the player plays a modified version of blackjack with augmented rules against a computer enemy.
+
+There are four "classes" of deck in BlackJack Brawl (2 defense and 2 offense): Club, Spades, Heart, and Diamond. 
+- Club: deals 1.5x damage to the opponent when you win
+- Spades: when you win with a hand of 21, deal double damage to the opponent
+- Heart: when you win, heal yourself half of the amount of damage you do
+- Diamond: when you win with a hand of 21, heal 21 hp
+
+Before the game begins, the player selects what suit they want their deck to be. This adds an element of strategization to the game, as the player must consider their playstyle and what type of power up they think will benefit them the most. This turns blackjack from a wholly luck based game to a part luck part skill game. The enemy is also assigned a suit. 
+
+There are also 8 special cards that are included in the player's deck, each with a special effect. 
+- Uno Stop: forcibly end the enemy's turn, worth 5 points
+- Uno +2: add 2 points to your enemy's total, worth 2 points
+- Uno Reverse: swap scores with the enemy, worth 5 points
+- Tarot The Fool: increase your max score limit by 1 point, worth 0 points
+- Tarot The Magician: take a random card from the enemy's hand, worth 10 points
+- Tarot The Hangman: move a random card from the enemy's hand to their graveyard, worth 10 points
+- Aggie Card: add 5 HP to yourself, worth 5 points
+- Joker: deal a random amount of damage between 1 and 10 to the enemy, worth 5 points
+
+The special cards add a new dimension of gameplay not present to normal blackjack. There is a tradeoff between how useful a special card's effect is and how many points is worth. Thus, drawing a special card with a good effect may be very useful to you, but the better the effect the more points its worth, the more danger there is that you bust. 
+
+When the game starts, the player and the enemy both begin with 100 hp. Each round proceeds the same as normal blackjack, with the player and enemy taking turns drawing cards blindly from their deck and adding them to their hand. The goal is to draw until you decide to stop, and hopefully get closer to a total of 21 than your opponent. If either player exceeds a total of 21, they "bust" and automatically lose with a total of 0. 
+
+Of the basic poker cards, there are numbers 2-10; J, Q, and K (all worth 11), and A (worth either 1 or 11 depending on which benefits the player more). 
+
+After the round is over, the game compares the totals of the two players, and calculates the difference. That amount of damage is done to the losing player. Deck suit and special card effects are applied, the current hands in play move to the card graveyard, and another round begins. The game ends when one player's HP depletes to 0. 
 
 **Add it here if you did work that should be factored into your grade but does not fit easily into the proscribed roles! Please include links to resources and descriptions of game-related material that does not fit into roles here.**
 
 # Main Roles #
+
+- Producer + Press Kit and Trailer: Yiming Feng
+- Game Logic (Scenes) + Audio: Qingyue Yang
+- Game Logic (Cards) + Gameplay Testing: Brian Li
+- Game Logic (Table) + Visuals: Stephanie Hsia
+- Game Logic (Player/Enemy) + Narrative Design: Alex Chen
 
 Your goal is to relate the work of your role and sub-role in terms of the content of the course. Please look at the role sections below for specific instructions for each role.
 
