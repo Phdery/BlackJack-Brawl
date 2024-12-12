@@ -20,6 +20,12 @@ func _ready() -> void:
 	back_button.icon = back_to_start
 	GameGlobal.player_win.connect(on_player_win)
 	GameGlobal.player_fail.connect(on_player_fail)
+	if (GameGlobal.player_win):
+		background.texture = background_win
+		back_button.icon = back_start_win
+	else:
+		background.texture = background_fail
+		back_button.icon = back_to_start
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -50,10 +56,14 @@ func _on_back_start_mouse_entered() -> void:
 
 
 func _on_back_start_mouse_exited() -> void:
-	back_button.icon = back_to_start
+	if (GameGlobal.player_win):
+		back_button.icon = back_start_win
+	else:
+		back_button.icon = back_to_start
 
 
 func on_player_win():
+	print("win called")
 	background.texture = background_win
 	back_button.icon = back_start_win
 

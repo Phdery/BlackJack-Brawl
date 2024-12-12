@@ -17,9 +17,11 @@ custom_minimum_size = Vector2(500, 100)
 layout_mode = 2
 
 [node name="EnemyScoreCard" parent="VBoxContainer/CenterContainer" instance=ExtResource("3_2b4mx")]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 
 [node name="EnemyStatusCard" parent="VBoxContainer/CenterContainer" instance=ExtResource("4_cbnlh")]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 
 [node name="CenterContainer2" type="CenterContainer" parent="VBoxContainer"]

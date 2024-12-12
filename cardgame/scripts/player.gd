@@ -9,6 +9,9 @@ var suit: Suit
 
 var is_stopped: bool = false  # Tracks if the player's turn is stopped
 
+var from_card_deck:CardDeck
+var to_card_deck:CardDeck
+
 func _ready() -> void:
 	score_card = $VBoxContainer/CenterContainer/PlayerScoreCard
 	status_card = $VBoxContainer/CenterContainer/PlayerStatusCard
@@ -20,7 +23,15 @@ func _ready() -> void:
 	suit = GameGlobal.chosen_suit
 	var suit_string: String = ""
 	suit_string = GameGlobal.suit_string(suit)
+	print("Card suit chosen by the player: ", suit_string)
 	initialize_deck(suit_string)
+	
+	# FIXME
+	#print(len(card_deck.cards))
+	#print(card_deck.cards[3].description)
+	#start_move_card_animation(card_deck.cards[3], used_card_deck, displayed_cards)	
+	
+	
 	
 # Initializes the player's deck based on the chosen suit
 func initialize_deck(suit: String) -> void:
@@ -118,7 +129,39 @@ func shuffle(deck: Array) -> void:
 # Signal emitted when the player dies
 signal player_died
 
-func move_card_animation(card:Card, from_card_deck: CardDeck, to_card_deck:CardDeck, delta) -> void:
-	var move_thing:Sprite2D = Sprite2D.new()
+var move_thing:Sprite2D
+var start_moving:bool = false
+
+func start_move_card_animation(card:Card, _from_card_deck: CardDeck, _to_card_deck:CardDeck) -> void:
+	from_card_deck = _from_card_deck
+	to_card_deck = _to_card_deck
+	move_thing = Sprite2D.new()
 	move_thing.texture = card.texture
-	from_card_deck.add_child(move_thing)
+	move_thing.visible = true
+	#move_thing.global_position = _from_card_deck.global_position
+	move_thing.z_index = 99
+	#add_child(move_thing)
+	#move_thing.global_position = from_card_deck.global_position
+	_from_card_deck.add_child(move_thing)
+	
+	start_moving = true
+
+func move_card_animation(card:Card, from_card_deck: CardDeck, to_card_deck:CardDeck, delta) -> void:
+	#print("Moving")
+	var speed = 50
+	#move_thing.move_to_front()
+	#print(round(to_card_deck.global_position - move_thing.global_position))
+	move_thing.global_position = move_thing.global_position.move_toward(to_card_deck.global_position, delta*speed)
+	if round(to_card_deck.global_position - move_thing.global_position) == Vector2(0,0):
+		print("Arrived")
+		start_moving = false
+		move_thing.queue_free()
+		from_card_deck = null
+		to_card_deck = null
+func _process(delta: float) -> void:
+	#print(move_thing.global_position)
+	if start_moving == true:
+		move_card_animation(card_deck.cards[0], from_card_deck, to_card_deck, delta)
+
+		
+		

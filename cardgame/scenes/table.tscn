@@ -87,6 +87,10 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_7bxn2")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_mbb32")
 icon = ExtResource("5_8wsj7")
 
+[node name="Button" type="Button" parent="MainLayout/CenterLayout"]
+layout_mode = 2
+text = "TEST"
+
 [node name="EnemyBox" type="CenterContainer" parent="MainLayout"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
@@ -100,3 +104,4 @@ unique_name_in_owner = true
 [connection signal="button_down" from="MainLayout/CenterLayout/StandButton" to="." method="_on_stand_button_button_down"]
 [connection signal="button_up" from="MainLayout/CenterLayout/StandButton" to="." method="_on_stand_button_button_up"]
 [connection signal="pressed" from="MainLayout/CenterLayout/StandButton" to="." method="_on_stand_button_pressed"]
+[connection signal="pressed" from="MainLayout/CenterLayout/Button" to="." method="_on_button_pressed"]
