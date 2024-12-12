@@ -28,7 +28,11 @@ func _ready():
 func _start_round():
 	player.refill_card_deck()
 	enemy.refill_card_deck()
-	enemy.draw_and_execute_card()
+	enemy.decide_action()
+	print("Enemy draw a card.")
+	print("Enemy Display Card Deck:", enemy.displayed_cards)
+	print("Enemy Card Deck:", enemy.card_deck)
+	print("Enemy Used Deck:", enemy.used_card_deck)
 	enemy_score = calculate_score(enemy.displayed_cards.cards, 21)
 	enemy.score_card.update_score(enemy_score)
 	player_turn = true
@@ -41,6 +45,10 @@ func _on_hit_button_pressed() -> void:
 		player.draw_and_execute_card()
 		player_score = calculate_score(player.displayed_cards.cards, player.score_card.max_score)
 		player.score_card.update_score(player_score)
+		print("Player draw a card.")
+		print("Player Display Card Deck:", player.displayed_cards)
+		print("Player Card Deck:", player.card_deck)
+		print("Player Used Deck:", player.used_card_deck)
 		if player_score >= player.score_card.max_score:
 			player.is_stopped = true
 			if enemy.is_stopped:
@@ -155,10 +163,15 @@ func calculate_score(hand: Array, max_score: int) -> int:
 
 func enemy_turn():
 	await get_tree().create_timer(2).timeout
+	
 	while !player_turn and !enemy.is_stopped:
 		#TODO enemy logic
 		#enemy.card_deck.texture = load("res://assets/cards/card_back_1.png")
 		enemy.decide_action()
+		print("Enemy draw a card.")
+		print("Enemy Display Card Deck:", enemy.displayed_cards)
+		print("Enemy Card Deck:", enemy.card_deck)
+		print("Enemy Used Deck:", enemy.used_card_deck)
 		enemy_score = calculate_score(enemy.displayed_cards.cards, 21)
 		enemy.score_card.update_score(enemy_score)
 		if enemy_score >= 21:

@@ -58,3 +58,4 @@ func _on_area_2d_mouse_entered() -> void:
 func _on_area_2d_mouse_exited() -> void:
 	print("leaving " + self.description)
 	emit_signal("mouse_exited")
+	
