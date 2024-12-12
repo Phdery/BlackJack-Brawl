@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c77r73vo4xq36"]
+[gd_scene load_steps=13 format=3 uid="uid://c77r73vo4xq36"]
 
 [ext_resource type="Script" path="res://scripts/select_menu.gd" id="1_f7shh"]
 [ext_resource type="Texture2D" uid="uid://d1v12mhe2bm8h" path="res://assets/images/UCDavis_name.jpg" id="2_1qjg3"]
@@ -16,6 +16,18 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o77xu"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q8u46"]
+bg_color = Color(0.555376, 0.294901, 3.85046e-07, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [node name="SeletMenu" type="Node2D"]
 script = ExtResource("1_f7shh")
@@ -139,6 +151,23 @@ theme_override_styles/focus = ExtResource("4_anuv8")
 theme_override_styles/hover = SubResource("StyleBoxFlat_xnfst")
 theme_override_styles/normal = SubResource("StyleBoxFlat_o77xu")
 icon = ExtResource("8_aseb1")
+
+[node name="SuitSpecial" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 96.225
+offset_top = 484.0
+offset_right = 696.225
+offset_bottom = 584.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(12.815, 58)
+theme_override_fonts/font = ExtResource("3_n5cmi")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_q8u46")
+text = " test "
+vertical_alignment = 1
 
 [connection signal="mouse_entered" from="CardSuit/DiamondSuit" to="." method="_on_diamond_suit_mouse_entered"]
 [connection signal="mouse_exited" from="CardSuit/DiamondSuit" to="." method="_on_diamond_suit_mouse_exited"]

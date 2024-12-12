@@ -15,7 +15,6 @@ func _ready() -> void:
 	displayed_cards = $VBoxContainer/CenterContainer2/EnemyDisplayedCardDeck2
 	card_deck = $VBoxContainer/CenterContainer2/EnemyCardDeck2
 	used_card_deck = $VBoxContainer/CenterContainer2/EnemyUsedCardDeck2
-	displayed_cards.display = true
  
 	displayed_cards.custom_init(true)
 	card_deck.custom_init(false)
@@ -130,7 +129,7 @@ func update_scores() -> void:
 func move_displayed_cards_to_used() -> void:
 	# Move player's displayed cards to used deck
 	for card in displayed_cards.cards:
-		card.move_card_to(card, used_card_deck)
+		displayed_cards.move_card_to(card, used_card_deck)
   
 # End the enemy's turn
 func stop_turn() -> void:
@@ -146,7 +145,9 @@ func has_stopped() -> bool:
 func reset_turn() -> void:
 	is_stopped = false
 	move_displayed_cards_to_used()
+	update_scores()
 	start_move_card_animation(displayed_cards.cards[len(displayed_cards.cards)-1], displayed_cards, used_card_deck)
+	displayed_cards.texture = null
 
 func shuffle(deck: Array) -> void:
 	for i in range(deck.size() - 1, 0, -1):
