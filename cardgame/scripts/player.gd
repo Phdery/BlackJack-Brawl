@@ -1,11 +1,11 @@
 class_name Player
 extends Controller
 
-@onready var player_score_card: ScoreCard = $PlayerScoreCard
-@onready var player_status_card: StatusCard = $PlayerStatusCard
-@onready var player_displayed_cards: CardDeck = $PlayerDisplayedCardDeck
-@onready var player_card_deck: CardDeck = $PlayerCardDeck
-@onready var player_used_card_deck: CardDeck = $PlayerUsedCardDeck
+@onready var player_score_card: ScoreCard = $VBoxContainer/CenterContainer/PlayerScoreCard
+@onready var player_status_card: StatusCard = $VBoxContainer/CenterContainer/PlayerStatusCard
+@onready var player_displayed_cards: CardDeck = $VBoxContainer/CenterContainer2/PlayerDisplayedCardDeck
+@onready var player_card_deck: CardDeck = $VBoxContainer/CenterContainer2/PlayerCardDeck
+@onready var player_used_card_deck: CardDeck = $VBoxContainer/CenterContainer2/PlayerUsedCardDeck
 
 # Enum for card suits
 const Suit = GameGlobal.Suit
@@ -27,6 +27,7 @@ func initialize_deck(suit: String) -> void:
 		player_card_deck.add_card(new_card)
 
 	shuffle(player_card_deck.cards)
+	print(player_card_deck.cards)
 
 
 func _ready() -> void:
@@ -46,6 +47,7 @@ func modify_health(amount: int) -> void:
 func _on_player_death() -> void:
 	is_stopped = true
 	emit_signal("player_died")
+	GameGlobal.player_fail.emit()
 
 # Moves all cards from the used deck back to the main card deck when it's empty
 func refill_card_deck() -> void:

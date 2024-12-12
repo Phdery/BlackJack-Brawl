@@ -12,6 +12,7 @@ var enemy_score: int
 #TODO maybe have 2 different enemy scenes?
 var enemies = [preload("res://scenes/enemy.tscn")]
 var current_enemy: int = 0
+var end_scene = preload("res://ui/end_screen.tscn")
 
 signal player_win
 signal player_fail
@@ -57,13 +58,13 @@ func _player_win():
 		_start_round()
 	else:
 		print("Player defeated all enemies! Victory!")
-		player_win.emit()
+		GameGlobal.player_win.emit()
 		#TODO victory scene
 	
 func _enemy_win():
 	print("Player lost!")
 	SoundManager.play_sfx("game_fail")
-	player_fail.emit()
+	GameGlobal.player_fail.emit()
 	#TODO player lose scene
 
 func check_winner() -> void:
@@ -166,3 +167,5 @@ func suit_execute(damage: int, player_win: bool, score: int) -> int:
 			else:
 				new_damage = damage
 	return new_damage
+
+	

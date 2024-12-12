@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dtc1cpjk5t176"]
+[gd_scene load_steps=12 format=3 uid="uid://c77r73vo4xq36"]
 
 [ext_resource type="Script" path="res://scripts/select_menu.gd" id="1_f7shh"]
 [ext_resource type="Texture2D" uid="uid://d1v12mhe2bm8h" path="res://assets/images/UCDavis_name.jpg" id="2_1qjg3"]

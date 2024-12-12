@@ -18,8 +18,8 @@ var table = preload("res://scenes/table.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	back_button.icon = back_to_start
-	#table.connect("player_win", _on_player_win())
-	#table.connect("player_fail", _on_player_fail())
+	GameGlobal.player_win.connect(on_player_win)
+	GameGlobal.player_fail.connect(on_player_fail)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -53,12 +53,12 @@ func _on_back_start_mouse_exited() -> void:
 	back_button.icon = back_to_start
 
 
-func _on_player_win():
+func on_player_win():
 	background.texture = background_win
 	back_button.icon = back_start_win
 
 
-func _on_player_fail():
+func on_player_fail():
 	background.texture = background_fail
 	back_button.icon = back_to_start
 

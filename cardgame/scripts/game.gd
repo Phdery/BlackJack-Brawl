@@ -3,6 +3,8 @@ extends Node
 @onready var player_card_deck: CardDeck = $PlayerCardDeck
 enum Suit { HEARTS, DIAMONDS, CLUBS, SPADES }
 var chosen_suit: Suit = Suit.HEARTS
+signal player_win
+signal player_fail
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
