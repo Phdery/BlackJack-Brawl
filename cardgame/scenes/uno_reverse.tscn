@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bhihqm8jcr5ch"]
 
-[ext_resource type="Script" path="res://scripts/card.gd" id="1_npfms"]
+[ext_resource type="Script" path="res://scripts/uno_reverse.gd" id="1_3i4h1"]
 
 [node name="UnoReverse" type="Sprite2D"]
-script = ExtResource("1_npfms")
+script = ExtResource("1_3i4h1")

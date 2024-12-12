@@ -7,8 +7,8 @@ func _ready() -> void:
 	description = "Take a random card from enemy's hand. Score = 10"
 
 func mechanism(this:Controller, other:Controller):
-	var card = other.display_deck.generate_random_card()
-	other.move_card_to(card, this.display_deck)
+	var card = other.displayed_cards.generate_random_card()
+	other.move_card_to(card, this.displayed_cards)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

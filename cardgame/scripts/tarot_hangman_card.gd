@@ -9,8 +9,8 @@ func _ready() -> void:
 	# set texture
 
 func mechanism(this:Controller, other:Controller):
-	var card = other.display_deck.generate_random_card()
-	other.display_deck.move_to(card, other.used_deck)
+	var card = other.displayed_cards.generate_random_card()
+	other.displayed_cards.move_to(card, other.used_card_deck)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
