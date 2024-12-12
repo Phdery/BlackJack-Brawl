@@ -6,15 +6,33 @@ var deck_contents_scene = preload("res://scenes/deck_contents.tscn")
 
 
 func custom_init(new_score:int, new_suit:String) -> void:
-	score = new_score
-	suit = new_suit
-	var texture_path:String = "res://assets/cards/" + suit + "/" + suit + "_" + str(score) + ".png"
-	self.texture = load(texture_path)
-	description = str(score) + " of " + suit
+	var score_name:String
+	
+	match new_score:
+		1:
+			score_name = "ace"
+			score = 11
+		11:
+			score_name = "j"
+			score = 10
+		12: 
+			score_name = "q"
+			score = 10
+		13:
+			score_name = "k"
+			score = 10
+		_: 
+			score_name = str(new_score)
+			score = new_score
 
-func update_texture() -> void:
-	var texture_path:String = "res://assets/cards/" + suit + "/" + suit + "_" + str(score) + ".png"
+	suit = new_suit
+	var texture_path:String = "res://assets/cards/" + suit + "/" + suit + "_" + score_name + ".png"
 	self.texture = load(texture_path)
+	description = score_name + " of " + suit
+
+#func update_texture() -> void:
+	#var texture_path:String = "res://assets/cards/" + suit + "/" + suit + "_" + str(score) + ".png"
+	#self.texture = load(texture_path)
 	
 	
 	
