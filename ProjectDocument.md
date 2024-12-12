@@ -45,13 +45,11 @@ You should replay any **bold text** with your relevant information. Liberally us
 
 ## Game Logic (Table) (Stephanie Hsia)
 
-**List your assets, including their sources and licenses.**
-
-**Describe how your work intersects with game feel, graphic design, and world-building. Include your visual style guide if one exists.**
+**Describe**
 
 ## Game Logic (Player/Enemy) (Alex Chen)
 
-**Document the game states and game data you managed and the design patterns you used to complete your task.**
+**Describe**
 
 # Sub-Roles
 
@@ -81,4 +79,4 @@ You should replay any **bold text** with your relevant information. Liberally us
 
 ## Visuals (Stephanie Hsia)
 
-**Document what you added to and how you tweaked your game to improve its game feel.**
+**Describe.**
