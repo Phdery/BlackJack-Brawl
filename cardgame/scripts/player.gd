@@ -22,6 +22,13 @@ func _ready() -> void:
 	suit_string = GameGlobal.suit_string(suit)
 	initialize_deck(suit_string)
 	
+	# FIXME
+	#print(len(card_deck.cards))
+	#print(card_deck.cards[0].description)
+	#start_move_card_animation(card_deck.cards[0], card_deck, displayed_cards)	
+	#
+	
+	
 # Initializes the player's deck based on the chosen suit
 func initialize_deck(suit: String) -> void:
 	
@@ -118,7 +125,32 @@ func shuffle(deck: Array) -> void:
 # Signal emitted when the player dies
 signal player_died
 
-func move_card_animation(card:Card, from_card_deck: CardDeck, to_card_deck:CardDeck, delta) -> void:
-	var move_thing:Sprite2D = Sprite2D.new()
+var move_thing:Sprite2D
+var start_moving:bool = false
+
+func start_move_card_animation(card:Card, from_card_deck: CardDeck, to_card_deck:CardDeck) -> void:
+	move_thing = Sprite2D.new()
 	move_thing.texture = card.texture
+	#add_child(move_thing)
+	#move_thing.global_position = from_card_deck.global_position
 	from_card_deck.add_child(move_thing)
+	move_thing.z_index = 99
+	start_moving = true
+
+func move_card_animation(card:Card, from_card_deck: CardDeck, to_card_deck:CardDeck, delta) -> void:
+	#print("Moving")
+	var speed = 200
+	#move_thing.move_to_front()
+	#print(round(to_card_deck.global_position - move_thing.global_position))
+	move_thing.global_position = move_thing.global_position.move_toward(to_card_deck.global_position, delta*speed)
+	if round(to_card_deck.global_position - move_thing.global_position) == Vector2(0,0):
+		print("Arrived")
+		start_moving = false
+		move_thing.queue_free()
+func _process(delta: float) -> void:
+	#print(move_thing.global_position)
+	if start_moving == true:
+		move_card_animation(card_deck.cards[0], card_deck, displayed_cards, delta)
+
+		
+		
