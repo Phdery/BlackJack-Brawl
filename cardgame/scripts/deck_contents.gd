@@ -80,3 +80,13 @@ func _process(delta: float) -> void:
 # button that when clicked, removes all card nodes, returns to game scene
 # label for description
 # function for accepting new text for label
+
+
+func _on_button_pressed() -> void:
+	print("pressed button")
+	exit_scene()
+
+
+func _on_button_2_pressed() -> void:
+	print("test pressed")
+	exit_scene()

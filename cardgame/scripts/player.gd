@@ -79,10 +79,11 @@ func draw_and_execute_card() -> void:
 	if card_deck.is_empty():
 		refill_card_deck()
 	
-	var drawn_card = card_deck.generate_random_card()
+	var drawn_card = generate_random_card()
 	if drawn_card:
 		start_move_card_animation(drawn_card, card_deck, displayed_cards)
 		displayed_cards.add_card(drawn_card)
+		print("Player card deck: ", card_deck.cards)
 		
 		execute_card_mechanism(drawn_card)
 	
