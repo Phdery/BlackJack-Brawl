@@ -12,6 +12,8 @@ extends Control
 func _ready() -> void:
 	label.visible = true
 	label.text = "HP = " + str(current_hp) + " / " + str(max_hp)
+	
+	update_hp(80)
 
 func update_hp(new_hp:int) -> void:
 	# Ensure current_hp does not exceed max_hp

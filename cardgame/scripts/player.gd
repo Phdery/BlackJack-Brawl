@@ -111,8 +111,9 @@ func update_scores() -> void:
 
 func move_displayed_cards_to_used() -> void:
 	# Move player's displayed cards to used deck
-	for card in displayed_cards.cards:
-		displayed_cards.move_card_to(card, used_card_deck)
+	while(displayed_cards.is_empty() == false):
+		for card in displayed_cards.cards:
+			displayed_cards.move_card_to(card, used_card_deck)
 		
 # Returns whether the player has stopped (for turn management)
 func has_stopped() -> bool:
@@ -125,9 +126,10 @@ func stop_turn() -> void:
 # Resets the player's turn state
 func reset_turn() -> void:
 	is_stopped = false
-	move_displayed_cards_to_used()
+	
 	update_scores()
 	start_move_card_animation(displayed_cards.cards[len(displayed_cards.cards)-1], displayed_cards, used_card_deck)
+	move_displayed_cards_to_used()
 	displayed_cards.texture = null
 
 func shuffle(deck: Array) -> void:

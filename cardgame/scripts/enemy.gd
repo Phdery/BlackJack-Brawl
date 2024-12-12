@@ -44,6 +44,7 @@ func initialize_deck(suit: String) -> void:
 # Takes damage or heals the enemy and updates the status card
 func modify_health(amount: int) -> void:
 	status_card.update_hp(clamp(status_card.current_hp + amount, 0, status_card.max_hp))
+	#status_card.update_hp(90)
 	if status_card.current_hp <= 0:
 		_on_enemy_death()
 
@@ -128,8 +129,9 @@ func update_scores() -> void:
 
 func move_displayed_cards_to_used() -> void:
 	# Move player's displayed cards to used deck
-	for card in displayed_cards.cards:
-		displayed_cards.move_card_to(card, used_card_deck)
+	while(displayed_cards.is_empty() == false):
+		for card in displayed_cards.cards:
+			displayed_cards.move_card_to(card, used_card_deck)
   
 # End the enemy's turn
 func stop_turn() -> void:
@@ -144,9 +146,10 @@ func has_stopped() -> bool:
 # Reset the enemy's turn state
 func reset_turn() -> void:
 	is_stopped = false
-	move_displayed_cards_to_used()
 	update_scores()
 	start_move_card_animation(displayed_cards.cards[len(displayed_cards.cards)-1], displayed_cards, used_card_deck)
+	move_displayed_cards_to_used()
+
 	displayed_cards.texture = null
 
 func shuffle(deck: Array) -> void:

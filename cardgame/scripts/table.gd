@@ -31,10 +31,10 @@ func _ready():
 func _start_round():
 	player.refill_card_deck()
 	enemy.refill_card_deck()
-	player_turn = true
 	enemy.draw_and_execute_card()
 	enemy_score = calculate_score(enemy.displayed_cards.cards, 21)
 	enemy.score_card.update_score(enemy_score)
+	player_turn = true
 
 func _on_hit_button_pressed() -> void:
 	print("pressed")
@@ -135,7 +135,17 @@ func check_winner() -> void:
 	player.reset_turn()
 	enemy.reset_turn()
 	await get_tree().create_timer(2).timeout
-	_start_round()
+	player_score = 0
+	enemy_score = 0
+
+	
+	enemy.draw_and_execute_card()
+	enemy_score = calculate_score(enemy.displayed_cards.cards, 21)
+	enemy.score_card.update_score(enemy_score)
+	player_turn = true
+	print(len(player.displayed_cards.cards))
+	print(len(enemy.displayed_cards.cards))
+	
 	
 func calculate_score(hand: Array, max_score: int) -> int:
 	var score: int = 0
@@ -153,10 +163,11 @@ func enemy_turn():
 	await get_tree().create_timer(2).timeout
 	while !player_turn and !enemy.is_stopped:
 		#TODO enemy logic
+		#enemy.card_deck.texture = load("res://assets/cards/card_back_1.png")
 		enemy.decide_action()
 		enemy_score = calculate_score(enemy.displayed_cards.cards, 21)
 		enemy.score_card.update_score(enemy_score)
-		if !player.is_stopped or enemy_score > 21:
+		if !player.is_stopped or enemy_score >= 21:
 			player_turn = true
 	if player.is_stopped and enemy.is_stopped:
 		check_winner()
