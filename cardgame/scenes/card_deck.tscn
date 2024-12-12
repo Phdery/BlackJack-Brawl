@@ -1,15 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://kq24ujwnhrf2"]
+[gd_scene load_steps=5 format=3 uid="uid://kq24ujwnhrf2"]
 
 [ext_resource type="Script" path="res://scripts/card_deck.gd" id="1_7su5i"]
-[ext_resource type="Texture2D" uid="uid://dj12bmvmxj3cg" path="res://assets/cards/carb_back_1.png" id="1_oyest"]
 [ext_resource type="Script" path="res://scripts/deck_click.gd" id="2_qh86n"]
-[ext_resource type="PackedScene" uid="uid://b73bghxwwsa7a" path="res://scenes/deck_contents.tscn" id="3_2olid"]
+[ext_resource type="PackedScene" uid="uid://d3jn78agkd144" path="res://scenes/deck_contents.tscn" id="3_2olid"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nesfu"]
 size = Vector2(470, 674)
 
 [node name="CardDeck" type="Sprite2D"]
-texture = ExtResource("1_oyest")
 script = ExtResource("1_7su5i")
 deckContents = ExtResource("3_2olid")
 

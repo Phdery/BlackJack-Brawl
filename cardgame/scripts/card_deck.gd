@@ -3,17 +3,17 @@ class_name CardDeck
 extends Node2D
 
 var cards:Array[Card]
-var display:bool
+@export var display:bool
 signal clicked
 @export var deckContents:PackedScene
 var deck_contents:DeckContents
 
 func custom_init(is_display:bool):
 	display = is_display
-	if display:
-		self.texture = null
-	else:
-		self.texture = load("res://assets/cards/carb_back_1.png")
+	#if display:
+		#self.texture = null
+	#else:
+		#self.texture = load("res://assets/cards/carb_back_1.png")
 	deck_contents = deckContents.instantiate() as DeckContents
 
 
@@ -39,8 +39,9 @@ func generate_random_card() -> Card:
 #TODO function to add card to the card list
 func add_card(card: Card) -> void:
 	cards.append(card)
-	if display:
-		self.texture = card.texture
+	#if display:
+		#print("works")
+		#print(card.texture.resource_path)
 	
 	
 #TODO function to move card from one carddeck to the other
