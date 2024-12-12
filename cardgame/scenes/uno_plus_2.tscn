@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://1axci2wmu3hg"]
+
+[ext_resource type="Script" path="res://scripts/uno_plus_2.gd" id="1_wi7kj"]
+
+[node name="UnoPlus2" type="Sprite2D"]
+script = ExtResource("1_wi7kj")

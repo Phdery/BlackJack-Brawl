@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://blkdojs2gr5eh"]
+
+[ext_resource type="Script" path="res://scripts/tarot_hangman_card.gd" id="1_irx5q"]
+
+[node name="TarotHangmanCard" type="Sprite2D"]
+script = ExtResource("1_irx5q")
