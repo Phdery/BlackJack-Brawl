@@ -123,4 +123,3 @@ func move_card_animation(card:Card, from_card_deck: CardDeck, to_card_deck:CardD
 	var end_position = to_card_deck.position
 	var time = 1
 	var velocity = (start_position - end_position) / time
-
