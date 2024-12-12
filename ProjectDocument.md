@@ -39,7 +39,7 @@ The special cards add a new dimension of gameplay not present to normal blackjac
 
 When the game starts, the player and the enemy both begin with 100 hp. Each round proceeds the same as normal blackjack, with the player and enemy taking turns drawing cards blindly from their deck and adding them to their hand. The goal is to draw until you decide to stop, and hopefully get closer to a total of 21 than your opponent. If either player exceeds a total of 21, they "bust" and automatically lose with a total of 0. 
 
-Of the basic poker cards, there are numbers 2-10; J, Q, and K (all worth 11), and A (worth either 1 or 11 depending on which benefits the player more). 
+Of the basic poker cards, there are numbers 2-10; J, Q, and K (all worth 10), and A (worth either 1 or 11 depending on which benefits the player more). 
 
 After the round is over, the game compares the totals of the two players, and calculates the difference. That amount of damage is done to the losing player. Deck suit and special card effects are applied, the current hands in play move to the card graveyard, and another round begins. The game ends when one player's HP depletes to 0. 
 

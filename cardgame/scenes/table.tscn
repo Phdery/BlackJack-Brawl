@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://iox1tqy8xq8f"]
+[gd_scene load_steps=15 format=3 uid="uid://iox1tqy8xq8f"]
 
 [ext_resource type="Script" path="res://scripts/table.gd" id="1_ylqy0"]
 [ext_resource type="PackedScene" uid="uid://bcjxs6ha8opch" path="res://scenes/player.tscn" id="2_a2xkj"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://24xvop2usi1i" path="res://scenes/enemy.tscn" id="3_jkpep"]
 [ext_resource type="Texture2D" uid="uid://dxpr7ynrwc42i" path="res://assets/table/hit_button.png" id="4_jgi86"]
 [ext_resource type="Texture2D" uid="uid://bu3fj4voa8ak6" path="res://assets/table/stand_button.png" id="5_8wsj7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1ncjt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ddqr"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -15,6 +17,8 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_612ag"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_japba"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2alt3"]
 
@@ -67,6 +71,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1ncjt")
 theme_override_styles/hover = SubResource("StyleBoxFlat_2ddqr")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_qinrq")
 theme_override_styles/normal = SubResource("StyleBoxFlat_612ag")
@@ -76,6 +81,7 @@ icon = ExtResource("4_jgi86")
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_styles/focus = SubResource("StyleBoxEmpty_japba")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_2alt3")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_7bxn2")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_mbb32")

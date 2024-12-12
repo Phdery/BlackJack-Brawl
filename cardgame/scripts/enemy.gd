@@ -7,11 +7,11 @@ var is_stopped: bool = false
 var aggression_level: int = 1  # Determines the enemy's strategy (1 = cautious, 2 = balanced, 3 = aggressive)
 
 func _ready() -> void:
-	score_card = $EnemyScoreCard
-	status_card = $EnemyStatusCard
-	displayed_cards = $EnemyDisplayedCardDeck
-	card_deck = $EnemyCardDeck
-	used_card_deck = $EnemyUsedCardDeck
+	score_card = $VBoxContainer/CenterContainer/EnemyScoreCard
+	status_card = $VBoxContainer/CenterContainer/EnemyStatusCard
+	displayed_cards = $VBoxContainer/CenterContainer2/EnemyDisplayedCardDeck2
+	card_deck = $VBoxContainer/CenterContainer2/EnemyCardDeck2
+	used_card_deck = $VBoxContainer/CenterContainer2/EnemyUsedCardDeck2
 	
 ### Health and Damage Management
 # Takes damage or heals the enemy and updates the status card
