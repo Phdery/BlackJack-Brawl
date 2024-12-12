@@ -8,8 +8,8 @@ extends Control
 
 var _have_ace: bool = false
 var player_turn: bool = false
-var player_score: int
-var enemy_score: int
+var player_score: int = 0
+var enemy_score: int = 0
 
 #TODO maybe have 2 different enemy scenes?
 var enemies = [preload("res://scenes/enemy.tscn")]
@@ -36,15 +36,17 @@ func _start_round():
 
 func _on_hit_button_pressed() -> void:
 	print("pressed")
-	player_score = calculate_score(player.displayed_cards.cards, player.score_card.max_score)
+	#player_score = calculate_score(player.displayed_cards.cards, player.score_card.max_score)
 	if player_turn and player_score < player.score_card.max_score:
 		player.draw_and_execute_card()
+		player_score = calculate_score(player.displayed_cards.cards, player.score_card.max_score)
+		player.score_card.update_score(player_score)
 		if !enemy.is_stopped:
 			player_turn = false
 			enemy_turn()
 
 func _on_stand_button_pressed() -> void:
-	player_score = calculate_score(player.displayed_cards.cards, player.score_card.max_score)
+	#player_score = calculate_score(player.displayed_cards.cards, player.score_card.max_score)
 	#TODO: need to get max score
 	if player_turn and player_score < player.score_card.max_score:
 		if !enemy.is_stopped:
@@ -145,6 +147,7 @@ func enemy_turn():
 		#TODO enemy logic
 		enemy.decide_action()
 		enemy_score = calculate_score(enemy.displayed_cards.cards, 21)
+		enemy.score_card.update_score(enemy_score)
 		if !player.is_stopped or enemy_score > 21:
 			player_turn = true
 	if player.is_stopped and enemy.is_stopped:

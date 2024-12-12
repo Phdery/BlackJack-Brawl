@@ -93,7 +93,6 @@ func draw_and_execute_card() -> void:
 		displayed_cards.add_card(drawn_card)
 		
 		execute_card_mechanism(drawn_card)
-		score_card.update_score(score_card.current_score + drawn_card.score)
 	
 
 # Executes the mechanism of the drawn card
