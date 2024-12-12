@@ -39,3 +39,35 @@ scale = Vector2(0.265, 0.265)
 [node name="PlayerDisplayedCardDeck" parent="VBoxContainer/CenterContainer2" instance=ExtResource("4_wb2o2")]
 position = Vector2(254.938, 172.625)
 scale = Vector2(0.265, 0.265)
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(500, 500)
+offset_right = 500.0
+offset_bottom = 500.0
+
+[node name="CenterContainer" type="HBoxContainer" parent="VBoxContainer2"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="PlayerScoreCard" parent="VBoxContainer2/CenterContainer" instance=ExtResource("4_blbev")]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="PlayerStatusCard" parent="VBoxContainer2/CenterContainer" instance=ExtResource("4_1o48l")]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="CenterContainer2" type="CenterContainer" parent="VBoxContainer2"]
+layout_mode = 2
+
+[node name="PlayerCardDeck" parent="VBoxContainer2/CenterContainer2" instance=ExtResource("4_wb2o2")]
+position = Vector2(63, 302)
+scale = Vector2(0.265, 0.265)
+
+[node name="PlayerUsedCardDeck" parent="VBoxContainer2/CenterContainer2" instance=ExtResource("4_wb2o2")]
+position = Vector2(427.25, 302)
+scale = Vector2(0.265, 0.265)
+
+[node name="PlayerDisplayedCardDeck" parent="VBoxContainer2/CenterContainer2" instance=ExtResource("4_wb2o2")]
+position = Vector2(245.938, 172.625)
+scale = Vector2(0.265, 0.265)
