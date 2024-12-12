@@ -3,7 +3,7 @@ class_name CardDeck
 extends Node2D
 
 var cards:Array[Card]
-var display:bool = false
+var display:bool
 signal clicked
 @export var deckContents:PackedScene
 var deck_contents:DeckContents
@@ -19,7 +19,7 @@ func custom_init(is_display:bool):
 
 
 func _ready():
-	custom_init(false)
+	pass
 	
 
 #TODO function to generate random card
