@@ -20,7 +20,7 @@ signal player_win
 signal player_fail
 
 func _ready():
-	background.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	#background.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	# initialize and start
 	_start_round()
 
