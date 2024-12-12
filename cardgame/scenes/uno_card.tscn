@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://c025sfloyje10"]
-
-[ext_resource type="Script" path="res://scripts/uno_card.gd" id="1_68lbb"]
-
-[node name="UnoCard" type="Node2D"]
-script = ExtResource("1_68lbb")

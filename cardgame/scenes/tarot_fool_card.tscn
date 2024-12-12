@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmx8jdm51w7oy"]
+
+[ext_resource type="Script" path="res://scripts/tarot_fool_card.gd" id="1_xx0jl"]
+
+[node name="TarotFoolCard" type="Sprite2D"]
+script = ExtResource("1_xx0jl")

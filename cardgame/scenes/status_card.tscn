@@ -1,13 +1,35 @@
-[gd_scene load_steps=2 format=3 uid="uid://ba1jh5kg03t1l"]
+[gd_scene load_steps=4 format=3 uid="uid://ba1jh5kg03t1l"]
 
 [ext_resource type="Script" path="res://scripts/status_card.gd" id="1_kit52"]
+[ext_resource type="FontFile" uid="uid://bmkjii4ijxa8p" path="res://assets/font/chalk_font_2.otf" id="2_ofq7m"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_agk65"]
+font = ExtResource("2_ofq7m")
+font_size = 80
 
 [node name="StatusCard" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_kit52")
 
-[node name="Label" type="Label" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_right = 1204.0
+offset_bottom = 614.0
+color = Color(0.360784, 0.25098, 0.2, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CenterContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_agk65")

@@ -94,7 +94,6 @@ func _ready() -> void:
 	
 	
 	deck.connect("clicked", display_cards)	#
-	#display_cards(cards)
 	
 func _on_card_hovered(card:Card):
 	print("hi")
