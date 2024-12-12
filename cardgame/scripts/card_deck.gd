@@ -19,7 +19,7 @@ func custom_init(is_display:bool):
 
 
 func _ready():
-	pass
+	custom_init(false)
 	
 
 #TODO function to generate random card
@@ -40,6 +40,7 @@ func generate_random_card() -> Card:
 func add_card(card: Card) -> void:
 	cards.append(card)
 	if display:
+		print("this works!")
 		self.texture = card.texture
 	
 	

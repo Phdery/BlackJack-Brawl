@@ -21,13 +21,15 @@ func _ready() -> void:
 	cards.append(test_card_1)
 	
 	
-	#var test_card_2 = basic_card_scene.instantiate()
-	#test_card_2.custom_init(3,"heart")
-	#cards.append(test_card_2)
-	#
-	#var test_card_3 = basic_card_scene.instantiate()
-	#test_card_3.custom_init(4,"heart")
-	#cards.append(test_card_3)
+	var test_card_2 = basic_card_scene.instantiate()
+	test_card_2.scale = Vector2(0.25, 0.25)
+	test_card_2.custom_init(3,"heart")
+	cards.append(test_card_2)
+	
+	var test_card_3 = basic_card_scene.instantiate()
+	test_card_3.scale = Vector2(0.25, 0.25)
+	test_card_3.custom_init(4,"heart")
+	cards.append(test_card_3)
 	#
 	#var test_card_4 = basic_card_scene.instantiate()
 	#test_card_4.custom_init(5,"heart")
@@ -99,9 +101,11 @@ func _ready() -> void:
 	deck.connect("clicked", display_cards)	#
 	
 func _on_card_hovered(card:Card):
+	print("on_card_hovered working")
 	label.text = card.description
 	
 func _on_card_exited():
+	print("on_card_exited working")
 	label.text = ""
 
 func display_cards() -> void:
