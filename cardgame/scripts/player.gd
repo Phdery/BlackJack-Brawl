@@ -1,9 +1,12 @@
 class_name Player
 extends Controller 
 
+
+
 # Enum for card suits
 const Suit = GameGlobal.Suit
 var suit: Suit
+
 var is_stopped: bool = false  # Tracks if the player's turn is stopped
 var from_card_deck:CardDeck
 var to_card_deck:CardDeck
@@ -15,6 +18,10 @@ func _ready() -> void:
 	card_deck = $VBoxContainer/CenterContainer2/PlayerCardDeck
 	used_card_deck = $VBoxContainer/CenterContainer2/PlayerUsedCardDeck
 	displayed_cards.display = true
+	
+	displayed_cards.custom_init(true)
+	card_deck.custom_init(false)
+	used_card_deck.custom_init(false)
 	
 	modify_health(100.0)
 	suit = GameGlobal.chosen_suit
@@ -95,7 +102,7 @@ func draw_and_execute_card() -> void:
 # Executes the mechanism of the drawn card
 func execute_card_mechanism(card: Card) -> void:
 	card.mechanism(self, null)  # Replace null with a target controller if needed
-	
+
 # Updates scores for both player and enemy at the end of a turn
 func update_scores() -> void:
 	# Set player's score and max_score to default
@@ -151,7 +158,7 @@ func start_move_card_animation(card:Card, _from_card_deck: CardDeck, _to_card_de
 
 func move_card_animation(card:Card, from_card_deck: CardDeck, to_card_deck:CardDeck, delta) -> void:
 	#print("Moving")
-	var speed = 300
+	var speed = 200
 	#move_thing.move_to_front()
 	#print(round(to_card_deck.global_position - move_thing.global_position))
 	move_thing.global_position = move_thing.global_position.move_toward(to_card_deck.global_position, delta*speed)
@@ -163,7 +170,6 @@ func move_card_animation(card:Card, from_card_deck: CardDeck, to_card_deck:CardD
 		move_thing.queue_free()
 		from_card_deck = null
 		to_card_deck = null
-		
 func _process(delta: float) -> void:
 	#print(move_thing.global_position)
 	if start_moving == true:

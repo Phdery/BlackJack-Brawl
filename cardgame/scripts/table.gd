@@ -15,11 +15,12 @@ var enemy_score: int = 0
 var enemies = [preload("res://scenes/enemy.tscn")]
 var current_enemy: int = 0
 var end_scene = preload("res://ui/end_screen.tscn")
-
+@onready var background = $TextureRect
 signal player_win
 signal player_fail
 
 func _ready():
+	background.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	var player_box: CenterContainer = $MainLayout/PlayerBox
 	# load first enemy
 	load_enemy(enemies[current_enemy])

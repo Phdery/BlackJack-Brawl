@@ -82,3 +82,7 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 		deck_contents.display_cards()
 		# make current scene invisble
 		# call display cards function in deckcontents scene, pass in cards array
+
+
+func _on_area_2d_mouse_entered() -> void:
+	print("Hovering Decks") # Replace with function body.

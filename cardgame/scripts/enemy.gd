@@ -17,6 +17,10 @@ func _ready() -> void:
 	used_card_deck = $VBoxContainer/CenterContainer2/EnemyUsedCardDeck2
 	displayed_cards.display = true
  
+	displayed_cards.custom_init(true)
+	card_deck.custom_init(false)
+	used_card_deck.custom_init(false)
+	
 	modify_health(100.0)
 	suit = GameGlobal.chosen_suit
 	var suit_string: String = ""
