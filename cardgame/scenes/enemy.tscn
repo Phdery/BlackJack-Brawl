@@ -26,13 +26,13 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="EnemyUsedCardDeck2" parent="VBoxContainer/CenterContainer2" instance=ExtResource("4_h4oqg")]
-position = Vector2(791, 302)
+position = Vector2(63, 302)
 scale = Vector2(0.265, 0.265357)
 
 [node name="EnemyDisplayedCardDeck2" parent="VBoxContainer/CenterContainer2" instance=ExtResource("4_h4oqg")]
-position = Vector2(961, 172.625)
+position = Vector2(254.938, 172.625)
 scale = Vector2(0.265, 0.265)
 
 [node name="EnemyCardDeck2" parent="VBoxContainer/CenterContainer2" instance=ExtResource("4_h4oqg")]
-position = Vector2(1124, 302)
+position = Vector2(430.25, 302)
 scale = Vector2(0.265, 0.265)

@@ -33,7 +33,7 @@ position = Vector2(63, 302)
 scale = Vector2(0.265, 0.265)
 
 [node name="PlayerUsedCardDeck" parent="VBoxContainer/CenterContainer2" instance=ExtResource("4_wb2o2")]
-position = Vector2(430.25, 301.5)
+position = Vector2(430.25, 302)
 scale = Vector2(0.265, 0.265)
 
 [node name="PlayerDisplayedCardDeck" parent="VBoxContainer/CenterContainer2" instance=ExtResource("4_wb2o2")]
