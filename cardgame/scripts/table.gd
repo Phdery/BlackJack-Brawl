@@ -181,3 +181,8 @@ func suit_execute(damage: int, player_win: bool, score: int) -> int:
 			else:
 				new_damage = damage
 	return new_damage
+
+
+func _on_button_pressed() -> void:
+	GameGlobal.player_win.emit()
+	get_tree().change_scene_to_file("res://ui/end_screen.tscn")
