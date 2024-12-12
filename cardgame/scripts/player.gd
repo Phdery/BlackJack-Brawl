@@ -119,8 +119,6 @@ func shuffle(deck: Array) -> void:
 signal player_died
 
 func move_card_animation(card:Card, from_card_deck: CardDeck, to_card_deck:CardDeck, delta) -> void:
-	var start_position = from_card_deck.position
-	var end_position = to_card_deck.position
-	var time = 1
-	var velocity = (start_position - end_position) / time
-
+	var move_thing:Sprite2D = Sprite2D.new()
+	move_thing.texture = card.texture
+	from_card_deck.add_child(move_thing)
