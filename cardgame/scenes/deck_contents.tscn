@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b73bghxwwsa7a"]
+[gd_scene load_steps=4 format=3 uid="uid://d3jn78agkd144"]
 
 [ext_resource type="Script" path="res://scripts/deck_contents.gd" id="1_q0fop"]
 [ext_resource type="Script" path="res://scripts/deck_scene_exit.gd" id="2_5xd42"]

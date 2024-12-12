@@ -19,7 +19,7 @@ func custom_init(is_display:bool):
 
 
 func _ready():
-	custom_init(false)
+	pass
 	
 
 #TODO function to generate random card
