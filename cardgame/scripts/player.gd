@@ -137,7 +137,7 @@ func start_move_card_animation(card:Card, _from_card_deck: CardDeck, _to_card_de
 	move_thing = Sprite2D.new()
 	move_thing.texture = card.texture
 	move_thing.visible = true
-	move_thing.global_position = _from_card_deck.global_position
+	#move_thing.global_position = _from_card_deck.global_position
 	move_thing.z_index = 99
 	#add_child(move_thing)
 	#move_thing.global_position = from_card_deck.global_position
