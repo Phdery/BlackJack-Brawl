@@ -26,9 +26,9 @@ func _ready() -> void:
 	initialize_deck(suit_string)
 	
 	# FIXME
-	print(len(card_deck.cards))
-	print(card_deck.cards[3].description)
-	start_move_card_animation(card_deck.cards[3], used_card_deck, displayed_cards)	
+	#print(len(card_deck.cards))
+	#print(card_deck.cards[3].description)
+	#start_move_card_animation(card_deck.cards[3], used_card_deck, displayed_cards)	
 	
 	
 	
@@ -59,6 +59,7 @@ func _on_player_death() -> void:
 # Moves all cards from the used deck back to the main card deck when it's empty
 func refill_card_deck() -> void:
 	if card_deck.is_empty():
+		start_move_card_animation(used_card_deck.cards[0], used_card_deck, card_deck)
 		for card in used_card_deck.cards:
 			card_deck.add_card(card)
 		used_card_deck.clear()
@@ -88,6 +89,7 @@ func draw_and_execute_card() -> void:
 	var drawn_card = card_deck.generate_random_card()
 	if drawn_card:
 		displayed_cards.add_card(drawn_card)
+		start_move_card_animation(drawn_card, card_deck, displayed_cards)
 		execute_card_mechanism(drawn_card)
 
 # Executes the mechanism of the drawn card
@@ -116,6 +118,8 @@ func stop_turn() -> void:
 # Resets the player's turn state
 func reset_turn() -> void:
 	is_stopped = false
+	move_displayed_cards_to_used()
+	start_move_card_animation(displayed_cards.cards[len(displayed_cards.cards)-1], displayed_cards, used_card_deck)
 
 func shuffle(deck: Array) -> void:
 	for i in range(deck.size() - 1, 0, -1):

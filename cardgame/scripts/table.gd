@@ -33,6 +33,7 @@ func _start_round():
 	enemy.draw_and_execute_card()
 
 func _on_hit_button_pressed() -> void:
+	print("pressed")
 	player_score = calculate_score(player.displayed_cards.cards, player.score_card.max_score)
 	if player_turn and player_score < player.score_card.max_score:
 		player.draw_and_execute_card()
