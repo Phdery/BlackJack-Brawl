@@ -1,12 +1,9 @@
 class_name Player
 extends Controller 
 
-
-
 # Enum for card suits
 const Suit = GameGlobal.Suit
 var suit: Suit
-
 var is_stopped: bool = false  # Tracks if the player's turn is stopped
 var from_card_deck:CardDeck
 var to_card_deck:CardDeck
@@ -17,7 +14,6 @@ func _ready() -> void:
 	displayed_cards = $VBoxContainer/CenterContainer2/PlayerDisplayedCardDeck
 	card_deck = $VBoxContainer/CenterContainer2/PlayerCardDeck
 	used_card_deck = $VBoxContainer/CenterContainer2/PlayerUsedCardDeck
-	displayed_cards.display = true
 	
 	displayed_cards.custom_init(true)
 	card_deck.custom_init(false)
@@ -162,7 +158,7 @@ func start_move_card_animation(card:Card, _from_card_deck: CardDeck, _to_card_de
 
 func move_card_animation(card:Card, from_card_deck: CardDeck, to_card_deck:CardDeck, delta) -> void:
 	#print("Moving")
-	var speed = 200
+	var speed = 300
 	#move_thing.move_to_front()
 	#print(round(to_card_deck.global_position - move_thing.global_position))
 	move_thing.global_position = move_thing.global_position.move_toward(to_card_deck.global_position, delta*speed)

@@ -1,5 +1,4 @@
 class_name Enemy
-
 extends Controller
 
 # Enemy-specific behavior variables

@@ -5,7 +5,9 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_jlxjt"]
 font = ExtResource("2_8l6la")
-font_size = 80
+font_size = 30
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
 
 [node name="ScoreCard" type="Control"]
 layout_mode = 3

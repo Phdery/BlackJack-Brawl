@@ -17,14 +17,13 @@ offset_bottom = 500.0
 [node name="CenterContainer" type="HBoxContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-alignment = 1
-
-[node name="PlayerScoreCard" parent="VBoxContainer/CenterContainer" instance=ExtResource("4_blbev")]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
 
 [node name="PlayerStatusCard" parent="VBoxContainer/CenterContainer" instance=ExtResource("4_1o48l")]
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(259, 0)
+layout_mode = 2
+
+[node name="PlayerScoreCard" parent="VBoxContainer/CenterContainer" instance=ExtResource("4_blbev")]
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 
 [node name="CenterContainer2" type="CenterContainer" parent="VBoxContainer"]

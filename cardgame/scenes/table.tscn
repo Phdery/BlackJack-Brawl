@@ -102,6 +102,7 @@ z_index = 3
 
 [connection signal="button_down" from="MainLayout/CenterLayout/HitButton" to="." method="_on_hit_button_button_down"]
 [connection signal="button_up" from="MainLayout/CenterLayout/HitButton" to="." method="_on_hit_button_button_up"]
+[connection signal="mouse_entered" from="MainLayout/CenterLayout/HitButton" to="." method="_on_hit_button_mouse_entered"]
 [connection signal="pressed" from="MainLayout/CenterLayout/HitButton" to="." method="_on_hit_button_pressed"]
 [connection signal="button_down" from="MainLayout/CenterLayout/StandButton" to="." method="_on_stand_button_button_down"]
 [connection signal="button_up" from="MainLayout/CenterLayout/StandButton" to="." method="_on_stand_button_button_up"]

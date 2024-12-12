@@ -5,6 +5,7 @@ extends Control
 @onready var enemy:Enemy = $MainLayout/EnemyBox/Enemy
 @onready var hit_button: Button = $MainLayout/CenterLayout/HitButton
 @onready var stand_button: Button = $MainLayout/CenterLayout/StandButton
+@onready var background = $TextureRect
 
 var _have_ace: bool = false
 var player_turn: bool = false
@@ -12,18 +13,14 @@ var player_score: int = 0
 var enemy_score: int = 0
 
 #TODO maybe have 2 different enemy scenes?
-var enemies = [preload("res://scenes/enemy.tscn")]
-var current_enemy: int = 0
+var enemy_count: int = 1
 var end_scene = preload("res://ui/end_screen.tscn")
-@onready var background = $TextureRect
+
 signal player_win
 signal player_fail
 
 func _ready():
 	background.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	var player_box: CenterContainer = $MainLayout/PlayerBox
-	# load first enemy
-	load_enemy(enemies[current_enemy])
 	# initialize and start
 	_start_round()
 
@@ -40,19 +37,27 @@ func _on_hit_button_pressed() -> void:
 	print("pressed")
 	#player_score = calculate_score(player.displayed_cards.cards, player.score_card.max_score)
 	if player_turn and player_score < player.score_card.max_score:
+		SoundManager.play_sfx("ButtonStart")
 		player.draw_and_execute_card()
 		player_score = calculate_score(player.displayed_cards.cards, player.score_card.max_score)
 		player.score_card.update_score(player_score)
 		if player_score >= player.score_card.max_score:
 			player.is_stopped = true
-		if !enemy.is_stopped:
-			player_turn = false
-			enemy_turn()
+			if enemy.is_stopped:
+				check_winner()
+			else:
+				player_turn = false
+				enemy_turn()
+		else:
+			if !enemy.is_stopped:
+				player_turn = false
+				enemy_turn()
 
 func _on_stand_button_pressed() -> void:
 	#player_score = calculate_score(player.displayed_cards.cards, player.score_card.max_score)
 	#TODO: need to get max score
 	if player_turn and player_score < player.score_card.max_score:
+		SoundManager.play_sfx("ButtonStart")
 		player.is_stopped = true
 		if !enemy.is_stopped:
 			player_turn = false
@@ -76,10 +81,9 @@ func _player_win():
 	print("Enemy defeated!")
 	SoundManager.play_sfx("game_win")
 	#TODO beat enemy animation
-	current_enemy += 1
-	if enemies[current_enemy] != null:
-		load_enemy(enemies[current_enemy])
-		_start_round()
+	enemy_count -= 1
+	if enemy_count != 0:
+		load_new_enemy()
 	else:
 		print("Player defeated all enemies! Victory!")
 		GameGlobal.player_win.emit()
@@ -93,7 +97,9 @@ func _enemy_win():
 
 func check_winner() -> void:
 	player_score = calculate_score(player.displayed_cards.cards, player.score_card.max_score)
+	player.score_card.update_score(player_score)
 	enemy_score = calculate_score(enemy.displayed_cards.cards, 21)
+	enemy.score_card.update_score(enemy_score)
 	var score_difference = player_score - enemy_score
 	var damage: int
 	var player_win: bool
@@ -111,14 +117,13 @@ func check_winner() -> void:
 	elif player_score > player.score_card.max_score:
 		#TODO: enemy win animation
 		player_win = false
-		damage = suit_execute(enemy_score, player_win, player_score)
-		player.modify_health(-damage)
+		damage = suit_execute(-enemy_score, player_win, player_score)
+		player.modify_health(damage)
 	# both didn't bust
 	else:
 		# player win
 		if score_difference > 0:
 			#TODO: player win animation
-			#TODO: suit effect
 			player_win = true
 			damage = suit_execute(score_difference, player_win, player_score)
 			enemy.modify_health(-damage)
@@ -127,24 +132,13 @@ func check_winner() -> void:
 			#TODO: enemy win animation
 			player_win = false
 			damage = suit_execute(score_difference, player_win, player_score)
-			player.modify_health(-damage)
+			player.modify_health(damage)
 	# check signals
 	enemy.enemy_died.connect(_player_win)
 	player.player_died.connect(_enemy_win)
-	# reset turn
-	player.reset_turn()
-	enemy.reset_turn()
 	await get_tree().create_timer(2).timeout
-	player_score = 0
-	enemy_score = 0
-
-	
-	enemy.draw_and_execute_card()
-	enemy_score = calculate_score(enemy.displayed_cards.cards, 21)
-	enemy.score_card.update_score(enemy_score)
-	player_turn = true
-	print(len(player.displayed_cards.cards))
-	print(len(enemy.displayed_cards.cards))
+	# reset round
+	round_done()
 	
 	
 func calculate_score(hand: Array, max_score: int) -> int:
@@ -167,31 +161,46 @@ func enemy_turn():
 		enemy.decide_action()
 		enemy_score = calculate_score(enemy.displayed_cards.cards, 21)
 		enemy.score_card.update_score(enemy_score)
-		if !player.is_stopped or enemy_score >= 21:
+		if enemy_score >= 21:
+			enemy.is_stopped = true
+		if !player.is_stopped or enemy.is_stopped:
 			player_turn = true
 	if player.is_stopped and enemy.is_stopped:
 		check_winner()
 
-
-# multiple enemy logic
-func load_enemy(enemy_scene: PackedScene) -> void:
-	# clear UI for next enemy
-	if enemy != null:
-		enemy.queue_free()  # free old enemy
-	enemy = enemy_scene.instantiate()
-	add_child(enemy) # add new enemy
+func round_done():
+		player.reset_turn()
+		enemy.reset_turn()
+		await get_tree().create_timer(2).timeout
+		player_score = 0
+		enemy_score = 0
+		enemy.draw_and_execute_card()
+		enemy_score = calculate_score(enemy.displayed_cards.cards, 21)
+		enemy.score_card.update_score(enemy_score)
+		player_turn = true
 	
-func suit_execute(damage: int, player_win: bool, score: int) -> int:
+## multiple enemy logic
+func load_new_enemy() -> void:
+	if enemy:
+		enemy.queue_free() # Remove the existing enemy
+		var new_enemy = preload("res://scenes/enemy.tscn").instance() # Load and instance a new enemy
+		var parent = $MainLayout/EnemyBox
+		parent.add_child(new_enemy)
+		new_enemy.name = "Enemy" # Optional: Rename to match original
+		print("Enemy replaced successfully")
+		_start_round()
+	
+func suit_execute(damage: int, win: bool, score: int) -> int:
 	var suit = GameGlobal.chosen_suit
 	var new_damage: int
 	match suit:
 		GameGlobal.Suit.CLUBS:
-			if player_win:
+			if win:
 				new_damage = damage * 1.5
 			else:
 				new_damage = damage
 		GameGlobal.Suit.DIAMONDS:
-			if player_win and score == player.score_card.max_score:
+			if win and score == player.score_card.max_score:
 				new_damage = player.score_card.max_score
 				player.modify_health(player.score_card.max_score)
 			else:
@@ -201,7 +210,7 @@ func suit_execute(damage: int, player_win: bool, score: int) -> int:
 				player.modify_health(damage/2)
 			new_damage = damage
 		GameGlobal.Suit.SPADES:
-			if player_win and score == player.score_card.max_score:
+			if win and score == player.score_card.max_score:
 				new_damage = damage * 2
 			else:
 				new_damage = damage
