@@ -143,6 +143,7 @@ func calculate_score(hand: Array, max_score: int) -> int:
 	return score
 
 func enemy_turn():
+	await get_tree().create_timer(2).timeout
 	while !player_turn and !enemy.is_stopped:
 		#TODO enemy logic
 		enemy.decide_action()

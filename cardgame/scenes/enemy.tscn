@@ -33,7 +33,6 @@ layout_mode = 2
 position = Vector2(63, 302)
 scale = Vector2(0.265, 0.265357)
 texture = ExtResource("5_koi7s")
-display = true
 
 [node name="EnemyDisplayedCardDeck2" parent="VBoxContainer/CenterContainer2" instance=ExtResource("4_h4oqg")]
 position = Vector2(254.938, 172.625)
@@ -43,4 +42,3 @@ scale = Vector2(0.265, 0.265)
 position = Vector2(430.25, 302)
 scale = Vector2(0.265, 0.265)
 texture = ExtResource("5_koi7s")
-display = true
