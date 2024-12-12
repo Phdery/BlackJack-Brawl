@@ -31,34 +31,31 @@ Here is an example:
 
 You should replay any **bold text** with your relevant information. Liberally use the template when necessary and appropriate.
 
-## Producer
+## Producer (Yiming Feng)
 
 **Describe the steps you took in your role as producer. Typical items include group scheduling mechanisms, links to meeting notes, descriptions of team logistics problems with their resolution, project organization tools (e.g., timelines, dependency/task tracking, Gantt charts, etc.), and repository management methodology.**
 
-## User Interface and Input
+## Game Logic (Scenes) (Qingyue Yang)
 
-**Describe your user interface and how it relates to gameplay. This can be done via the template.**
-**Describe the default input configuration.**
+**Describe**
 
-**Add an entry for each platform or input style your project supports.**
+## Game Logic (Cards) (Brian Li)
 
-## Movement/Physics
+**Describe**
 
-**Describe the basics of movement and physics in your game. Is it the standard physics model? What did you change or modify? Did you make your movement scripts that do not use the physics system?**
-
-## Animation and Visuals
+## Game Logic (Table) (Stephanie Hsia)
 
 **List your assets, including their sources and licenses.**
 
 **Describe how your work intersects with game feel, graphic design, and world-building. Include your visual style guide if one exists.**
 
-## Game Logic
+## Game Logic (Player/Enemy) (Alex Chen)
 
 **Document the game states and game data you managed and the design patterns you used to complete your task.**
 
 # Sub-Roles
 
-## Audio
+## Audio (Qingyue Yang)
 
 **List your assets, including their sources and licenses.**
 
@@ -66,22 +63,22 @@ You should replay any **bold text** with your relevant information. Liberally us
 
 **Document the sound style.** 
 
-## Gameplay Testing
+## Gameplay Testing (Brian Li)
 
 **Add a link to the full results of your gameplay tests.**
 
 **Summarize the key findings from your gameplay tests.**
 
-## Narrative Design
+## Narrative Design (Alex Chen)
 
 **Document how the narrative is present in the game via assets, gameplay systems, and gameplay.** 
 
-## Press Kit and Trailer
+## Press Kit and Trailer (Yiming Feng)
 
 **Include links to your presskit materials and trailer.**
 
 **Describe how you showcased your work. How did you choose what to show in the trailer? Why did you choose your screenshots?**
 
-## Game Feel and Polish
+## Visuals (Stephanie Hsia)
 
 **Document what you added to and how you tweaked your game to improve its game feel.**
