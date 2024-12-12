@@ -152,7 +152,7 @@ func start_move_card_animation(card:Card, _from_card_deck: CardDeck, _to_card_de
 
 func move_card_animation(card:Card, from_card_deck: CardDeck, to_card_deck:CardDeck, delta) -> void:
 	#print("Moving")
-	var speed = 50
+	var speed = 200
 	#move_thing.move_to_front()
 	#print(round(to_card_deck.global_position - move_thing.global_position))
 	move_thing.global_position = move_thing.global_position.move_toward(to_card_deck.global_position, delta*speed)
