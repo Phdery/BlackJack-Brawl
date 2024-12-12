@@ -1,9 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://iox1tqy8xq8f"]
+[gd_scene load_steps=15 format=3 uid="uid://iox1tqy8xq8f"]
 
 [ext_resource type="Script" path="res://scripts/table.gd" id="1_ylqy0"]
 [ext_resource type="PackedScene" uid="uid://bcjxs6ha8opch" path="res://scenes/player.tscn" id="2_a2xkj"]
 [ext_resource type="Texture2D" uid="uid://dqdyngbmsdc0o" path="res://assets/table/table_background_2.jpg" id="2_bxg01"]
 [ext_resource type="PackedScene" uid="uid://24xvop2usi1i" path="res://scenes/enemy.tscn" id="3_jkpep"]
+[ext_resource type="Texture2D" uid="uid://dxpr7ynrwc42i" path="res://assets/table/hit_button.png" id="4_jgi86"]
+[ext_resource type="Texture2D" uid="uid://bu3fj4voa8ak6" path="res://assets/table/stand_button.png" id="5_8wsj7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1ncjt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ddqr"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qinrq"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_612ag"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_japba"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2alt3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7bxn2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mbb32"]
 
 [node name="Table" type="Control"]
 layout_mode = 3
@@ -50,13 +71,21 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-text = "Hit"
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1ncjt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2ddqr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_qinrq")
+theme_override_styles/normal = SubResource("StyleBoxFlat_612ag")
+icon = ExtResource("4_jgi86")
 
 [node name="StandButton" type="Button" parent="MainLayout/CenterLayout"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-text = "Stand"
+theme_override_styles/focus = SubResource("StyleBoxEmpty_japba")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_2alt3")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_7bxn2")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mbb32")
+icon = ExtResource("5_8wsj7")
 
 [node name="EnemyBox" type="CenterContainer" parent="MainLayout"]
 custom_minimum_size = Vector2(500, 0)
@@ -65,5 +94,9 @@ layout_mode = 2
 [node name="Enemy" parent="MainLayout/EnemyBox" instance=ExtResource("3_jkpep")]
 unique_name_in_owner = true
 
+[connection signal="button_down" from="MainLayout/CenterLayout/HitButton" to="." method="_on_hit_button_button_down"]
+[connection signal="button_up" from="MainLayout/CenterLayout/HitButton" to="." method="_on_hit_button_button_up"]
 [connection signal="pressed" from="MainLayout/CenterLayout/HitButton" to="." method="_on_hit_button_pressed"]
+[connection signal="button_down" from="MainLayout/CenterLayout/StandButton" to="." method="_on_stand_button_button_down"]
+[connection signal="button_up" from="MainLayout/CenterLayout/StandButton" to="." method="_on_stand_button_button_up"]
 [connection signal="pressed" from="MainLayout/CenterLayout/StandButton" to="." method="_on_stand_button_pressed"]
