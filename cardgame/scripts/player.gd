@@ -26,14 +26,6 @@ func _ready() -> void:
 	print("Card suit chosen by the player: ", suit_string)
 	initialize_deck(suit_string)
 	
-	# FIXME
-	#print(len(card_deck.cards))
-	#print(card_deck.cards[3].description)
-	#start_move_card_animation(card_deck.cards[3], used_card_deck, displayed_cards)	
-	
-	
-	
-# Initializes the player's deck based on the chosen suit
 func initialize_deck(suit: String) -> void:
 	
 	var scores = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
@@ -174,6 +166,3 @@ func _process(delta: float) -> void:
 	#print(move_thing.global_position)
 	if start_moving == true:
 		move_card_animation(card_deck.cards[0], from_card_deck, to_card_deck, delta)
-
-		
-		

@@ -36,7 +36,6 @@ func initialize_deck(suit: String) -> void:
 		new_card.custom_init(score, suit)
 		card_deck.add_card(new_card)
 
-
 	shuffle(card_deck.cards)
  
 ### Health and Damage Management

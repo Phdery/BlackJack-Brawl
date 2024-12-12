@@ -14,3 +14,7 @@ func _process(delta: float) -> void:
 func _on_pressed() -> void:
 	print("hi there")
 	deck.exit_scene()
+
+
+func _on_mouse_entered() -> void:
+	print("Hovering over button")

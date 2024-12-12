@@ -38,6 +38,7 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="CenterContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_8l6la")
 label_settings = SubResource("LabelSettings_jlxjt")
 horizontal_alignment = 1

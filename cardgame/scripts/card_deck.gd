@@ -76,13 +76,16 @@ func clear() -> void:
 
 
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event.is_action_pressed("click"):
-		print("clicked")
-		$".".add_child(deck_contents)
-		deck_contents.display_cards()
-		# make current scene invisble
-		# call display cards function in deckcontents scene, pass in cards array
+	#if event.is_action_pressed("click"):
+		#print("clicked")
+		#$".".add_child(deck_contents)
+		#deck_contents.display_cards()
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			print("clicked")
+			$".".add_child(deck_contents)
+			deck_contents.display_cards()
 
 
-func _on_area_2d_mouse_entered() -> void:
-	print("Hovering Decks") # Replace with function body.
+#func _on_area_2d_mouse_entered() -> void:
+	#print("Hovering Decks") # Replace with function body.
