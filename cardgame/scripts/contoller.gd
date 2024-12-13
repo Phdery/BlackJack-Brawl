@@ -9,3 +9,4 @@ extends Node
 @export var displayed_cards: CardDeck = null
 @export var card_deck: CardDeck = null
 @export var used_card_deck: CardDeck = null
+@export var is_stopped: bool = false  
