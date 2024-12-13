@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://1axci2wmu3hg"]
+[gd_scene load_steps=3 format=3 uid="uid://1axci2wmu3hg"]
 
+[ext_resource type="Texture2D" uid="uid://dn8utaib5ngn3" path="res://assets/cards/draw2.png" id="1_vl5al"]
 [ext_resource type="Script" path="res://scripts/uno_plus_2.gd" id="1_wi7kj"]
 
 [node name="UnoPlus2" type="Sprite2D"]
+texture = ExtResource("1_vl5al")
 script = ExtResource("1_wi7kj")

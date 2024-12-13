@@ -5,7 +5,7 @@ extends Card
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	score = 10
-	description = "Move random card from enemy's hand to graveyard. Score = 10"
+	description = "The Hangman: remove random card from enemy's hand. Score = 10"
 	# set texture
 
 func mechanism(this:Controller, other:Controller):

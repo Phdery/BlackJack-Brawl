@@ -1,6 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://bhihqm8jcr5ch"]
+[gd_scene load_steps=4 format=3 uid="uid://bhihqm8jcr5ch"]
 
 [ext_resource type="Script" path="res://scripts/uno_reverse.gd" id="1_3i4h1"]
+[ext_resource type="Texture2D" uid="uid://b2bvp0lw3rc08" path="res://assets/cards/reverse.png" id="1_yu5w1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4nx77"]
+size = Vector2(471, 676)
 
 [node name="UnoReverse" type="Sprite2D"]
+texture = ExtResource("1_yu5w1")
 script = ExtResource("1_3i4h1")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1.5, 1)
+shape = SubResource("RectangleShape2D_4nx77")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
