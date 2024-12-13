@@ -86,7 +86,6 @@ func refill_card_deck() -> void:
 
 # Draws a random card from the deck, moves it to the displayed deck, and executes its mechanism
 func draw_and_execute_card(from:Controller, to:Controller) -> void:
-	
 	var drawn_card = card_deck.generate_random_card()
 	if drawn_card:
 		start_move_card_animation(drawn_card, card_deck, displayed_cards)

@@ -21,7 +21,7 @@ var game_over = false
 @onready var stand_button: Button = $MainLayout/CenterLayout/StandButton
 @onready var background = $TextureRect
 @onready var enemy_stand_label: Label = $EnemyStandLabel
-
+@onready var compare = $TileMap/TextureRect
 @onready var player_win_screen = preload("res://ui/player_win_screen.tscn")
 @onready var player_fail_screen = preload("res://ui/player_fail_screen.tscn")
 
@@ -84,10 +84,10 @@ func _on_hit_button_pressed() -> void:
 		player.draw_and_execute_card(player, enemy)
 		player_score = calculate_score(player, player.displayed_cards.cards, player.score_card.max_score)
 		player.score_card.update_score(player_score)
-		print("Player draw a card.")
-		print("Player Display Card Deck:", player.displayed_cards)
-		print("Player Card Deck:", player.card_deck)
-		print("Player Used Deck:", player.used_card_deck)
+		#print("Player draw a card.")
+		#print("Player Display Card Deck:", player.displayed_cards)
+		#print("Player Card Deck:", player.card_deck)
+		#print("Player Used Deck:", player.used_card_deck)
 		if player_score >= player.score_card.max_score:
 			player.is_stopped = true
 			if enemy.is_stopped:
@@ -154,38 +154,47 @@ func check_winner() -> void:
 	enemy_score = calculate_score(enemy, enemy.displayed_cards.cards, 21)
 	enemy.score_card.update_score(enemy_score)
 	var score_difference = player_score - enemy_score
-	var damage: int
+	var damage: int = 0
 	var player_win: bool
 	# same score or both bust
 	if score_difference == 0 or (player_score > player.score_card.max_score and enemy_score > 21):
 		#TODO: tie animation
+		compare.texture = load("res://assets/table/tie.png")
 		pass
 	# only enemy bust
 	elif enemy_score > 21:
 		#TODO: player win animation
+		compare.texture = load("res://assets/table/win.png")
 		player_win = true
 		damage = suit_execute(player_score, player_win, player_score)
 		enemy.modify_health(-damage)
+		$EnemyHpChange.text = "-" + str(damage)
 	# only player bust
 	elif player_score > player.score_card.max_score:
 		#TODO: enemy win animation
+		compare.texture = load("res://assets/table/lose.png")
 		player_win = false
 		damage = suit_execute(-enemy_score, player_win, player_score)
 		player.modify_health(damage)
+		$PlayerHpChange.text = damage
 	# both didn't bust
 	else:
 		# player win
 		if score_difference > 0:
 			#TODO: player win animation
+			compare.texture = load("res://assets/table/win.png")
 			player_win = true
 			damage = suit_execute(score_difference, player_win, player_score)
 			enemy.modify_health(-damage)
+			$EnemyHpChange.text = "-" + str(damage)
 		# enemy win
 		else:
 			#TODO: enemy win animation
+			compare.texture = load("res://assets/table/lose.png")
 			player_win = false
 			damage = suit_execute(score_difference, player_win, player_score)
 			player.modify_health(damage)
+			$PlayerHpChange.text = str(damage)
 	# check signals
 	enemy.enemy_died.connect(_player_win)
 	player.player_died.connect(_enemy_win)
@@ -236,9 +245,12 @@ func enemy_turn():
 func round_done():
 		player.reset_turn()
 		enemy.reset_turn()
+		$EnemyHpChange.text = ""
+		$PlayerHpChange.text = ""
 		await get_tree().create_timer(2).timeout
 		player_score = 0
 		enemy_score = 0
+		compare.texture = null
 		enemy.decide_action(enemy, player)
 		enemy_score = calculate_score(enemy, enemy.displayed_cards.cards, 21)
 		enemy.score_card.update_score(enemy_score)
@@ -298,11 +310,13 @@ func suit_execute(damage: int, win: bool, score: int) -> int:
 			if win and score == player.score_card.max_score:
 				new_damage = player.score_card.max_score
 				player.modify_health(player.score_card.max_score)
+				$PlayerHpChange.text = "+" + str(player.score_card.max_score)
 			else:
 				new_damage = damage
 		GameGlobal.Suit.HEARTS:
 			if player_win:
 				player.modify_health(damage/2)
+				$PlayerHpChange.text = "+" + str(damage/2)
 			new_damage = damage
 		GameGlobal.Suit.SPADES:
 			if win and score == player.score_card.max_score:
