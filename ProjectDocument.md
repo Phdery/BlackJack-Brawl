@@ -101,6 +101,17 @@ You should replay any **bold text** with your relevant information. Liberally us
   - [UnoStop](https://github.com/quiet98k/BlackJack-Brawl/blob/c6fedfd6110b2126e87fc6e66ac0255d2e7054b3/cardgame/scripts/uno_stop_card.gd): Score = 5, sets the enemy's is_stopped bool variable to true to forcibly end their turn
 
 ### CardDeck 
+
+- [Class](https://github.com/quiet98k/BlackJack-Brawl/blob/2dc4056f18371ce15f78e83110ede0dcff79e039/cardgame/scripts/card_deck.gd) responsible for holding array of cards, represents every deck object in game (regular deck, display deck, used card deck, etc)
+- Contains functions that are used during game
+
+- Signals/variables
+- generate_random_card
+- move_card_to
+- swap_decks
+- _on_area_2d_input_event
+- _process
+
 ### DeckContents
 ### ScoreCard
 ### StatusCard
