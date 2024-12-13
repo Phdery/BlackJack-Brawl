@@ -31,10 +31,10 @@ func initialize_deck(suit: String) -> void:
 	#var scores = [1, 2]
 	var card_resource = preload("res://scenes/basic_card.tscn")
 	
-	#for score in scores:
-		#var new_card = card_resource.instantiate() as BasicCard
-		#new_card.custom_init(score, suit)
-		#card_deck.add_card(new_card)
+	for score in scores:
+		var new_card = card_resource.instantiate() as BasicCard
+		new_card.custom_init(score, suit)
+		card_deck.add_card(new_card)
 	
 	var aggie_card = preload("res://scenes/aggie_card.tscn").instantiate() as AggieCard
 	card_deck.add_card(aggie_card)
@@ -42,8 +42,8 @@ func initialize_deck(suit: String) -> void:
 	var fool_card = preload("res://scenes/tarot_fool_card.tscn").instantiate() as TarotFoolCard
 	card_deck.add_card(fool_card)
 	
-	var hangman_card = preload("res://scenes/tarot_hangman_card.tscn").instantiate() as TarotHangmanCard
-	card_deck.add_card(hangman_card)
+	#var hangman_card = preload("res://scenes/tarot_hangman_card.tscn").instantiate() as TarotHangmanCard
+	#card_deck.add_card(hangman_card)
 	
 	#var magician_card = preload("res://scenes/tarot_magician_card.tscn").instantiate() as TarotMagicianCard
 	#card_deck.add_card(magician_card)

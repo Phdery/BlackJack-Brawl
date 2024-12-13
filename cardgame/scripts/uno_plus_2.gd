@@ -5,7 +5,7 @@ extends Card
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	score = 2
-	description = "+2: 2 points to enemy total. Score = 2"
+	description = "+2 Card\n Score = 2 \n add 2 points to enemy's score. "
 	# set texture
 	
 func mechanism(this:Controller, other:Controller):

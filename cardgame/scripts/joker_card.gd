@@ -4,7 +4,7 @@ extends Card
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	score = 5
-	description = "Joker: deal random damage 1-10 to enemy. Score = 5"
+	description = "The Joker \n Score = 5 \n deal random damage 1-10 to enemy. "
 	# set texture
 	
 func mechanism(this:Controller, other:Controller):

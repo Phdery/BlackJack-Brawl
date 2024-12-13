@@ -5,7 +5,7 @@ extends Card
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	score = 5
-	description = "Reverse: swap scores with enemy. Score = 5"
+	description = "Reverse Card\n Score = 5 \n swap scores with enemy. "
 	# set texture
 
 func mechanism(this:Controller, other:Controller):

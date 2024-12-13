@@ -42,7 +42,8 @@ func _start_round():
 
 
 	## FIXTHIS!!!!!!!!!!!!
-	enemy.modify_health(-80)
+	
+	
 	
 	
 	enemy.decide_action(enemy,player)
@@ -50,10 +51,13 @@ func _start_round():
 	print("Enemy Display Card Deck:", enemy.displayed_cards)
 	print("Enemy Card Deck:", enemy.card_deck)
 	print("Enemy Used Deck:", enemy.used_card_deck)
+	enemy.status_card.update_max(50)
+	enemy.status_card.update_hp(50)
 	enemy_score = calculate_score(enemy, enemy.displayed_cards.cards, 21)
 	enemy.score_card.update_score(enemy_score)
 	player_turn = true
 	enemy_stand_label.visible = false
+	
 
 func _on_hit_button_pressed() -> void:
 	print("pressed")

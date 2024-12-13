@@ -4,8 +4,10 @@ extends Node2D
 var cards:Array[Card]
 var basic_card_scene = preload("res://scenes/basic_card.tscn")
 # Called when the node enters the scene tree for the first time.
-@onready var label:Label = $Label
+@onready var label_control:Control = $LabelControl
+@onready var label:Label = $LabelControl/Label
 @onready var button:Button = $Button
+
 @onready var deck = $".."
 @onready var color_rect = $ColorRect
 
@@ -19,12 +21,18 @@ func _ready() -> void:
 	var viewport_size = Vector2(get_viewport().size)
 	var original_size = Vector2(1, 1) 
 	color_rect.scale = viewport_size / original_size
+	
 
-
-	label.scale = Vector2(8,8)
-	label.global_position.x += 350
-	button.scale = Vector2(3,3)
-	button.global_position.x += 500
+	#label.scale = Vector2(6,6)
+	#label.global_position = label.position
+	label_control.top_level = true
+	label_control.z_index = 51
+	label_control.position = Vector2(700, 0) # Position it at (20, 20) relative to the window
+	#label_control.scale = Vector2(6, 6)
+	
+	
+	#button.scale = Vector2(3,3)
+	#button.global_position.x += 500
 	self.visible = true
 	cards = deck.cards
 	deck.connect("clicked", display_cards)
@@ -33,7 +41,8 @@ func _on_card_hovered(card:Card):
 	label.text = card.description
 	
 func _on_card_exited():
-	label.text = ""
+	pass
+	#label.text = ""
 
 func display_cards() -> void:
 	
@@ -46,7 +55,7 @@ func display_cards() -> void:
 	self.visible = true
 	#label.global_position = Vector2(15 + 31 * 6, 20)
 	#button.global_position = Vector2(15 + 31 * 6, 50)
-	var start_position = Vector2(200,200)
+	var start_position = Vector2(50,200)
 	var num_per_row:int = 6
 	var i:int = 0
 	var y:int = -1
@@ -57,29 +66,15 @@ func display_cards() -> void:
 		card.scale = Vector2(0.7, 0.7)
 		if (i % num_per_row == 0):
 			y += 1
-		card.global_position = start_position + Vector2(150 * (i % num_per_row), 150 * y)
+		card.global_position = start_position + Vector2(100 * (i % num_per_row), 150 * y)
 		i += 1
 		
-
-func change_label(text:String) -> void:
-	label.text = text
 	
 func exit_scene() -> void:
 	self.visible = false
 	for card in cards:
 		remove_child(card)
 	
-	
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-# func for accepting the carddeck array?
-# button that when clicked, removes all card nodes, returns to game scene
-# label for description
-# function for accepting new text for label
-
 
 func _on_button_pressed() -> void:
 	print("pressed button")

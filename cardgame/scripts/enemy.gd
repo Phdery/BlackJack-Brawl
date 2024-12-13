@@ -30,10 +30,10 @@ func initialize_deck(suit: String) -> void:
 	var scores = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
 	var card_resource = preload("res://scenes/basic_card.tscn")
 
-	#for score in scores:
-		#var new_card = card_resource.instantiate() as BasicCard
-		#new_card.custom_init(score, suit)
-		#card_deck.add_card(new_card)
+	for score in scores:
+		var new_card = card_resource.instantiate() as BasicCard
+		new_card.custom_init(score, suit)
+		card_deck.add_card(new_card)
 		
 	#var aggie_card = preload("res://scenes/aggie_card.tscn").instantiate() as AggieCard
 	#card_deck.add_card(aggie_card)
