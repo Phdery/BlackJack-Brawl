@@ -40,7 +40,7 @@ func _ready() -> void:
 	var skipped = false
 	# skip the story
 	while timer.time_left > 0.0:
-		if Input.is_action_pressed("skip") or InputEventMouseButton:
+		if Input.is_action_pressed("skip"):
 			skipped = true
 			SoundManager.stop_story()
 			break

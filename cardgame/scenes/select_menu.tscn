@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://c77r73vo4xq36"]
+[gd_scene load_steps=14 format=3 uid="uid://c77r73vo4xq36"]
 
 [ext_resource type="Script" path="res://scripts/select_menu.gd" id="1_f7shh"]
 [ext_resource type="Texture2D" uid="uid://d1v12mhe2bm8h" path="res://assets/images/UCDavis_name.jpg" id="2_1qjg3"]
 [ext_resource type="FontFile" uid="uid://coxmjx3kjpyrr" path="res://assets/font/chalk_font.otf" id="3_n5cmi"]
+[ext_resource type="FontFile" uid="uid://bmkjii4ijxa8p" path="res://assets/font/chalk_font_2.otf" id="4_3bcfa"]
 [ext_resource type="StyleBox" uid="uid://rb3ht43m5b7q" path="res://ui/button_box.tres" id="4_anuv8"]
 [ext_resource type="Texture2D" uid="uid://dav1se1w7efqb" path="res://assets/cards/diamond/diamond_ace.png" id="5_g6g1p"]
 [ext_resource type="Texture2D" uid="uid://dpanxug38effo" path="res://assets/cards/club/club_ace.png" id="6_nchr6"]
@@ -46,6 +47,10 @@ offset_right = 541.0
 offset_bottom = 284.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 6
+theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("3_n5cmi")
 theme_override_font_sizes/font_size = 60
 text = "Test"
@@ -60,6 +65,10 @@ offset_right = 612.0
 offset_bottom = 402.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 6
+theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("3_n5cmi")
 theme_override_font_sizes/font_size = 60
 text = "Test"
@@ -68,12 +77,17 @@ text = "Test"
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 196.0
+offset_left = 179.5
 offset_top = 33.0
-offset_right = 982.0
-offset_bottom = 275.0
+offset_right = 998.5
+offset_bottom = 213.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_n5cmi")
 theme_override_font_sizes/font_size = 90
 text = "Choose Your Card Suit"
@@ -82,15 +96,15 @@ text = "Choose Your Card Suit"
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 885.0
-offset_top = 472.0
-offset_right = 1671.0
-offset_bottom = 714.0
+offset_left = 863.0
+offset_top = 503.0
+offset_right = 1649.0
+offset_bottom = 745.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(63, 75)
 theme_override_colors/font_color = Color(0.631373, 1, 0.952941, 1)
-theme_override_fonts/font = ExtResource("3_n5cmi")
+theme_override_fonts/font = ExtResource("4_3bcfa")
 theme_override_font_sizes/font_size = 70
 text = "test"
 
@@ -163,7 +177,7 @@ offset_bottom = 584.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(12.815, 58)
-theme_override_fonts/font = ExtResource("3_n5cmi")
+theme_override_fonts/font = ExtResource("4_3bcfa")
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_q8u46")
 text = " test "
