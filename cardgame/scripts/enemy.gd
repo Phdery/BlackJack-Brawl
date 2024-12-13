@@ -55,9 +55,11 @@ func _on_enemy_death() -> void:
 # Move all cards from the used deck back to the main card deck when it's empty
 func refill_card_deck() -> void:
 	if card_deck.is_empty():
-		start_move_card_animation(used_card_deck.cards[0], used_card_deck, card_deck)
-		for card in used_card_deck.cards:
-			used_card_deck.move_card_to(card, card_deck)
+		#while(used_card_deck.is_empty() == false):
+			#for card in used_card_deck.cards:
+				#used_card_deck.move_card_to(card, card_deck)
+		card_deck.swap_decks(used_card_deck)
+		#start_move_card_animation(card_deck.cards[0], used_card_deck, card_deck)
 		shuffle(card_deck.cards)
 
 # Draws a random card from the player's card deck
@@ -173,6 +175,7 @@ func start_move_card_animation(card:Card, _from_card_deck: CardDeck, _to_card_de
 	_from_card_deck.add_child(move_thing)
 
 	start_moving = true
+	print("Start moving ", card.description)
 
 func move_card_animation(card:Card, from_card_deck: CardDeck, to_card_deck:CardDeck, delta) -> void:
 	#print("Moving")
@@ -186,6 +189,7 @@ func move_card_animation(card:Card, from_card_deck: CardDeck, to_card_deck:CardD
 			displayed_cards.texture = displayed_cards.cards[len(displayed_cards.cards) - 1].texture
 		start_moving = false
 		move_thing.queue_free()
+		move_thing.visible = false
 		from_card_deck = null
 		to_card_deck = null
 		

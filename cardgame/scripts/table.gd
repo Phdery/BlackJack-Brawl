@@ -26,8 +26,8 @@ func _ready():
 
 	
 func _start_round():
-	player.refill_card_deck()
-	enemy.refill_card_deck()
+	#player.refill_card_deck()
+	#enemy.refill_card_deck()
 	enemy.decide_action()
 	print("Enemy draw a card.")
 	print("Enemy Display Card Deck:", enemy.displayed_cards)
