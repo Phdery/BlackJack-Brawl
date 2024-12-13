@@ -41,9 +41,6 @@ func _ready() -> void:
 	var duration: float = 31.0
 	var timer = get_tree().create_timer(duration)
 	
-	while timer.time_left > 0.0 and not skipped:
-		await get_tree().process_frame
-		
 	if not skipped:
 		await timer.timeout
 		skip.hide()
