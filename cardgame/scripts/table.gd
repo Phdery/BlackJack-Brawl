@@ -50,7 +50,7 @@ func _start_round():
 	print("Enemy Display Card Deck:", enemy.displayed_cards)
 	print("Enemy Card Deck:", enemy.card_deck)
 	print("Enemy Used Deck:", enemy.used_card_deck)
-	enemy_score = calculate_score(enemy.displayed_cards.cards, 21)
+	enemy_score = calculate_score(enemy, enemy.displayed_cards.cards, 21)
 	enemy.score_card.update_score(enemy_score)
 	player_turn = true
 	enemy_stand_label.visible = false
@@ -61,7 +61,7 @@ func _on_hit_button_pressed() -> void:
 	if player_turn and player_score < player.score_card.max_score:
 		SoundManager.play_sfx("ButtonStart")
 		player.draw_and_execute_card(player, enemy)
-		player_score = calculate_score(player.displayed_cards.cards, player.score_card.max_score)
+		player_score = calculate_score(player, player.displayed_cards.cards, player.score_card.max_score)
 		player.score_card.update_score(player_score)
 		print("Player draw a card.")
 		print("Player Display Card Deck:", player.displayed_cards)
@@ -123,9 +123,9 @@ func _enemy_win():
 
 func check_winner() -> void:
 	player_turn = false
-	player_score = calculate_score(player.displayed_cards.cards, player.score_card.max_score)
+	player_score = calculate_score(player, player.displayed_cards.cards, player.score_card.max_score)
 	player.score_card.update_score(player_score)
-	enemy_score = calculate_score(enemy.displayed_cards.cards, 21)
+	enemy_score = calculate_score(enemy, enemy.displayed_cards.cards, 21)
 	enemy.score_card.update_score(enemy_score)
 	var score_difference = player_score - enemy_score
 	var damage: int
@@ -168,13 +168,14 @@ func check_winner() -> void:
 	round_done()
 	
 	
-func calculate_score(hand: Array, max_score: int) -> int:
+func calculate_score(controller:Controller,hand: Array, max_score: int) -> int:
 	var score: int = 0
 	# Calculate the total score logic
 	for card in hand:
 		score += card.score
 		if card.score == 11:
 			_have_ace = true
+	score += controller.extra_points
 	# Ace logic
 	if _have_ace and score > max_score:
 		score -= 10
@@ -190,7 +191,7 @@ func enemy_turn():
 		print("Enemy Display Card Deck:", enemy.displayed_cards)
 		print("Enemy Card Deck:", enemy.card_deck)
 		print("Enemy Used Deck:", enemy.used_card_deck)
-		enemy_score = calculate_score(enemy.displayed_cards.cards, 21)
+		enemy_score = calculate_score(enemy,enemy.displayed_cards.cards, 21)
 		enemy.score_card.update_score(enemy_score)
 		if enemy_score >= 21:
 			enemy.is_stopped = true
@@ -199,9 +200,9 @@ func enemy_turn():
 	if player.is_stopped and enemy.is_stopped:
 		check_winner()
 	else:
-		enemy_score = calculate_score(enemy.displayed_cards.cards, 21)
+		enemy_score = calculate_score(enemy, enemy.displayed_cards.cards, 21)
 		enemy.score_card.update_score(enemy_score)
-		player_score = calculate_score(player.displayed_cards.cards, player.score_card.max_score)
+		player_score = calculate_score(player, player.displayed_cards.cards, player.score_card.max_score)
 		player.score_card.update_score(player_score)
 
 func round_done():
@@ -211,10 +212,12 @@ func round_done():
 		player_score = 0
 		enemy_score = 0
 		enemy.decide_action(enemy, player)
-		enemy_score = calculate_score(enemy.displayed_cards.cards, 21)
+		enemy_score = calculate_score(enemy, enemy.displayed_cards.cards, 21)
 		enemy.score_card.update_score(enemy_score)
 		player_turn = true
 		_have_ace = false
+		player.extra_points = 0
+		enemy.extra_points = 0
 	
 ## multiple enemy logic
 func load_new_enemy() -> void:
