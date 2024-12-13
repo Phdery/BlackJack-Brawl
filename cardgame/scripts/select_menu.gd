@@ -39,15 +39,15 @@ func _ready() -> void:
 	var timer = get_tree().create_timer(duration)
 	var skipped = false
 	# skip the story
-	while timer.time_left > 0.0:
-		if Input.is_action_pressed("skip"):
-			skipped = true
-			SoundManager.stop_story()
-			break
-
-	# not skip
-	if not skipped:
-		await timer.timeout
+	#while timer.time_left > 0.0:
+		#if Input.is_action_pressed("skip"):
+			#skipped = true
+			#SoundManager.stop_story()
+			#break
+#
+	## not skip
+	#if not skipped:
+		#await timer.timeout
 
 	# Play the in game bgm
 	SoundManager.has_stop_all_called = false
