@@ -1,8 +1,23 @@
 extends Node
 
 @onready var player_card_deck: CardDeck = $PlayerCardDeck
-enum Suit { HEARTS, DIAMONDS, CLUBS, SPADES }
+
+enum Suit { 
+	HEARTS, 
+	DIAMONDS, 
+	CLUBS, 
+	SPADES 
+}
+
+enum GameState {
+	UNKNOWN,
+	PLAYER_WIN,
+	PLAYER_FAIL
+}
+
 var chosen_suit: Suit = Suit.HEARTS
+var game_state = GameState.UNKNOWN
+
 signal player_win
 signal player_fail
 

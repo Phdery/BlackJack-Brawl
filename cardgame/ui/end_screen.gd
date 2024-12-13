@@ -20,12 +20,15 @@ func _ready() -> void:
 	back_button.icon = back_to_start
 	GameGlobal.player_win.connect(on_player_win)
 	GameGlobal.player_fail.connect(on_player_fail)
-	if (GameGlobal.player_win):
-		background.texture = background_win
-		back_button.icon = back_start_win
-	else:
-		background.texture = background_fail
-		back_button.icon = back_to_start
+	match GameGlobal.game_state:
+		GameGlobal.GameState.PLAYER_WIN:
+			background.texture = background_win
+			back_button.icon = back_start_win
+		GameGlobal.GameState.PLAYER_FAIL:
+			background.texture = background_fail
+			back_button.icon = back_to_start
+		_:
+			print("Unknown game state!")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -8,6 +8,9 @@ extends Control
 @onready var background = $TextureRect
 @onready var enemy_stand_label: Label = $EnemyStandLabel
 
+@onready var player_win_screen = preload("res://ui/player_win_screen.tscn")
+@onready var player_fail_screen = preload("res://ui/player_fail_screen.tscn")
+
 var _have_ace: bool = false
 var player_turn: bool = false
 var player_score: int = 0
@@ -16,6 +19,8 @@ var enemy_score: int = 0
 #TODO maybe have 2 different enemy scenes?
 var enemy_count: int = 1
 var end_scene = preload("res://ui/end_screen.tscn")
+var player_win_instance
+var player_fail_instance
 
 signal player_win
 signal player_fail
@@ -24,6 +29,16 @@ func _ready():
 	#background.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	# initialize and start
 	_start_round()
+	player_win_instance = player_win_screen.instantiate()
+	add_child(player_win_instance)
+	player_win_instance.hide()
+	player_win_instance.layer = 0
+	
+	player_fail_instance = player_fail_screen.instantiate()
+	add_child(player_fail_instance)
+	player_fail_instance.hide()
+	player_fail_instance.layer = 0
+
 	
 func _process(delta: float) -> void:
 	if !player_turn:
@@ -37,6 +52,9 @@ func _process(delta: float) -> void:
 		enemy_stand_label.visible = true
 	else:
 		enemy_stand_label.visible = false
+		
+	if player.status_card.current_hp <= 0 or enemy.status_card.current_hp <= 0:
+		final_winner()
 	
 func _start_round():
 
@@ -116,13 +134,10 @@ func _player_win():
 		load_new_enemy()
 	else:
 		print("Player defeated all enemies! Victory!")
-		GameGlobal.player_win.emit()
 		#TODO victory scene
 	
 func _enemy_win():
 	print("Player lost!")
-	SoundManager.play_sfx("game_fail")
-	GameGlobal.player_fail.emit()
 	#TODO player lose scene
 
 func check_winner() -> void:
@@ -222,6 +237,26 @@ func round_done():
 		_have_ace = false
 		player.extra_points = 0
 		enemy.extra_points = 0
+
+func final_winner():
+	# Player lost
+	print(enemy.status_card.current_hp)
+	if enemy.status_card.current_hp == 0:
+		await get_tree().create_timer(2).timeout
+		SoundManager.play_sfx("PlayerFailBGM")
+		player_win_instance.show()
+		player_win_instance.layer = 99
+		player_win_instance.start_animation()
+		await get_tree().create_timer(2).timeout
+		
+	# Player win
+	if player.status_card.current_hp == 0:
+		await get_tree().create_timer(2).timeout
+		SoundManager.play_sfx("PlayerWinBGM")
+		player_fail_instance.show()
+		player_fail_instance.layer = 99
+		player_fail_instance.start_animation()
+		await get_tree().create_timer(2).timeout
 	
 ## multiple enemy logic
 func load_new_enemy() -> void:
@@ -262,5 +297,9 @@ func suit_execute(damage: int, win: bool, score: int) -> int:
 
 
 func _on_button_pressed() -> void:
-	GameGlobal.player_win.emit()
-	get_tree().change_scene_to_file("res://ui/end_screen.tscn")
+	await get_tree().create_timer(2).timeout
+	player_fail_instance.show()
+	player_fail_instance.layer = 99
+	player_fail_instance.start_animation()
+	SoundManager.play_sfx("PlayerFailBGM")
+	await get_tree().create_timer(2).timeout

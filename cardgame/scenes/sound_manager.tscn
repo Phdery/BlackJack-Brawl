@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://wba6dcl7st62"]
+[gd_scene load_steps=15 format=3 uid="uid://wba6dcl7st62"]
 
 [ext_resource type="Script" path="res://scripts/sound_manager.gd" id="1_n6x3i"]
 [ext_resource type="AudioStream" uid="uid://bg0yx1rgao0mf" path="res://assets/sfx/button_press.mp3" id="2_03d1y"]
@@ -12,6 +12,8 @@
 [ext_resource type="AudioStream" uid="uid://bl8u2ksh7bvfo" path="res://assets/sfx/game_fail.mp3" id="9_sw74n"]
 [ext_resource type="AudioStream" uid="uid://dppvjdtfjwmwk" path="res://assets/sfx/game_win.mp3" id="10_4fbgm"]
 [ext_resource type="AudioStream" uid="uid://d3fdg7vf0sbes" path="res://assets/sfx/background_story.mp3" id="11_2rwq5"]
+[ext_resource type="AudioStream" uid="uid://df6nv8rfjmg7m" path="res://assets/bgm/player_win_bgm.mp3" id="13_p7222"]
+[ext_resource type="AudioStream" uid="uid://b3hw1ex40cuor" path="res://assets/bgm/player_fail_bgm.mp3" id="14_rywlh"]
 
 [node name="SoundManager" type="Node"]
 process_mode = 3
@@ -53,3 +55,9 @@ stream = ExtResource("9_sw74n")
 
 [node name="GameWin" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("10_4fbgm")
+
+[node name="PlayerWinBGM" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("13_p7222")
+
+[node name="PlayerFailBGM" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("14_rywlh")
