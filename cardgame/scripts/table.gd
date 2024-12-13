@@ -21,6 +21,7 @@ var enemy_count: int = 1
 var end_scene = preload("res://ui/end_screen.tscn")
 var player_win_instance
 var player_fail_instance
+var game_over = false
 
 signal player_win
 signal player_fail
@@ -53,7 +54,8 @@ func _process(delta: float) -> void:
 	else:
 		enemy_stand_label.visible = false
 		
-	if player.status_card.current_hp <= 0 or enemy.status_card.current_hp <= 0:
+	if (player.status_card.current_hp <= 0 or enemy.status_card.current_hp <= 0) and not game_over:
+		game_over = true
 		final_winner()
 	
 func _start_round():
@@ -241,6 +243,7 @@ func round_done():
 # Check final winner
 func final_winner():
 	# Player lost
+	SoundManager.stop_all() 
 	print(enemy.status_card.current_hp)
 	if enemy.status_card.current_hp == 0:
 		SoundManager.play_sfx("PlayerWinBGM")
@@ -298,9 +301,4 @@ func suit_execute(damage: int, win: bool, score: int) -> int:
 
 
 func _on_button_pressed() -> void:
-	await get_tree().create_timer(2).timeout
-	player_fail_instance.show()
-	player_fail_instance.layer = 99
-	player_fail_instance.start_animation()
-	SoundManager.play_sfx("PlayerFailBGM")
-	await get_tree().create_timer(2).timeout
+	player.modify_health(-100)

@@ -36,12 +36,23 @@ func _ready() -> void:
 	
 	# You can skip the introduction bu press Tab
 	var duration: float = 0
-	if (Input.is_action_pressed("skip")):
-		duration = 1.0
-		SoundManager.stop_story()
-	#else:
-		#duration = 31.0
-		#await get_tree().create_timer(duration).timeout
+	var timer = get_tree().create_timer(duration)
+	var skipped = false
+	# skip the story
+	while timer.time_left > 0.0:
+		if Input.is_action_pressed("skip"):
+			skipped = true
+			SoundManager.stop_story()
+			timer.stop()
+			break
+			await get_tree().process_frame
+
+	# not skip
+	if not skipped:
+		await timer.timeout
+
+	# Play the in game bgm
+	SoundManager.play_sfx("InGameBGM")
 	
 	label.hide()
 	label2.hide()
