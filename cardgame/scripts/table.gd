@@ -6,6 +6,7 @@ extends Control
 @onready var hit_button: Button = $MainLayout/CenterLayout/HitButton
 @onready var stand_button: Button = $MainLayout/CenterLayout/StandButton
 @onready var background = $TextureRect
+@onready var enemy_stand_label: Label = $EnemyStandLabel
 
 var _have_ace: bool = false
 var player_turn: bool = false
@@ -32,11 +33,19 @@ func _process(delta: float) -> void:
 		hit_button.disabled = false
 		stand_button.disabled = false
 	
+	if enemy.is_stopped and enemy.score_card.current_score <= enemy.score_card.max_score:
+		enemy_stand_label.visible = true
+	else:
+		enemy_stand_label.visible = false
+	
 func _start_round():
-	#player.refill_card_deck()
-	#enemy.refill_card_deck()
+
+
+	## FIXTHIS!!!!!!!!!!!!
 	enemy.modify_health(-80)
-	enemy.decide_action()
+	
+	
+	enemy.decide_action(enemy,player)
 	print("Enemy draw a card.")
 	print("Enemy Display Card Deck:", enemy.displayed_cards)
 	print("Enemy Card Deck:", enemy.card_deck)
@@ -44,6 +53,7 @@ func _start_round():
 	enemy_score = calculate_score(enemy.displayed_cards.cards, 21)
 	enemy.score_card.update_score(enemy_score)
 	player_turn = true
+	enemy_stand_label.visible = false
 
 func _on_hit_button_pressed() -> void:
 	print("pressed")
@@ -200,7 +210,7 @@ func round_done():
 		await get_tree().create_timer(2).timeout
 		player_score = 0
 		enemy_score = 0
-		enemy.decide_action()
+		enemy.decide_action(enemy, player)
 		enemy_score = calculate_score(enemy.displayed_cards.cards, 21)
 		enemy.score_card.update_score(enemy_score)
 		player_turn = true

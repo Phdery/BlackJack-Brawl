@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://iox1tqy8xq8f"]
+[gd_scene load_steps=19 format=3 uid="uid://iox1tqy8xq8f"]
 
 [ext_resource type="Script" path="res://scripts/table.gd" id="1_ylqy0"]
 [ext_resource type="PackedScene" uid="uid://bcjxs6ha8opch" path="res://scenes/player.tscn" id="2_a2xkj"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://24xvop2usi1i" path="res://scenes/enemy.tscn" id="3_jkpep"]
 [ext_resource type="Texture2D" uid="uid://dxpr7ynrwc42i" path="res://assets/table/hit_button.png" id="4_jgi86"]
 [ext_resource type="Texture2D" uid="uid://bu3fj4voa8ak6" path="res://assets/table/stand_button.png" id="5_8wsj7"]
+[ext_resource type="FontFile" uid="uid://coxmjx3kjpyrr" path="res://assets/font/chalk_font.otf" id="7_s1wxs"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1ncjt"]
 
@@ -29,6 +30,12 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7bxn2"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mbb32"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_d8wu6"]
+line_spacing = 4.0
+font = ExtResource("7_s1wxs")
+font_size = 18
+font_color = Color(0.0862745, 0.0862745, 0.0862745, 1)
 
 [node name="Table" type="Control"]
 layout_mode = 3
@@ -106,6 +113,16 @@ layout_mode = 2
 [node name="Enemy" parent="MainLayout/EnemyBox" instance=ExtResource("3_jkpep")]
 unique_name_in_owner = true
 z_index = 3
+
+[node name="EnemyStandLabel" type="Label" parent="."]
+layout_mode = 2
+offset_left = 1001.0
+offset_top = 114.0
+offset_right = 1109.0
+offset_bottom = 151.0
+scale = Vector2(1.8, 1.8)
+text = "Enemy Stands"
+label_settings = SubResource("LabelSettings_d8wu6")
 
 [connection signal="button_down" from="MainLayout/CenterLayout/HitButton" to="." method="_on_hit_button_button_down"]
 [connection signal="button_up" from="MainLayout/CenterLayout/HitButton" to="." method="_on_hit_button_button_up"]
