@@ -61,26 +61,26 @@ func refill_card_deck() -> void:
 		shuffle(card_deck.cards)
 
 # Draws a random card from the player's card deck
-func generate_random_card() -> BasicCard:
-	if card_deck.cards.size() == 0:
-		return null  # Return null if no cards are left in the deck
-		
-	# Generate a random index within the range of available cards
-	var random_index = randi() % card_deck.cards.size()
-
-	# Get the card at the random index
-	var random_card = card_deck.cards[random_index]
-
-	# Remove the card from the deck to ensure it isn't drawn again
-	card_deck.cards.erase(random_card)
-
-	return random_card  # Return the selected card
+#func generate_random_card() -> Card:
+	#if card_deck.cards.size() == 0:
+		#return null  # Return null if no cards are left in the deck
+		#
+	## Generate a random index within the range of available cards
+	#var random_index = randi() % card_deck.cards.size()
+#
+	## Get the card at the random index
+	#var random_card = card_deck.cards[random_index]
+#
+	## Remove the card from the deck to ensure it isn't drawn again
+	#card_deck.cards.erase(random_card)
+#
+	#return random_card  # Return the selected card
 
 # Draws a random card from the deck, moves it to the displayed deck, and executes its mechanism
 func draw_and_execute_card() -> void:
 	
 	
-	var drawn_card = generate_random_card()
+	var drawn_card = card_deck.generate_random_card()
 	if drawn_card:
 		start_move_card_animation(drawn_card, card_deck, displayed_cards)
 		card_deck.move_card_to(drawn_card, displayed_cards)

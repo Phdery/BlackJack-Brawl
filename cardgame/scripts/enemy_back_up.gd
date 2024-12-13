@@ -1,4 +1,4 @@
-class_name Enemy
+class_name EnemyBackUp
 extends Controller
 
 # Enemy-specific behavior variables
@@ -63,20 +63,20 @@ func refill_card_deck() -> void:
 		shuffle(card_deck.cards)
 
 # Draws a random card from the player's card deck
-#func generate_random_card() -> Card:
-	#if card_deck.cards.size() == 0:
-		#return null  # Return null if no cards are left in the deck
-#
-	## Generate a random index within the range of available cards
-	#var random_index = randi() % card_deck.cards.size()
-#
-	## Get the card at the random index
-	#var random_card = card_deck.cards[random_index]
-#
-	## Remove the card from the deck to ensure it isn't drawn again
-	#card_deck.cards.erase(random_card)
-#
-	#return random_card  # Return the selected card
+func generate_random_card() -> Card:
+	if card_deck.cards.size() == 0:
+		return null  # Return null if no cards are left in the deck
+
+	# Generate a random index within the range of available cards
+	var random_index = randi() % card_deck.cards.size()
+
+	# Get the card at the random index
+	var random_card = card_deck.cards[random_index]
+
+	# Remove the card from the deck to ensure it isn't drawn again
+	card_deck.cards.erase(random_card)
+
+	return random_card  # Return the selected card
 
 # Randomly draw a card from the deck, move to the displayed deck, and execute its mechanism
 func draw_and_execute_card() -> void:
