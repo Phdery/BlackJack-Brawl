@@ -23,7 +23,14 @@ func _ready():
 	#background.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	# initialize and start
 	_start_round()
-
+	
+func _process(delta: float) -> void:
+	if !player_turn:
+		hit_button.disabled = true
+		stand_button.disabled = true
+	else:
+		hit_button.disabled = false
+		stand_button.disabled = false
 	
 func _start_round():
 	#player.refill_card_deck()
@@ -163,7 +170,6 @@ func calculate_score(hand: Array, max_score: int) -> int:
 
 func enemy_turn():
 	await get_tree().create_timer(2).timeout
-	
 	while !player_turn and !enemy.is_stopped:
 		#TODO enemy logic
 		#enemy.card_deck.texture = load("res://assets/cards/card_back_1.png")
@@ -180,6 +186,11 @@ func enemy_turn():
 			player_turn = true
 	if player.is_stopped and enemy.is_stopped:
 		check_winner()
+	else:
+		enemy_score = calculate_score(enemy.displayed_cards.cards, 21)
+		enemy.score_card.update_score(enemy_score)
+		player_score = calculate_score(player.displayed_cards.cards, player.score_card.max_score)
+		player.score_card.update_score(player_score)
 
 func round_done():
 		player.reset_turn()
