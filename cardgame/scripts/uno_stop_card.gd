@@ -5,7 +5,7 @@ extends Card
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	score = 5
-	description = "End enemy's turn. Score = 5"
+	description = "Stop: end enemy's turn. Score = 5"
 	# set texture
 	
 
