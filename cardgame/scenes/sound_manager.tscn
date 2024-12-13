@@ -65,3 +65,4 @@ stream = ExtResource("14_rywlh")
 
 [node name="InGameBGM" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("15_mkqfs")
+parameters/looping = true

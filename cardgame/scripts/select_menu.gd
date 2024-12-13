@@ -35,17 +35,15 @@ func _ready() -> void:
 	var audio_stream = "res://assets/sfx/background_story.mp3"
 	
 	# You can skip the introduction bu press Tab
-	var duration: float = 0
+	var duration: float = 31.0
 	var timer = get_tree().create_timer(duration)
 	var skipped = false
 	# skip the story
 	while timer.time_left > 0.0:
-		if Input.is_action_pressed("skip"):
+		if Input.is_action_pressed("skip") or InputEventMouseButton:
 			skipped = true
 			SoundManager.stop_story()
-			timer.stop()
 			break
-			await get_tree().process_frame
 
 	# not skip
 	if not skipped:

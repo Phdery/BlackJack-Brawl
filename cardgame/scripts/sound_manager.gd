@@ -62,6 +62,7 @@ func stop_audio_smooth(player: AudioStreamPlayer, fade_out_duration: float = 1.0
 
 func _on_tween_completed(player: AudioStreamPlayer) -> void:
 	player.stop()
+	player.volume_db = 0.0
 
 
 # Stop the start bgm
