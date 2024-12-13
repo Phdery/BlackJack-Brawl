@@ -183,6 +183,15 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_q8u46")
 text = " test "
 vertical_alignment = 1
 
+[node name="Skip" type="Button" parent="."]
+offset_left = 87.0
+offset_top = 367.0
+offset_right = 202.0
+offset_bottom = 398.0
+scale = Vector2(1.88, 1.88)
+theme_override_fonts/font = ExtResource("4_3bcfa")
+text = "Skip the Story"
+
 [connection signal="mouse_entered" from="CardSuit/DiamondSuit" to="." method="_on_diamond_suit_mouse_entered"]
 [connection signal="mouse_exited" from="CardSuit/DiamondSuit" to="." method="_on_diamond_suit_mouse_exited"]
 [connection signal="pressed" from="CardSuit/DiamondSuit" to="." method="_on_diamond_suit_pressed"]
@@ -195,3 +204,4 @@ vertical_alignment = 1
 [connection signal="mouse_entered" from="CardSuit/SpadeSuit" to="." method="_on_spade_suit_mouse_entered"]
 [connection signal="mouse_exited" from="CardSuit/SpadeSuit" to="." method="_on_spade_suit_mouse_exited"]
 [connection signal="pressed" from="CardSuit/SpadeSuit" to="." method="_on_spade_suit_pressed"]
+[connection signal="pressed" from="Skip" to="." method="_on_skip_pressed"]

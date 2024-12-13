@@ -10,9 +10,12 @@ extends Node2D
 @onready var club: Button = $CardSuit/ClubSuit
 @onready var heart: Button = $CardSuit/HeartSuit
 @onready var spade: Button = $CardSuit/SpadeSuit
+@onready var skip: Button = $Skip
 
 @onready var player = preload("res://scenes/player.tscn")
 @onready var table = preload("res://scenes/table.tscn")
+
+var skipped = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -37,23 +40,18 @@ func _ready() -> void:
 	# You can skip the introduction bu press Tab
 	var duration: float = 31.0
 	var timer = get_tree().create_timer(duration)
-	var skipped = false
-	# skip the story
-	#while timer.time_left > 0.0:
-		#if Input.is_action_pressed("skip"):
-			#skipped = true
-			#SoundManager.stop_story()
-			#break
-#
-	## not skip
-	#if not skipped:
-		#await timer.timeout
+	
+	while timer.time_left > 0.0 and not skipped:
+		await get_tree().process_frame
+		
+	if not skipped:
+		await timer.timeout
+		skip.hide()
+	else:
+		SoundManager.stop_story()
 
-	# Play the in game bgm
-	SoundManager.has_stop_all_called = false
-	SoundManager.stop_all()
 	SoundManager.play_sfx("InGameBGM")
-	SoundManager.has_stop_all_called = true
+
 	
 	label.hide()
 	label2.hide()
@@ -163,3 +161,9 @@ func _on_spade_suit_pressed() -> void:
 	SoundManager.play_sfx("ButtonStart")
 	GameGlobal.chosen_suit = GameGlobal.Suit.SPADES
 	get_tree().change_scene_to_file("res://scenes/table.tscn")
+
+
+func _on_skip_pressed() -> void:
+	skipped = true
+	skip.hide()
+	SoundManager.stop_story()
