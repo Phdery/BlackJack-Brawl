@@ -76,7 +76,30 @@ You should replay any **bold text** with your relevant information. Liberally us
 ## Game Logic (Cards) (Brian Li)
 
 ### Card, BasicCard, and special card classes
+
 - [Sprite2D class Card](https://github.com/quiet98k/BlackJack-Brawl/blob/dea31049cd3000e62e12b0fdd22d3fd3b690acc3/cardgame/scripts/card.gd), which is the base class that all card objects used in game inherit from
+  - Contains variables for score, suit, and description of card
+  - mechanism function (only used by special card classes that extend card) that takes in two Controller parameters
+  - Has two signals, mouse_entered and mouse_exited
+  - Card class has Area2d and CollisionShape2D
+  - When mouse hovers over card, emits mouse_entered signal
+  - When mouse leaves, emits mouse_exited signal
+  - Two signals used later to allow for description of card to appear when hovered over
+
+- [BasicCard class](https://github.com/quiet98k/BlackJack-Brawl/blob/6c873e40aeb55534ed1f27a433dd6390ee750e68/cardgame/scripts/basic_card.gd), extends Card and is used for all of the basic poker cards used in game (A, 2, 3, ..., K).
+  - Has a custom_init function that can be used to set score and suit of a BasicCard
+  - Makes it so that when we need to populate deck with cards, just create new instances of BasicCard with different parameters
+  - In custom_init, matches are used to assign the appropriate score
+  - Texture of card set to correct asset
+  - Correct description set
+
+- Special card classes: 5 total, each with own score and mechanism
+  - [JokerCard](https://github.com/quiet98k/BlackJack-Brawl/blob/6c873e40aeb55534ed1f27a433dd6390ee750e68/cardgame/scripts/joker_card.gd): Score = 5, use StatusCard's update_hp function to deal random amount of damage
+  - [AggieCard](https://github.com/quiet98k/BlackJack-Brawl/blob/c6fedfd6110b2126e87fc6e66ac0255d2e7054b3/cardgame/scripts/aggie_card.gd): Score = 5, uses StatusCard's update_hp function to heal HP by 5
+  - [TarotFoolCard](https://github.com/quiet98k/BlackJack-Brawl/blob/c6fedfd6110b2126e87fc6e66ac0255d2e7054b3/cardgame/scripts/tarot_fool_card.gd): Score = 0, uses ScoreCard's update_max function to increase max score by 1
+  - [UnoPlus2](https://github.com/quiet98k/BlackJack-Brawl/blob/c6fedfd6110b2126e87fc6e66ac0255d2e7054b3/cardgame/scripts/uno_plus_2.gd): Score = 2, uses ScoreCard's update_score function to increase enemy's score by 2
+  - [UnoStop](https://github.com/quiet98k/BlackJack-Brawl/blob/c6fedfd6110b2126e87fc6e66ac0255d2e7054b3/cardgame/scripts/uno_stop_card.gd): Score = 5, sets the enemy's is_stopped bool variable to true to forcibly end their turn
+
 ### CardDeck 
 ### DeckContents
 ### ScoreCard
