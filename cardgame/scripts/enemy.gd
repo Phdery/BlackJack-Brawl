@@ -78,29 +78,24 @@ func refill_card_deck() -> void:
 	#return random_card  # Return the selected card
 
 # Randomly draw a card from the deck, move to the displayed deck, and execute its mechanism
-func draw_and_execute_card() -> void:
+func draw_and_execute_card(from:Controller, to:Controller) -> void:
 	
  
 	var drawn_card = card_deck.generate_random_card()
 	if drawn_card:
 		card_deck.move_card_to(drawn_card, displayed_cards)
 		start_move_card_animation(drawn_card, card_deck, displayed_cards)
-		execute_card_mechanism(drawn_card)
+		drawn_card.mechanism(from, to)
 		
 	if card_deck.is_empty():
 		refill_card_deck()
 
 # Execute a card's specific effect
-func execute_card_mechanism(card: Card) -> void:
-	card.mechanism(self, null)  # Replace null with the target controller if needed
 
 ### Enemy Behavior
 # Makes a decision based on aggression level or probability
-func decide_action() -> void:
-	make_decision_based_on_probability()
+func decide_action(from: Controller, to: Controller) -> void:
 
-# Makes a decision based on proximity to 21
-func make_decision_based_on_probability() -> void:
 	var current_total = calculate_hand_total()
 	var target_value = 21
 	var difference = target_value - current_total
@@ -110,7 +105,7 @@ func make_decision_based_on_probability() -> void:
 	var probability = clamp(difference / 10.0, 0.0, 1.0)  # Scale down to 0-1 range
 
 	if randf() < probability:
-		draw_and_execute_card()  # Draw a card with a chance based on probability
+		draw_and_execute_card(from, to)  # Draw a card with a chance based on probability
 	else:
 		print("Enemy Stands.")
 		stop_turn()  # Stop turn if the risk is too high
@@ -170,7 +165,7 @@ func start_move_card_animation(card:Card, _from_card_deck: CardDeck, _to_card_de
 	move_thing.texture = card.texture
 	move_thing.visible = true
 	#move_thing.global_position = _from_card_deck.global_position
-	move_thing.z_index = 99
+	move_thing.z_index = 4
 	#add_child(move_thing)
 	#move_thing.global_position = from_card_deck.global_position
 	_from_card_deck.add_child(move_thing)

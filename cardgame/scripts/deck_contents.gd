@@ -31,9 +31,10 @@ func _ready() -> void:
 	self.visible = true
 	cards = deck.cards
 
-	for card in cards:
-		card.mouse_entered.connect(_on_card_hovered.bind(card))
-		card.mouse_exited.connect(_on_card_exited)
+	#while cards.is_empty() == false:
+		#for card in cards:
+			#card.mouse_entered.connect(_on_card_hovered.bind(card))
+			#card.mouse_exited.connect(_on_card_exited)
 
 	deck.connect("clicked", display_cards)
 	
@@ -44,6 +45,10 @@ func _on_card_exited():
 	label.text = ""
 
 func display_cards() -> void:
+	
+	for card in cards:
+		card.mouse_entered.connect(_on_card_hovered.bind(card))
+		card.mouse_exited.connect(_on_card_exited)
 	
 	cards = deck.cards
 	print("Displaying ", str(len(cards)), " Cards")
