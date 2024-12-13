@@ -35,6 +35,7 @@ func _process(delta: float) -> void:
 func _start_round():
 	#player.refill_card_deck()
 	#enemy.refill_card_deck()
+	enemy.modify_health(-80)
 	enemy.decide_action()
 	print("Enemy draw a card.")
 	print("Enemy Display Card Deck:", enemy.displayed_cards)
@@ -49,7 +50,7 @@ func _on_hit_button_pressed() -> void:
 	#player_score = calculate_score(player.displayed_cards.cards, player.score_card.max_score)
 	if player_turn and player_score < player.score_card.max_score:
 		SoundManager.play_sfx("ButtonStart")
-		player.draw_and_execute_card()
+		player.draw_and_execute_card(player, enemy)
 		player_score = calculate_score(player.displayed_cards.cards, player.score_card.max_score)
 		player.score_card.update_score(player_score)
 		print("Player draw a card.")
@@ -111,6 +112,7 @@ func _enemy_win():
 	#TODO player lose scene
 
 func check_winner() -> void:
+	player_turn = false
 	player_score = calculate_score(player.displayed_cards.cards, player.score_card.max_score)
 	player.score_card.update_score(player_score)
 	enemy_score = calculate_score(enemy.displayed_cards.cards, 21)
@@ -173,7 +175,7 @@ func enemy_turn():
 	while !player_turn and !enemy.is_stopped:
 		#TODO enemy logic
 		#enemy.card_deck.texture = load("res://assets/cards/card_back_1.png")
-		enemy.decide_action()
+		enemy.decide_action(enemy, player)
 		print("Enemy draw a card.")
 		print("Enemy Display Card Deck:", enemy.displayed_cards)
 		print("Enemy Card Deck:", enemy.card_deck)
@@ -198,7 +200,7 @@ func round_done():
 		await get_tree().create_timer(2).timeout
 		player_score = 0
 		enemy_score = 0
-		enemy.draw_and_execute_card()
+		enemy.decide_action()
 		enemy_score = calculate_score(enemy.displayed_cards.cards, 21)
 		enemy.score_card.update_score(enemy_score)
 		player_turn = true

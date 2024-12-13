@@ -77,7 +77,7 @@ func refill_card_deck() -> void:
 	#return random_card  # Return the selected card
 
 # Draws a random card from the deck, moves it to the displayed deck, and executes its mechanism
-func draw_and_execute_card() -> void:
+func draw_and_execute_card(from:Controller, to:Controller) -> void:
 	
 	
 	var drawn_card = card_deck.generate_random_card()
@@ -86,15 +86,12 @@ func draw_and_execute_card() -> void:
 		card_deck.move_card_to(drawn_card, displayed_cards)
 		#print("Player card deck: ", card_deck.cards)
 		
-		execute_card_mechanism(drawn_card)
+		drawn_card.mechanism(from, to)
 		
 	if card_deck.is_empty():
 		refill_card_deck()
 	
 
-# Executes the mechanism of the drawn card
-func execute_card_mechanism(card: Card) -> void:
-	card.mechanism(self, null)  # Replace null with a target controller if needed
 
 # Updates scores for both player and enemy at the end of a turn
 func update_scores() -> void:
@@ -146,7 +143,7 @@ func start_move_card_animation(card:Card, _from_card_deck: CardDeck, _to_card_de
 	move_thing.texture = card.texture
 	move_thing.visible = true
 	#move_thing.global_position = _from_card_deck.global_position
-	move_thing.z_index = 99
+	move_thing.z_index = 4
 	#add_child(move_thing)
 	#move_thing.global_position = from_card_deck.global_position
 	_from_card_deck.add_child(move_thing)
