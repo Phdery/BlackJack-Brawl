@@ -97,3 +97,10 @@ func _to_string() -> String:
 	#for card in cards:
 		#ret += card.description + "\n"
 	return ret
+
+func _process(delta: float) -> void:
+	if cards.is_empty():
+		self.texture = null
+	else:
+		if display == false:
+			self.texture = load("res://assets/cards/carb_back_1.png")
