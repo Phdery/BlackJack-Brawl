@@ -80,14 +80,16 @@ func generate_random_card() -> Card:
 
 # Randomly draw a card from the deck, move to the displayed deck, and execute its mechanism
 func draw_and_execute_card() -> void:
-	if card_deck.is_empty():
-		refill_card_deck()
+	
  
 	var drawn_card = card_deck.generate_random_card()
 	if drawn_card:
 		card_deck.move_card_to(drawn_card, displayed_cards)
 		start_move_card_animation(drawn_card, card_deck, displayed_cards)
 		execute_card_mechanism(drawn_card)
+		
+	if card_deck.is_empty():
+		refill_card_deck()
 
 # Execute a card's specific effect
 func execute_card_mechanism(card: Card) -> void:

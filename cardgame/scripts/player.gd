@@ -78,8 +78,7 @@ func generate_random_card() -> BasicCard:
 
 # Draws a random card from the deck, moves it to the displayed deck, and executes its mechanism
 func draw_and_execute_card() -> void:
-	if card_deck.is_empty():
-		refill_card_deck()
+	
 	
 	var drawn_card = generate_random_card()
 	if drawn_card:
@@ -88,6 +87,9 @@ func draw_and_execute_card() -> void:
 		#print("Player card deck: ", card_deck.cards)
 		
 		execute_card_mechanism(drawn_card)
+		
+	if card_deck.is_empty():
+		refill_card_deck()
 	
 
 # Executes the mechanism of the drawn card
