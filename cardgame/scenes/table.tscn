@@ -34,7 +34,7 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [sub_resource type="LabelSettings" id="LabelSettings_d8wu6"]
 line_spacing = 4.0
 font = ExtResource("7_s1wxs")
-font_size = 20
+font_size = 18
 font_color = Color(0.0862745, 0.0862745, 0.0862745, 1)
 
 [node name="Table" type="Control"]
@@ -116,10 +116,10 @@ z_index = 3
 
 [node name="EnemyStandLabel" type="Label" parent="."]
 layout_mode = 2
-offset_left = 974.0
-offset_top = 121.0
-offset_right = 1094.0
-offset_bottom = 161.0
+offset_left = 1001.0
+offset_top = 114.0
+offset_right = 1109.0
+offset_bottom = 151.0
 scale = Vector2(1.8, 1.8)
 text = "Enemy Stands"
 label_settings = SubResource("LabelSettings_d8wu6")
