@@ -1,11 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://ba1jh5kg03t1l"]
 
 [ext_resource type="Script" path="res://scripts/status_card.gd" id="1_kit52"]
-[ext_resource type="FontFile" uid="uid://bmkjii4ijxa8p" path="res://assets/font/chalk_font_2.otf" id="2_ofq7m"]
+[ext_resource type="FontFile" uid="uid://cot8rndnuut4h" path="res://assets/font/hello-ketta-font/HelloKetta-d99oX.ttf" id="2_ef1og"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_agk65"]
-font = ExtResource("2_ofq7m")
-font_size = 30
+font = ExtResource("2_ef1og")
+font_size = 50
 font_color = Color(0.0862745, 0.0862745, 0.0862745, 1)
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)

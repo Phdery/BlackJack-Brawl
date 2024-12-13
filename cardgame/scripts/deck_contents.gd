@@ -17,25 +17,16 @@ func _ready() -> void:
 
 	# Scale the DeckContents node to match the viewport size
 	var viewport_size = Vector2(get_viewport().size)
-	var original_size = Vector2(1, 1)    # Adjust this to reflect your node's base size if needed
+	var original_size = Vector2(1, 1) 
 	color_rect.scale = viewport_size / original_size
-	#label.scale = viewport_size / original_size
-	#button.scale = viewport_size / original_size
-	label.scale = Vector2(3,3)
+
+
+	label.scale = Vector2(8,8)
 	label.global_position.x += 350
 	button.scale = Vector2(3,3)
 	button.global_position.x += 500
-	
-	
-
 	self.visible = true
 	cards = deck.cards
-
-	#while cards.is_empty() == false:
-		#for card in cards:
-			#card.mouse_entered.connect(_on_card_hovered.bind(card))
-			#card.mouse_exited.connect(_on_card_exited)
-
 	deck.connect("clicked", display_cards)
 	
 func _on_card_hovered(card:Card):
