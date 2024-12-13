@@ -11,10 +11,6 @@ var deck_contents:DeckContents
 
 func custom_init(is_display:bool):
 	display = is_display
-	#if display:
-		#self.texture = null
-	#else:
-		#self.texture = load("res://assets/cards/carb_back_1.png")
 	deck_contents = deckContents.instantiate() as DeckContents
 
 
@@ -28,7 +24,6 @@ func generate_random_card() -> Card:
 	if cards.size() != 0:
 		var random = randi() % cards.size()
 		var return_card = cards[random]
-		# cards.remove_at(random)
 		return return_card
 	else: # no cards left in deck
 		return null
@@ -38,9 +33,6 @@ func generate_random_card() -> Card:
 # Never call this externally!!!
 func add_card(card: Card) -> void:
 	cards.append(card)
-	#if display:
-		#print("works")
-		#print(card.texture.resource_path)
 
 
 # function to move card from one carddeck to the other
@@ -74,27 +66,16 @@ func clear() -> void:
 
 # when a deck is clicked, load the scene that displays its contents
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	#if event.is_action_pressed("click"):
-		#print("clicked")
-		#$".".add_child(deck_contents)
-		#deck_contents.display_cards()
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			print("clicked")
-			#$".".add_child(deck_contents)
 			add_child(deck_contents)
 			deck_contents.display_cards()
-
-
-#func _on_area_2d_mouse_entered() -> void:
-	#print("Hovering Decks") # Replace with function body.
 	
 
 func _to_string() -> String:
 	var ret: String
 	ret = str("Length: " , len(cards), "\n")
-	#for card in cards:
-		#ret += card.description + "\n"
 	return ret
 
 

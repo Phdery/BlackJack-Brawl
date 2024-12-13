@@ -61,6 +61,7 @@ func display_cards() -> void:
 	var num_per_row:int = 6
 	var i:int = 0
 	var y:int = -1
+	
 	# loop through all card objects
 	# for each one, do add child, then adjust scale and position
 	for card in cards:
@@ -77,11 +78,6 @@ func exit_scene() -> void:
 	self.visible = false
 	for card in cards:
 		remove_child(card)
-	
-
-#func _on_button_pressed() -> void:
-	#print("pressed button")
-	#exit_scene()
 
 
 func _on_button_2_pressed() -> void:

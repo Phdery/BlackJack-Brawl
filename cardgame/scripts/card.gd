@@ -11,6 +11,7 @@ extends Sprite2D
 signal mouse_entered
 signal mouse_exited
 
+
 # function for the special effect of special cards
 func mechanism(this:Controller, other:Controller):
 	pass

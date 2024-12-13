@@ -1,6 +1,7 @@
 class_name Player
 extends Controller 
 
+
 # Signal emitted when the player dies
 signal player_died
 # Enum for card suits
@@ -10,6 +11,7 @@ var from_card_deck:CardDeck
 var to_card_deck:CardDeck
 var move_thing:Sprite2D
 var start_moving:bool = false
+
 
 func _ready() -> void:
 	# create components needed for player's side of game
@@ -30,6 +32,7 @@ func _ready() -> void:
 	suit_string = GameGlobal.suit_string(suit)
 	print("Card suit chosen by the player: ", suit_string)
 	initialize_deck(suit_string)
+	
 	
 func initialize_deck(suit: String) -> void:
 	
@@ -57,15 +60,6 @@ func initialize_deck(suit: String) -> void:
 	
 	var joker_card = preload("res://scenes/joker_card.tscn").instantiate() as JokerCard
 	card_deck.add_card(joker_card)
-	
-	#var hangman_card = preload("res://scenes/tarot_hangman_card.tscn").instantiate() as TarotHangmanCard
-	#card_deck.add_card(hangman_card)
-	
-	#var magician_card = preload("res://scenes/tarot_magician_card.tscn").instantiate() as TarotMagicianCard
-	#card_deck.add_card(magician_card)
-	
-	#var reverse_card = preload("res://scenes/uno_reverse.tscn").instantiate() as UnoReverse
-	#card_deck.add_card(reverse_card)
 
 	shuffle(card_deck.cards)
 
@@ -86,29 +80,9 @@ func _on_player_death() -> void:
 # Moves all cards from the used deck back to the main card deck when it's empty
 func refill_card_deck() -> void:
 	if card_deck.is_empty():
-		
-		#while(used_card_deck.is_empty() == false):
-			#for card in used_card_deck.cards:
-				#used_card_deck.move_card_to(card, card_deck)
 		card_deck.swap_decks(used_card_deck)
-		#start_move_card_animation(card_deck.cards[0], used_card_deck, card_deck)
 		shuffle(card_deck.cards)
 
-# Draws a random card from the player's card deck
-#func generate_random_card() -> Card:
-	#if card_deck.cards.size() == 0:
-		#return null  # Return null if no cards are left in the deck
-		#
-	## Generate a random index within the range of available cards
-	#var random_index = randi() % card_deck.cards.size()
-#
-	## Get the card at the random index
-	#var random_card = card_deck.cards[random_index]
-#
-	## Remove the card from the deck to ensure it isn't drawn again
-	#card_deck.cards.erase(random_card)
-#
-	#return random_card  # Return the selected card
 
 # Draws a random card from the deck, moves it to the displayed deck, and executes its mechanism
 func draw_and_execute_card(from:Controller, to:Controller) -> void:

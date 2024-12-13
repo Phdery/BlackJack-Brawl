@@ -12,6 +12,7 @@ var to_card_deck:CardDeck
 var move_thing:Sprite2D
 var start_moving:bool = false
 
+
 func _ready() -> void:
 	# create all necessary components of enemy's side of game
 	score_card = $VBoxContainer/CenterContainer/EnemyScoreCard
@@ -72,7 +73,6 @@ func initialize_deck(suit: String) -> void:
 # Takes damage or heals the enemy and updates the status card
 func modify_health(amount: int) -> void:
 	status_card.update_hp(clamp(status_card.current_hp + amount, 0, status_card.max_hp))
-	#status_card.update_hp(90)
 	if status_card.current_hp <= 0:
 		_on_enemy_death()
 
@@ -87,29 +87,9 @@ func _on_enemy_death() -> void:
 # Move all cards from the used deck back to the main card deck when it's empty
 func refill_card_deck() -> void:
 	if card_deck.is_empty():
-		#while(used_card_deck.is_empty() == false):
-			#for card in used_card_deck.cards:
-				#used_card_deck.move_card_to(card, card_deck)
 		card_deck.swap_decks(used_card_deck)
-		#start_move_card_animation(card_deck.cards[0], used_card_deck, card_deck)
 		shuffle(card_deck.cards)
 
-
-# Draws a random card from the player's card deck
-#func generate_random_card() -> Card:
-	#if card_deck.cards.size() == 0:
-		#return null  # Return null if no cards are left in the deck
-#
-	## Generate a random index within the range of available cards
-	#var random_index = randi() % card_deck.cards.size()
-#
-	## Get the card at the random index
-	#var random_card = card_deck.cards[random_index]
-#
-	## Remove the card from the deck to ensure it isn't drawn again
-	#card_deck.cards.erase(random_card)
-#
-	#return random_card  # Return the selected card
 
 
 # Randomly draw a card from the deck, move to the displayed deck, and execute its mechanism
@@ -145,10 +125,6 @@ func decide_action(from: Controller, to: Controller) -> void:
 
 # Calculates the total value of the enemy's displayed cards
 func calculate_hand_total() -> int:
-	#var total = 0
-	#for card in displayed_cards.cards:
-		#total += card.score  # Assuming card.score holds the card's value
-	#return total
 	return self.score_card.current_score
 
 
