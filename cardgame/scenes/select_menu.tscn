@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c77r73vo4xq36"]
+[gd_scene load_steps=15 format=3 uid="uid://c77r73vo4xq36"]
 
 [ext_resource type="Script" path="res://scripts/select_menu.gd" id="1_f7shh"]
 [ext_resource type="Texture2D" uid="uid://d1v12mhe2bm8h" path="res://assets/images/UCDavis_name.jpg" id="2_1qjg3"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dpanxug38effo" path="res://assets/cards/club/club_ace.png" id="6_nchr6"]
 [ext_resource type="Texture2D" uid="uid://boxmxdx3oryv3" path="res://assets/cards/heart/heart_ace.png" id="7_av1gb"]
 [ext_resource type="Texture2D" uid="uid://dc0o2ngopj22d" path="res://assets/cards/spade/spade_ace.png" id="8_aseb1"]
+[ext_resource type="FontFile" uid="uid://cot8rndnuut4h" path="res://assets/font/hello-ketta-font/HelloKetta-d99oX.ttf" id="10_ayxs7"]
 
 [sub_resource type="Theme" id="Theme_6fmvu"]
 
@@ -177,8 +178,8 @@ offset_bottom = 584.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(12.815, 58)
-theme_override_fonts/font = ExtResource("4_3bcfa")
-theme_override_font_sizes/font_size = 25
+theme_override_fonts/font = ExtResource("10_ayxs7")
+theme_override_font_sizes/font_size = 60
 theme_override_styles/normal = SubResource("StyleBoxFlat_q8u46")
 text = " test "
 vertical_alignment = 1
