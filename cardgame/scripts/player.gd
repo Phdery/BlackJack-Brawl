@@ -1,13 +1,18 @@
 class_name Player
 extends Controller 
 
+# Signal emitted when the player dies
+signal player_died
 # Enum for card suits
 const Suit = GameGlobal.Suit
 var suit: Suit
 var from_card_deck:CardDeck
 var to_card_deck:CardDeck
+var move_thing:Sprite2D
+var start_moving:bool = false
 
 func _ready() -> void:
+	# create components needed for player's side of game
 	score_card = $VBoxContainer/CenterContainer/PlayerScoreCard
 	status_card = $VBoxContainer/CenterContainer/PlayerStatusCard
 	displayed_cards = $VBoxContainer/CenterContainer2/PlayerDisplayedCardDeck
@@ -18,6 +23,7 @@ func _ready() -> void:
 	card_deck.custom_init(false)
 	used_card_deck.custom_init(false)
 	
+	# set health and suit
 	modify_health(100.0)
 	suit = GameGlobal.chosen_suit
 	var suit_string: String = ""
@@ -30,11 +36,13 @@ func initialize_deck(suit: String) -> void:
 	var scores = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
 	var card_resource = preload("res://scenes/basic_card.tscn")
 	
+	# adds the 13 basic cards to deck
 	for score in scores:
 		var new_card = card_resource.instantiate() as BasicCard
 		new_card.custom_init(score, suit)
 		card_deck.add_card(new_card)
 	
+	# adds the special cards to player's deck
 	var aggie_card = preload("res://scenes/aggie_card.tscn").instantiate() as AggieCard
 	card_deck.add_card(aggie_card)
 	
@@ -50,15 +58,6 @@ func initialize_deck(suit: String) -> void:
 	var joker_card = preload("res://scenes/joker_card.tscn").instantiate() as JokerCard
 	card_deck.add_card(joker_card)
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	#var hangman_card = preload("res://scenes/tarot_hangman_card.tscn").instantiate() as TarotHangmanCard
 	#card_deck.add_card(hangman_card)
 	
@@ -70,16 +69,19 @@ func initialize_deck(suit: String) -> void:
 
 	shuffle(card_deck.cards)
 
+
 # Modifies the player's health (damage or heal) and updates the status card
 func modify_health(amount: int) -> void:
 	status_card.update_hp(clamp(status_card.current_hp + amount, 0, status_card.max_hp))
 	if status_card.current_hp <= 0:
 		_on_player_death()
 
+
 # Handles the player's death
 func _on_player_death() -> void:
 	is_stopped = true
 	emit_signal("player_died")
+
 
 # Moves all cards from the used deck back to the main card deck when it's empty
 func refill_card_deck() -> void:
@@ -111,19 +113,16 @@ func refill_card_deck() -> void:
 # Draws a random card from the deck, moves it to the displayed deck, and executes its mechanism
 func draw_and_execute_card(from:Controller, to:Controller) -> void:
 	
-	
 	var drawn_card = card_deck.generate_random_card()
 	if drawn_card:
 		start_move_card_animation(drawn_card, card_deck, displayed_cards)
 		card_deck.move_card_to(drawn_card, displayed_cards)
 		#print("Player card deck: ", card_deck.cards)
-		
 		drawn_card.mechanism(from, to)
 		
 	if card_deck.is_empty():
 		refill_card_deck()
 	
-
 
 # Updates scores for both player and enemy at the end of a turn
 func update_scores() -> void:
@@ -131,30 +130,33 @@ func update_scores() -> void:
 	score_card.update_score(0)
 	score_card.update_max(21)
 
+
 func move_displayed_cards_to_used() -> void:
 	# Move player's displayed cards to used deck
 	while(displayed_cards.is_empty() == false):
 		for card in displayed_cards.cards:
 			displayed_cards.move_card_to(card, used_card_deck)
-		
+			
+
 # Returns whether the player has stopped (for turn management)
 func has_stopped() -> bool:
 	return is_stopped
+
 
 # Stops the player's turn
 func stop_turn() -> void:
 	is_stopped = true
 
+
 # Resets the player's turn state
 func reset_turn() -> void:
 	is_stopped = false
-	
-	
 	update_scores()
 	start_move_card_animation(displayed_cards.cards[len(displayed_cards.cards)-1], displayed_cards, used_card_deck)
 	move_displayed_cards_to_used()
 	displayed_cards.texture = null
 	extra_points = 0
+
 
 func shuffle(deck: Array) -> void:
 	for i in range(deck.size() - 1, 0, -1):
@@ -164,11 +166,6 @@ func shuffle(deck: Array) -> void:
 		deck[i] = deck[j]
 		deck[j] = temp
 
-# Signal emitted when the player dies
-signal player_died
-
-var move_thing:Sprite2D
-var start_moving:bool = false
 
 func start_move_card_animation(card:Card, _from_card_deck: CardDeck, _to_card_deck:CardDeck) -> void:
 	from_card_deck = _from_card_deck
@@ -185,6 +182,7 @@ func start_move_card_animation(card:Card, _from_card_deck: CardDeck, _to_card_de
 	start_moving = true
 	print("Start moving ", card.description)
 
+
 func move_card_animation(card:Card, from_card_deck: CardDeck, to_card_deck:CardDeck, delta) -> void:
 	#print("Moving")
 	var speed = 300
@@ -200,6 +198,8 @@ func move_card_animation(card:Card, from_card_deck: CardDeck, to_card_deck:CardD
 		move_thing.visible = false
 		from_card_deck = null
 		to_card_deck = null
+
+
 func _process(delta: float) -> void:
 	#print(move_thing.global_position)
 	if start_moving == true and !card_deck.cards.is_empty():

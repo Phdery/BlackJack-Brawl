@@ -8,11 +8,13 @@ func _ready() -> void:
 	description = "The Hangman\n Score = 10\n remove random enemy current card "
 	# set texture
 
+
 func mechanism(this:Controller, other:Controller):
 	var card = other.displayed_cards.generate_random_card()
 	if card:
 		other.displayed_cards.move_card_to(card, other.used_card_deck)
 		other.start_move_card_animation(card, other.displayed_cards, other.used_card_deck)
+	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

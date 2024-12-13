@@ -8,6 +8,7 @@ func _ready() -> void:
 	description = "+2 Card\n Score = 2 \n add 2 points to enemy's score. "
 	# set texture
 	
+	
 func mechanism(this:Controller, other:Controller):
 	other.score_card.update_score(other.score_card.current_score + 2)
 	other.extra_points += 2

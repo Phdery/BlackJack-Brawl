@@ -1,11 +1,12 @@
 extends Node
 
+
+var has_stop_all_called: bool = false
 @onready var sound_effect: Node = $SoundEffect
 @onready var bgm_player: AudioStreamPlayer = $StartBGM
 @onready var story_player: AudioStreamPlayer = $StoryAudio
 @onready var sfx: Node = $SFX
 
-var has_stop_all_called: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

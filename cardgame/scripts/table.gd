@@ -1,6 +1,20 @@
 class_name Table
 extends Control
 
+signal player_win
+signal player_fail
+
+var _have_ace: bool = false
+var player_turn: bool = false
+var player_score: int = 0
+var enemy_score: int = 0
+#TODO maybe have 2 different enemy scenes?
+var enemy_count: int = 1
+var end_scene = preload("res://ui/end_screen.tscn")
+var player_win_instance
+var player_fail_instance
+var game_over = false
+
 @onready var player:Player = $MainLayout/PlayerBox/Player
 @onready var enemy:Enemy = $MainLayout/EnemyBox/Enemy
 @onready var hit_button: Button = $MainLayout/CenterLayout/HitButton
@@ -11,20 +25,6 @@ extends Control
 @onready var player_win_screen = preload("res://ui/player_win_screen.tscn")
 @onready var player_fail_screen = preload("res://ui/player_fail_screen.tscn")
 
-var _have_ace: bool = false
-var player_turn: bool = false
-var player_score: int = 0
-var enemy_score: int = 0
-
-#TODO maybe have 2 different enemy scenes?
-var enemy_count: int = 1
-var end_scene = preload("res://ui/end_screen.tscn")
-var player_win_instance
-var player_fail_instance
-var game_over = false
-
-signal player_win
-signal player_fail
 
 func _ready():
 	#background.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -60,13 +60,8 @@ func _process(delta: float) -> void:
 		game_over = true
 		final_winner()
 	
+
 func _start_round():
-
-
-	## FIXTHIS!!!!!!!!!!!!
-	
-	
-	
 	
 	enemy.decide_action(enemy,player)
 	print("Enemy draw a card.")
@@ -105,6 +100,7 @@ func _on_hit_button_pressed() -> void:
 				player_turn = false
 				enemy_turn()
 
+
 func _on_stand_button_pressed() -> void:
 	#player_score = calculate_score(player.displayed_cards.cards, player.score_card.max_score)
 	#TODO: need to get max score
@@ -117,17 +113,22 @@ func _on_stand_button_pressed() -> void:
 		else:
 			check_winner()
 
+
 func _on_hit_button_button_down() -> void:
 	hit_button.icon = preload("res://assets/table/hit_button_pressed.png")
+
 
 func _on_hit_button_button_up() -> void:
 	hit_button.icon = preload("res://assets/table/hit_button.png")
 
+
 func _on_stand_button_button_down() -> void:
 	stand_button.icon = preload("res://assets/table/stand_button_pressed.png")
 
+
 func _on_stand_button_button_up() -> void:
 	stand_button.icon = preload("res://assets/table/stand_button.png")
+
 
 func _player_win():
 	print("Enemy defeated!")
@@ -140,9 +141,11 @@ func _player_win():
 		print("Player defeated all enemies! Victory!")
 		#TODO victory scene
 	
+	
 func _enemy_win():
 	print("Player lost!")
 	#TODO player lose scene
+
 
 func check_winner() -> void:
 	player_turn = false
@@ -204,6 +207,7 @@ func calculate_score(controller:Controller,hand: Array, max_score: int) -> int:
 		score -= 10
 	return score
 
+
 func enemy_turn():
 	await get_tree().create_timer(2).timeout
 	while !player_turn and !enemy.is_stopped:
@@ -228,6 +232,7 @@ func enemy_turn():
 		player_score = calculate_score(player, player.displayed_cards.cards, player.score_card.max_score)
 		player.score_card.update_score(player_score)
 
+
 func round_done():
 		player.reset_turn()
 		enemy.reset_turn()
@@ -241,6 +246,7 @@ func round_done():
 		_have_ace = false
 		player.extra_points = 0
 		enemy.extra_points = 0
+
 
 # Check final winner
 func final_winner():
@@ -266,6 +272,7 @@ func final_winner():
 		player_fail_instance.start_animation()
 		await get_tree().create_timer(2).timeout
 	
+	
 ## multiple enemy logic
 func load_new_enemy() -> void:
 	if enemy:
@@ -276,6 +283,7 @@ func load_new_enemy() -> void:
 		new_enemy.name = "Enemy" # Optional: Rename to match original
 		print("Enemy replaced successfully")
 		_start_round()
+	
 	
 func suit_execute(damage: int, win: bool, score: int) -> int:
 	var suit = GameGlobal.chosen_suit
@@ -302,7 +310,7 @@ func suit_execute(damage: int, win: bool, score: int) -> int:
 			else:
 				new_damage = damage
 	return new_damage
-
+	
 
 func _on_button_pressed() -> void:
 	player.modify_health(-100)

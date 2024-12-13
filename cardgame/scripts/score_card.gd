@@ -1,6 +1,8 @@
 class_name ScoreCard
 
+
 extends Control
+
 
 var current_score:int = 0
 var max_score:int = 21
@@ -18,6 +20,7 @@ func _ready() -> void:
 func update_score(new_score:int) -> void:
 	current_score = new_score
 	label.text = "Total = " + str(current_score) + " / " + str(max_score)
+
 
 func update_max(new_max:int) -> void:
 	max_score = new_max

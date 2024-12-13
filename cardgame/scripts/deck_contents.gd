@@ -1,15 +1,15 @@
 class_name DeckContents
 extends Node2D
 
+
 var cards:Array[Card]
 var basic_card_scene = preload("res://scenes/basic_card.tscn")
-# Called when the node enters the scene tree for the first time.
 @onready var label_control:Control = $LabelControl
 @onready var label:Label = $LabelControl/Label
 @onready var button:Button = $Button
-
 @onready var deck = $".."
 @onready var color_rect = $ColorRect
+
 
 func _ready() -> void:
 	# Set position to (0, 0)
@@ -21,7 +21,6 @@ func _ready() -> void:
 	var viewport_size = Vector2(get_viewport().size)
 	var original_size = Vector2(1, 1) 
 	color_rect.scale = viewport_size / original_size
-	
 
 	#label.scale = Vector2(6,6)
 	#label.global_position = label.position
@@ -30,19 +29,22 @@ func _ready() -> void:
 	label_control.position = Vector2(700, 0) # Position it at (20, 20) relative to the window
 	#label_control.scale = Vector2(6, 6)
 	
-	
 	#button.scale = Vector2(3,3)
 	#button.global_position.x += 500
 	self.visible = true
 	cards = deck.cards
 	deck.connect("clicked", display_cards)
 	
+	
 func _on_card_hovered(card:Card):
-	label.text = card.description
+	# show description of card being hovered over
+	label.text = card.description 
+	
 	
 func _on_card_exited():
 	pass
 	#label.text = ""
+
 
 func display_cards() -> void:
 	
@@ -71,14 +73,15 @@ func display_cards() -> void:
 		
 	
 func exit_scene() -> void:
+	# return to game scene
 	self.visible = false
 	for card in cards:
 		remove_child(card)
 	
 
-func _on_button_pressed() -> void:
-	print("pressed button")
-	exit_scene()
+#func _on_button_pressed() -> void:
+	#print("pressed button")
+	#exit_scene()
 
 
 func _on_button_2_pressed() -> void:

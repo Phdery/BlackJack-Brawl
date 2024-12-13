@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bgge6i53kb21x"]
+[gd_scene load_steps=4 format=3 uid="uid://bgge6i53kb21x"]
 
 [ext_resource type="Script" path="res://scripts/basic_card.gd" id="1_2e076"]
 [ext_resource type="Texture2D" uid="uid://dbgtjmjqu3enn" path="res://assets/cards/club/club_2.png" id="1_ja5pf"]
-[ext_resource type="Script" path="res://scripts/card_hover.gd" id="3_a6e5o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fu60n"]
 size = Vector2(477, 680)
@@ -14,7 +13,6 @@ script = ExtResource("1_2e076")
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(-239, -118)
-script = ExtResource("3_a6e5o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(240, 119)

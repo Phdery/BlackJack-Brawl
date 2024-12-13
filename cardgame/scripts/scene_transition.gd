@@ -1,6 +1,8 @@
 extends CanvasLayer
 
+
 @onready var transition_color: ColorRect = $TransitionColor
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

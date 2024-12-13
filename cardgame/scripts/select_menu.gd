@@ -1,5 +1,8 @@
 extends Node2D
 
+
+var skipped = false
+
 @onready var label: Label = $TextLabel
 @onready var label2: Label = $TextLabel2
 @onready var label3: Label = $TextLabel3
@@ -15,7 +18,6 @@ extends Node2D
 @onready var player = preload("res://scenes/player.tscn")
 @onready var table = preload("res://scenes/table.tscn")
 
-var skipped = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

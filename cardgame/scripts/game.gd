@@ -1,6 +1,8 @@
 extends Node
 
-@onready var player_card_deck: CardDeck = $PlayerCardDeck
+signal player_win
+signal player_fail
+
 
 enum Suit { 
 	HEARTS, 
@@ -9,26 +11,29 @@ enum Suit {
 	SPADES 
 }
 
+
 enum GameState {
 	UNKNOWN,
 	PLAYER_WIN,
 	PLAYER_FAIL
 }
 
+
 var chosen_suit: Suit = Suit.HEARTS
 var game_state = GameState.UNKNOWN
+@onready var player_card_deck: CardDeck = $PlayerCardDeck
 
-signal player_win
-signal player_fail
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
 
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
 
 func suit_string(suit: Suit) -> String:
 	var suit_string = ""

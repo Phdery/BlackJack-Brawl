@@ -1,13 +1,19 @@
 class_name Enemy
 extends Controller
 
+
 # Enemy-specific behavior variables
 const Suit = GameGlobal.Suit
+signal enemy_died
+signal enemy_turn_ended
 var suit: Suit
 var from_card_deck:CardDeck
 var to_card_deck:CardDeck
+var move_thing:Sprite2D
+var start_moving:bool = false
 
 func _ready() -> void:
+	# create all necessary components of enemy's side of game
 	score_card = $VBoxContainer/CenterContainer/EnemyScoreCard
 	status_card = $VBoxContainer/CenterContainer/EnemyStatusCard
 	displayed_cards = $VBoxContainer/CenterContainer2/EnemyDisplayedCardDeck2
@@ -18,6 +24,7 @@ func _ready() -> void:
 	card_deck.custom_init(false)
 	used_card_deck.custom_init(false)
 	
+	# set health and suit of enemy
 	modify_health(100.0)
 	suit = GameGlobal.chosen_suit
 	var suit_string: String = ""
@@ -25,11 +32,13 @@ func _ready() -> void:
 	print("Card suit chosen by the player: ", suit_string)
 	initialize_deck(suit_string)
  
+
 func initialize_deck(suit: String) -> void:
  
 	var scores = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
 	var card_resource = preload("res://scenes/basic_card.tscn")
-
+	
+	# add the 13 basic poker cards to the enemy's deck
 	for score in scores:
 		var new_card = card_resource.instantiate() as BasicCard
 		new_card.custom_init(score, suit)
@@ -58,6 +67,7 @@ func initialize_deck(suit: String) -> void:
 
 	shuffle(card_deck.cards)
  
+
 ### Health and Damage Management
 # Takes damage or heals the enemy and updates the status card
 func modify_health(amount: int) -> void:
@@ -66,10 +76,12 @@ func modify_health(amount: int) -> void:
 	if status_card.current_hp <= 0:
 		_on_enemy_death()
 
+
 # Handles enemy's death
 func _on_enemy_death() -> void:
 	is_stopped = true
 	emit_signal("enemy_died")  # Signal to notify other systems of death
+
 
 ### Deck Management
 # Move all cards from the used deck back to the main card deck when it's empty
@@ -81,6 +93,7 @@ func refill_card_deck() -> void:
 		card_deck.swap_decks(used_card_deck)
 		#start_move_card_animation(card_deck.cards[0], used_card_deck, card_deck)
 		shuffle(card_deck.cards)
+
 
 # Draws a random card from the player's card deck
 #func generate_random_card() -> Card:
@@ -98,20 +111,18 @@ func refill_card_deck() -> void:
 #
 	#return random_card  # Return the selected card
 
+
 # Randomly draw a card from the deck, move to the displayed deck, and execute its mechanism
 func draw_and_execute_card(from:Controller, to:Controller) -> void:
-	
- 
 	var drawn_card = card_deck.generate_random_card()
 	if drawn_card:
 		card_deck.move_card_to(drawn_card, displayed_cards)
 		start_move_card_animation(drawn_card, card_deck, displayed_cards)
-		drawn_card.mechanism(from, to)
+		drawn_card.mechanism(from, to) # Execute a card's specific effect
 		
 	if card_deck.is_empty():
 		refill_card_deck()
 
-# Execute a card's specific effect
 
 ### Enemy Behavior
 # Makes a decision based on aggression level or probability
@@ -131,6 +142,7 @@ func decide_action(from: Controller, to: Controller) -> void:
 		print("Enemy Stands.")
 		stop_turn()  # Stop turn if the risk is too high
 
+
 # Calculates the total value of the enemy's displayed cards
 func calculate_hand_total() -> int:
 	#var total = 0
@@ -139,10 +151,12 @@ func calculate_hand_total() -> int:
 	#return total
 	return self.score_card.current_score
 
+
 func update_scores() -> void:
 	# Set player's score and max_score to default
 	score_card.update_score(0)
 	score_card.update_max(21)
+
 
 func move_displayed_cards_to_used() -> void:
 	# Move player's displayed cards to used deck
@@ -150,15 +164,18 @@ func move_displayed_cards_to_used() -> void:
 		for card in displayed_cards.cards:
 			displayed_cards.move_card_to(card, used_card_deck)
   
+
 # End the enemy's turn
 func stop_turn() -> void:
 	is_stopped = true
 	emit_signal("enemy_turn_ended")
 
+
 ### Helper Functions
 # Returns whether the enemy has stopped (for turn management)
 func has_stopped() -> bool:
 	return is_stopped
+
 
 # Reset the enemy's turn state
 func reset_turn() -> void:
@@ -170,6 +187,7 @@ func reset_turn() -> void:
 	displayed_cards.texture = null
 	extra_points = 0
 
+
 func shuffle(deck: Array) -> void:
 	for i in range(deck.size() - 1, 0, -1):
 		var j = randi() % (i + 1)
@@ -178,8 +196,6 @@ func shuffle(deck: Array) -> void:
 		deck[i] = deck[j]
 		deck[j] = temp
 
-var move_thing:Sprite2D
-var start_moving:bool = false
 
 func start_move_card_animation(card:Card, _from_card_deck: CardDeck, _to_card_deck:CardDeck) -> void:
 	from_card_deck = _from_card_deck
@@ -196,6 +212,7 @@ func start_move_card_animation(card:Card, _from_card_deck: CardDeck, _to_card_de
 	start_moving = true
 	print("Start moving ", card.description)
 
+
 func move_card_animation(card:Card, from_card_deck: CardDeck, to_card_deck:CardDeck, delta) -> void:
 	#print("Moving")
 	var speed = 300
@@ -211,12 +228,10 @@ func move_card_animation(card:Card, from_card_deck: CardDeck, to_card_deck:CardD
 		move_thing.visible = false
 		from_card_deck = null
 		to_card_deck = null
-		
+
+
 func _process(delta: float) -> void:
 	#print(move_thing.global_position)
 	if start_moving == true and !card_deck.cards.is_empty():
 		move_card_animation(card_deck.cards[0], from_card_deck, to_card_deck, delta)
   
-### Signals
-signal enemy_died
-signal enemy_turn_ended
