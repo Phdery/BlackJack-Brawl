@@ -233,7 +233,7 @@ func suit_execute(damage: int, win: bool, score: int) -> int:
 	match suit:
 		GameGlobal.Suit.CLUBS:
 			if win:
-				new_damage = damage * 1.5
+				new_damage = ceil(damage * 1.5)
 			else:
 				new_damage = damage
 		GameGlobal.Suit.DIAMONDS:

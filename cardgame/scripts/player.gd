@@ -37,22 +37,22 @@ func initialize_deck(suit: String) -> void:
 	
 	var aggie_card = preload("res://scenes/aggie_card.tscn").instantiate() as AggieCard
 	card_deck.add_card(aggie_card)
-	
+	#
 	var fool_card = preload("res://scenes/tarot_fool_card.tscn").instantiate() as TarotFoolCard
 	card_deck.add_card(fool_card)
-	
-	var hangman_card = preload("res://scenes/tarot_hangman_card.tscn").instantiate() as TarotHangmanCard
-	card_deck.add_card(hangman_card)
-	
-	var magician_card = preload("res://scenes/tarot_magician_card.tscn").instantiate() as TarotMagicianCard
-	card_deck.add_card(magician_card)
-	
-	var plus_2_card = preload("res://scenes/uno_plus_2.tscn").instantiate() as UnoPlus2
-	card_deck.add_card(plus_2_card)
-	
-	var reverse_card = preload("res://scenes/uno_reverse.tscn").instantiate() as UnoReverse
-	card_deck.add_card(reverse_card)
-	
+	#
+	#var hangman_card = preload("res://scenes/tarot_hangman_card.tscn").instantiate() as TarotHangmanCard
+	#card_deck.add_card(hangman_card)
+	#
+	#var magician_card = preload("res://scenes/tarot_magician_card.tscn").instantiate() as TarotMagicianCard
+	#card_deck.add_card(magician_card)
+	#
+	#var plus_2_card = preload("res://scenes/uno_plus_2.tscn").instantiate() as UnoPlus2
+	#card_deck.add_card(plus_2_card)
+	#
+	#var reverse_card = preload("res://scenes/uno_reverse.tscn").instantiate() as UnoReverse
+	#card_deck.add_card(reverse_card)
+	#
 	var stop_card = preload("res://scenes/uno_stop_card.tscn").instantiate() as UnoStopCard
 	card_deck.add_card(stop_card)
 
