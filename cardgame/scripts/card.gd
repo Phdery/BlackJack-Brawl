@@ -51,11 +51,15 @@ func set_card_texture() -> void:
 
 func _on_area_2d_mouse_entered() -> void:
 	print(self.description)
+	self.scale = Vector2(1.001, 1.001)
+	self.z_index += 1
 	emit_signal("mouse_entered")	
  
 
 
 func _on_area_2d_mouse_exited() -> void:
 	print("leaving " + self.description)
+	self.scale = Vector2(0.7, 0.7)
+	self.z_index -= 1
 	emit_signal("mouse_exited")
 	
