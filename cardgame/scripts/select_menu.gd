@@ -52,7 +52,10 @@ func _ready() -> void:
 		await timer.timeout
 
 	# Play the in game bgm
+	SoundManager.has_stop_all_called = false
+	SoundManager.stop_all()
 	SoundManager.play_sfx("InGameBGM")
+	SoundManager.has_stop_all_called = true
 	
 	label.hide()
 	label2.hide()

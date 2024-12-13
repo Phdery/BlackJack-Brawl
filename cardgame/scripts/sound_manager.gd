@@ -5,6 +5,8 @@ extends Node
 @onready var story_player: AudioStreamPlayer = $StoryAudio
 @onready var sfx: Node = $SFX
 
+var has_stop_all_called: bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -90,6 +92,9 @@ func get_audio_duration(audio_stream: AudioStream) -> float:
 	return 0.0
 
 func stop_all() -> void:
+	if has_stop_all_called:
+		return
+		
 	var fade_out_duration: float = 1.0
 
 	# Stop bgm_player and story_player

@@ -243,7 +243,9 @@ func round_done():
 # Check final winner
 func final_winner():
 	# Player lost
+	SoundManager.has_stop_all_called = false
 	SoundManager.stop_all() 
+	SoundManager.has_stop_all_called = true
 	print(enemy.status_card.current_hp)
 	if enemy.status_card.current_hp == 0:
 		SoundManager.play_sfx("PlayerWinBGM")
