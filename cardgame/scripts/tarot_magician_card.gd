@@ -8,9 +8,11 @@ func _ready() -> void:
 
 func mechanism(this:Controller, other:Controller):
 	var card = other.displayed_cards.generate_random_card()
-	other.displayed_cards.move_card_to(card, this.displayed_cards)
-	this.displayed_cards.move_card_to(self, other.displayed_cards)
-	card.mechanism(this, other)
+	if card:
+		other.displayed_cards.move_card_to(card, this.displayed_cards)
+		this.displayed_cards.move_card_to(self, other.displayed_cards)
+		other.displayed_cards.texture = load("res://assets/cards/magician.png")
+		card.mechanism(this, other)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

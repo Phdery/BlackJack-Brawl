@@ -1,8 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://blkdojs2gr5eh"]
+[gd_scene load_steps=4 format=3 uid="uid://blkdojs2gr5eh"]
 
 [ext_resource type="Script" path="res://scripts/tarot_hangman_card.gd" id="1_irx5q"]
 [ext_resource type="Texture2D" uid="uid://b7of037wqmm52" path="res://assets/cards/hanged_man.png" id="1_rfdns"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xwl7t"]
+size = Vector2(476, 674)
+
 [node name="TarotHangmanCard" type="Sprite2D"]
 texture = ExtResource("1_rfdns")
 script = ExtResource("1_irx5q")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2, 1)
+shape = SubResource("RectangleShape2D_xwl7t")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

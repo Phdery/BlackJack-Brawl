@@ -9,10 +9,10 @@ func _ready() -> void:
 	# set texture
 
 func mechanism(this:Controller, other:Controller):
-	var this_score = this.score_card.current_Score
+	var this_score = this.score_card.current_score
 	var other_score = other.score_card.current_score
 	this.score_card.update_score(other_score)
-	other.score_card.update_Score(this_score)
+	other.score_card.update_score(this_score)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

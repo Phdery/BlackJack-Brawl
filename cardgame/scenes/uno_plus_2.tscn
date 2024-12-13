@@ -1,8 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://1axci2wmu3hg"]
+[gd_scene load_steps=4 format=3 uid="uid://1axci2wmu3hg"]
 
 [ext_resource type="Texture2D" uid="uid://dn8utaib5ngn3" path="res://assets/cards/draw2.png" id="1_vl5al"]
 [ext_resource type="Script" path="res://scripts/uno_plus_2.gd" id="1_wi7kj"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3i623"]
+size = Vector2(476, 672)
+
 [node name="UnoPlus2" type="Sprite2D"]
 texture = ExtResource("1_vl5al")
 script = ExtResource("1_wi7kj")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-2, -1)
+shape = SubResource("RectangleShape2D_3i623")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

@@ -10,6 +10,7 @@ func _ready() -> void:
 	
 func mechanism(this:Controller, other:Controller):
 	other.score_card.update_score(other.score_card.current_score + 2)
+	other.extra_points += 2
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

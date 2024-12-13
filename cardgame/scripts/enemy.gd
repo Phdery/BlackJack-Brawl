@@ -30,10 +30,10 @@ func initialize_deck(suit: String) -> void:
 	var scores = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
 	var card_resource = preload("res://scenes/basic_card.tscn")
 
-	for score in scores:
-		var new_card = card_resource.instantiate() as BasicCard
-		new_card.custom_init(score, suit)
-		card_deck.add_card(new_card)
+	#for score in scores:
+		#var new_card = card_resource.instantiate() as BasicCard
+		#new_card.custom_init(score, suit)
+		#card_deck.add_card(new_card)
 		
 	#var aggie_card = preload("res://scenes/aggie_card.tscn").instantiate() as AggieCard
 	#card_deck.add_card(aggie_card)
@@ -133,10 +133,11 @@ func decide_action(from: Controller, to: Controller) -> void:
 
 # Calculates the total value of the enemy's displayed cards
 func calculate_hand_total() -> int:
-	var total = 0
-	for card in displayed_cards.cards:
-		total += card.score  # Assuming card.score holds the card's value
-	return total
+	#var total = 0
+	#for card in displayed_cards.cards:
+		#total += card.score  # Assuming card.score holds the card's value
+	#return total
+	return self.score_card.current_score
 
 func update_scores() -> void:
 	# Set player's score and max_score to default
