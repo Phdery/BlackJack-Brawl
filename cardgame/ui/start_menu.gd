@@ -2,7 +2,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	SoundManager.stop_start()
+	SoundManager.stop_all()
 	SoundManager.play_sfx("StartBGM")
 
 

@@ -88,3 +88,23 @@ func get_audio_duration(audio_stream: AudioStream) -> float:
 	elif audio_stream is AudioStreamMP3:
 		return audio_stream.get_length()
 	return 0.0
+
+func stop_all() -> void:
+	var fade_out_duration: float = 1.0
+
+	# Stop bgm_player and story_player
+	if bgm_player and bgm_player.playing:
+		stop_audio_smooth(bgm_player, fade_out_duration)
+	
+	if story_player and story_player.playing:
+		stop_audio_smooth(story_player, fade_out_duration)
+	
+	# Stop sound_effect AudioStreamPlayer
+	for child in sound_effect.get_children():
+		if child is AudioStreamPlayer and child.playing:
+			stop_audio_smooth(child, fade_out_duration)
+	
+	# Stop SFX AudioStreamPlayer
+	for child in sfx.get_children():
+		if child is AudioStreamPlayer and child.playing:
+			stop_audio_smooth(child, fade_out_duration)

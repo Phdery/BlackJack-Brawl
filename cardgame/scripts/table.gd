@@ -238,12 +238,13 @@ func round_done():
 		player.extra_points = 0
 		enemy.extra_points = 0
 
+# Check final winner
 func final_winner():
 	# Player lost
 	print(enemy.status_card.current_hp)
 	if enemy.status_card.current_hp == 0:
+		SoundManager.play_sfx("PlayerWinBGM")
 		await get_tree().create_timer(2).timeout
-		SoundManager.play_sfx("PlayerFailBGM")
 		player_win_instance.show()
 		player_win_instance.layer = 99
 		player_win_instance.start_animation()
@@ -251,8 +252,8 @@ func final_winner():
 		
 	# Player win
 	if player.status_card.current_hp == 0:
+		SoundManager.play_sfx("PlayerFailBGM")
 		await get_tree().create_timer(2).timeout
-		SoundManager.play_sfx("PlayerWinBGM")
 		player_fail_instance.show()
 		player_fail_instance.layer = 99
 		player_fail_instance.start_animation()
