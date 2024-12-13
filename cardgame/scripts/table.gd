@@ -198,7 +198,11 @@ func calculate_score(controller:Controller,hand: Array, max_score: int) -> int:
 	var score: int = 0
 	# Calculate the total score logic
 	for card in hand:
-		score += card.score
+		## FIXME
+		print(card)
+		var new_score = card.score
+		
+		score += new_score
 		if card.score == 11:
 			_have_ace = true
 	score += controller.extra_points

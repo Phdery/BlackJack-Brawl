@@ -3,7 +3,7 @@ extends Card
 
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+func init() -> void:
 	score = 5
 	description = "The Joker \n Score = 5 \n deal random damage 1-10 to enemy. "
 

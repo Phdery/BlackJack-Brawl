@@ -3,9 +3,11 @@ extends Card
 
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+func init() -> void:
 	score = 5
 	description = "Aggie Card\n Score = 5 \n  gain 5 HP. "
+
+
 
 	
 func mechanism(this:Controller, other:Controller):

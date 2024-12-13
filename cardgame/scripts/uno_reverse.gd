@@ -3,7 +3,7 @@ extends Card
 
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+func init() -> void:
 	score = 5
 	description = "Reverse Card\n Score = 5 \n swap scores with enemy. "
 	# set texture

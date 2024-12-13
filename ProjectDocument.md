@@ -69,6 +69,10 @@ You should replay any **bold text** with your relevant information. Liberally us
 
 **Describe the steps you took in your role as producer. Typical items include group scheduling mechanisms, links to meeting notes, descriptions of team logistics problems with their resolution, project organization tools (e.g., timelines, dependency/task tracking, Gantt charts, etc.), and repository management methodology.**
 
+Team Scheduling and Meeting Coordination - As the producer, I organized team meetings, coordinating times that accommodated everyone’s availability. I ensured these meetings remained focused by preparing agendas and setting clear goals.
+
+Task Division and Team Coordination - I ensured that tasks were allocated fairly and strategically among team members, considering their specific strengths and availability.
+
 ## Game Logic (Scenes) (Qingyue Yang)
 
 **Describe**

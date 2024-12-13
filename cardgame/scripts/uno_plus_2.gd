@@ -3,7 +3,7 @@ extends Card
 
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+func init() -> void:
 	score = 2
 	description = "+2 Card\n Score = 2 \n add 2 points to enemy's score. "
 	# set texture

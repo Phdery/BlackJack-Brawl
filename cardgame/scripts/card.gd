@@ -60,3 +60,5 @@ func _on_area_2d_mouse_exited() -> void:
 	#self.z_index -= 1
 	emit_signal("mouse_exited")
 	
+func _to_string() -> String:
+	return description

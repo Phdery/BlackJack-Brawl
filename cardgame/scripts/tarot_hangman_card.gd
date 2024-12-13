@@ -3,7 +3,7 @@ extends Card
 
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+func init() -> void:
 	score = 10
 	description = "The Hangman\n Score = 10\n remove random enemy current card "
 	# set texture

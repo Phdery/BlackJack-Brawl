@@ -37,6 +37,7 @@ func _ready() -> void:
 func initialize_deck(suit: String) -> void:
 	
 	var scores = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+	scores = [1,2]
 	var card_resource = preload("res://scenes/basic_card.tscn")
 	
 	# adds the 13 basic cards to deck
@@ -47,18 +48,26 @@ func initialize_deck(suit: String) -> void:
 	
 	# adds the special cards to player's deck
 	var aggie_card = preload("res://scenes/aggie_card.tscn").instantiate() as AggieCard
+	aggie_card.init()
 	card_deck.add_card(aggie_card)
+	print(aggie_card)
 	
 	var fool_card = preload("res://scenes/tarot_fool_card.tscn").instantiate() as TarotFoolCard
+	fool_card.init()
 	card_deck.add_card(fool_card)
+	print(fool_card)
 	
 	var plus_2_card = preload("res://scenes/uno_plus_2.tscn").instantiate() as UnoPlus2
+	plus_2_card.init()
 	card_deck.add_card(plus_2_card)
 	
+	
 	var stop_card = preload("res://scenes/uno_stop_card.tscn").instantiate() as UnoStopCard
+	stop_card.init()
 	card_deck.add_card(stop_card)
 	
 	var joker_card = preload("res://scenes/joker_card.tscn").instantiate() as JokerCard
+	joker_card.init()
 	card_deck.add_card(joker_card)
 
 	shuffle(card_deck.cards)
