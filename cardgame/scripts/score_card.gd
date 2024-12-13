@@ -16,7 +16,6 @@ func _ready() -> void:
 	label.visible = true
 	label.text = "Total = " + str(current_score) + " / " + str(max_score)
 
-
 func update_score(new_score:int) -> void:
 	current_score = new_score
 	label.text = "Total = " + str(current_score) + " / " + str(max_score)
