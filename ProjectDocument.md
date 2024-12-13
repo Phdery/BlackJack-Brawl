@@ -15,7 +15,7 @@ BlackJack Brawl is a video game version of the popular poker game BlackJack, but
 
 **In this section, explain how the game should be played. Treat this as a manual within a game. Explaining the button mappings and the most optimal gameplay strategy is encouraged.**
 
-In BlackJack Brawl, the player plays a modified version of blackjack with augmented rules against a computer enemy.
+In BlackJack Brawl, the player plays a modified version of blackjack with augmented rules against a computer enemy. In regular blackjack, the player(s) and the dealer take turns drawing a random card from your deck (aka "hitting") and adding its value to their total. The players stop when they feel they don't need to draw more cards (aka "standing"). Whoever gets closest to a total of 21 without going over is the winner. If you go over 21, you "bust" and automatically lose. 
 
 There are four "classes" of deck in BlackJack Brawl (2 defense and 2 offense): Club, Spades, Heart, and Diamond. 
 - Club: deals 1.5x damage to the opponent when you win
