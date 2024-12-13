@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqgqtgwlppu5o"]
+
+[sub_resource type="GDScript" id="GDScript_hvbxf"]
+script/source = "extends Card
+
+
+	
+"
+
+[node name="UnoCard" type="Node2D"]
+script = SubResource("GDScript_hvbxf")

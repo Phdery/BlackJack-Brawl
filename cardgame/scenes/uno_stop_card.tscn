@@ -1,6 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://c5ol5rj183ae4"]
+[gd_scene load_steps=4 format=3 uid="uid://c5ol5rj183ae4"]
 
 [ext_resource type="Script" path="res://scripts/uno_stop_card.gd" id="1_4vx3k"]
+[ext_resource type="Texture2D" uid="uid://cil01yge1oe1l" path="res://assets/cards/stop.png" id="1_dtrg3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rr32y"]
+size = Vector2(474, 676)
 
 [node name="UnoStopCard" type="Sprite2D"]
+texture = ExtResource("1_dtrg3")
 script = ExtResource("1_4vx3k")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_rr32y")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

@@ -9,7 +9,7 @@ func _ready() -> void:
 	
 func mechanism(this:Controller, other:Controller):
 	this.status_card.update_hp(this.status_card.current_hp + 5)
-
+ 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

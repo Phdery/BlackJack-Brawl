@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://blkdojs2gr5eh"]
+[gd_scene load_steps=3 format=3 uid="uid://blkdojs2gr5eh"]
 
 [ext_resource type="Script" path="res://scripts/tarot_hangman_card.gd" id="1_irx5q"]
+[ext_resource type="Texture2D" uid="uid://b7of037wqmm52" path="res://assets/cards/hanged_man.png" id="1_rfdns"]
 
 [node name="TarotHangmanCard" type="Sprite2D"]
+texture = ExtResource("1_rfdns")
 script = ExtResource("1_irx5q")
