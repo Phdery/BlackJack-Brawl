@@ -75,7 +75,11 @@ You should replay any **bold text** with your relevant information. Liberally us
 
 ## Game Logic (Cards) (Brian Li)
 
-**Describe**
+### Card, BasicCard, and special card classes
+### CardDeck 
+### DeckContents
+### ScoreCard
+### StatusCard
 
 ## Game Logic (Table) (Stephanie Hsia)
 
