@@ -75,7 +75,12 @@ You should replay any **bold text** with your relevant information. Liberally us
 
 ## Game Logic (Cards) (Brian Li)
 
-**Describe**
+### Card, BasicCard, and special card classes
+- [Sprite2D class Card](https://github.com/quiet98k/BlackJack-Brawl/blob/dea31049cd3000e62e12b0fdd22d3fd3b690acc3/cardgame/scripts/card.gd), which is the base class that all card objects used in game inherit from
+### CardDeck 
+### DeckContents
+### ScoreCard
+### StatusCard
 
 ## Game Logic (Table) (Stephanie Hsia)
 
