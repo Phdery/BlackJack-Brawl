@@ -79,7 +79,6 @@ Task Division and Team Coordination - I ensured that tasks were allocated fairly
 
 ## Game Logic (Cards) (Brian Li)
 
-### Card, BasicCard, and special card classes
 
 - [Sprite2D class Card](https://github.com/quiet98k/BlackJack-Brawl/blob/dea31049cd3000e62e12b0fdd22d3fd3b690acc3/cardgame/scripts/card.gd), which is the base class that all card objects used in game inherit from
   - Contains variables for score, suit, and description of card
@@ -110,8 +109,15 @@ Task Division and Team Coordination - I ensured that tasks were allocated fairly
 - Contains functions that are used during game
 
 - Signals/variables
-- generate_random_card
-- move_card_to
+  - signal clicked, used for when a deck is clicked on when player wants to see its contents
+  - cards array to hold all Card objects associated with CardDeck
+  - deckContents, reference to DeckContents scene that is used to load scene where cards in deck are displayed
+- [generate_random_card](https://github.com/quiet98k/BlackJack-Brawl/blob/2dc4056f18371ce15f78e83110ede0dcff79e039/cardgame/scripts/card_deck.gd#L22)
+  - Selects a random card from array of Cards using randi(), used when drawing card from deck
+- add_card
+- [move_card_to](https://github.com/quiet98k/BlackJack-Brawl/blob/2dc4056f18371ce15f78e83110ede0dcff79e039/cardgame/scripts/card_deck.gd#L41)
+  - Accepts a Card and CardDeck, moves that Card in current CardDeck to another CardDeck
+  - Uses 
 - swap_decks
 - _on_area_2d_input_event
 - _process
