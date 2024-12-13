@@ -4,7 +4,6 @@ extends Controller
 # Enemy-specific behavior variables
 const Suit = GameGlobal.Suit
 var suit: Suit
-var is_stopped: bool = false  # Tracks if the enemy's turn is stopped
 var from_card_deck:CardDeck
 var to_card_deck:CardDeck
 
