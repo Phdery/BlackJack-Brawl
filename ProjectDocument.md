@@ -89,6 +89,22 @@ You should replay any **bold text** with your relevant information. Liberally us
 ## Audio (Qingyue Yang)
 
 **List your assets, including their sources and licenses.**
+- bgm
+  - ingame_bgm (original KD_Searching, Geumhyun Do, extended by suno.ai)
+  - player_fail_bgm (by suno.ai)
+  - player_win_bgm (original News broadcast opening song of CCTV, extended by suno.ai)
+  - start_bgm (by suno.ai)
+- sfx
+  - background_story (we created that ourselves)
+  - button_focus (from pixabay-cardeffect)
+  - button_press (from pixabay-cardeffect)
+  - button_start (from pixabay-cardeffect)
+  - card_flip (from opengameart.org-cardeffect.zip)
+  - card_plcae (from opengameart.org-cardeffect.zip)
+  - card_slide (from opengameart.org-cardeffect.zip)
+  - card_sound (from opengameart.org-cardeffect.zip)
+  - game_fail (from pixabay-cardeffect)
+  - game_win (from pixabay-cardeffect)
 
 **Describe the implementation of your audio system.**
 
