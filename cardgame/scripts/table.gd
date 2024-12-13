@@ -29,7 +29,7 @@ signal player_fail
 func _ready():
 	#background.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	# initialize and start
-	_start_round()
+	
 	player_win_instance = player_win_screen.instantiate()
 	add_child(player_win_instance)
 	player_win_instance.hide()
@@ -39,6 +39,8 @@ func _ready():
 	add_child(player_fail_instance)
 	player_fail_instance.hide()
 	player_fail_instance.layer = 0
+	
+	_start_round()
 
 	
 func _process(delta: float) -> void:

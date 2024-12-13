@@ -168,6 +168,7 @@ func reset_turn() -> void:
 	move_displayed_cards_to_used()
 
 	displayed_cards.texture = null
+	extra_points = 0
 
 func shuffle(deck: Array) -> void:
 	for i in range(deck.size() - 1, 0, -1):
