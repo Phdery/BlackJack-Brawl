@@ -393,7 +393,10 @@ Table also checks if there are any more enemies left after defeating one and loa
 **Document the sound style.**
 
 - bgm
-  
+  The background musics are bright songs that has a fast speed. To keep up with the game's fast-paced action, they feature straightforward English lyrics and rhythmic beats. They keep player interested by using a lively, contemporary tone. The selected composition enhances total immersion by portraying the protagonist's journey and blending in well with the game's ambiance. Their existence guarantees a genuinely happy, unforgettable sound experience.
+
+- sfx
+  Every sound impact in the card-based interactions is made with distinct, guided signals to improve player comprehension. Important gaming moments are indicated by clear deal noises and crisp clicks that help the player make judgments. The atmosphere seems dynamic and intuitive because to the well-chosen audio components. This method ensures a fun, clear user experience while keeping the focus on strategic decisions and reflecting the dynamic character of the game. They have a natural feel.
 
 ## Gameplay Testing (Brian Li)
 
