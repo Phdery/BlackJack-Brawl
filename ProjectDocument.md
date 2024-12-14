@@ -160,10 +160,22 @@ You should replay any **bold text** with your relevant information. Liberally us
 - [_on_card_hovered](https://github.com/quiet98k/BlackJack-Brawl/blob/5cda34829a99fd7293f271e03e56efe1bd757474/cardgame/scripts/deck_contents.gd#L39)
   - Accepts a Card object
   - When called, sets label's text to card's description
-- _on_card_exited
-- _display_cards
-- exit_scene
-- _on_button_pressed
+  - Called only when Card is hovered over
+- [_on_card_exited](https://github.com/quiet98k/BlackJack-Brawl/blob/5cda34829a99fd7293f271e03e56efe1bd757474/cardgame/scripts/deck_contents.gd#L44)
+  - When Card not hovered over anymore
+  - Reset label's text to nothing
+- [_display_cards](https://github.com/quiet98k/BlackJack-Brawl/blob/5cda34829a99fd7293f271e03e56efe1bd757474/cardgame/scripts/deck_contents.gd#L49)
+  - Function for displaying the cards in the CardDeck's array
+  - For loop that goes through each card, connects "mouse_entered" and "mouse_exited" signals to "_on_card_hovered" and "_on_card_exited" respectively
+  - For _on_card_hovered, use bind() so that Card is passed in as parameter
+  - Use a for loop to display all cards in the deck, changing position so that they are laid out neatly in grid
+- [exit_scene](https://github.com/quiet98k/BlackJack-Brawl/blob/5cda34829a99fd7293f271e03e56efe1bd757474/cardgame/scripts/deck_contents.gd#L76)
+  - Leaves DeckContents scene to go back to game
+  - Sets this scene to invisible
+  - Removes all Card childen using remove_child
+- [_on_button_pressed](https://github.com/quiet98k/BlackJack-Brawl/blob/5cda34829a99fd7293f271e03e56efe1bd757474/cardgame/scripts/deck_contents.gd#L83
+  - Called when button node in DeckContents is pressed
+  - When called, calls exit_scene function
 
 ### ScoreCard
 
