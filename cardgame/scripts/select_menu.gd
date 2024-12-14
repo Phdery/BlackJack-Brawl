@@ -8,6 +8,7 @@ var skipped = false
 @onready var label3: Label = $TextLabel3
 @onready var label4: Label = $TextLabel4
 @onready var suit_special: Label = $SuitSpecial
+@onready var game_intro: RichTextLabel = $GameIntro
 
 @onready var diamond: Button = $CardSuit/DiamondSuit
 @onready var club: Button = $CardSuit/ClubSuit
@@ -39,34 +40,17 @@ func _ready() -> void:
 	
 	var audio_stream = "res://assets/sfx/background_story.mp3"
 	
-	# You can skip the introduction bu press Tab
-	var duration: float = 31.0
-	var timer = get_tree().create_timer(duration)
-	
-	if not skipped:
-		await timer.timeout
-		skip.hide()
-	else:
-		SoundManager.stop_story()
+	## You can skip the introduction bu press Tab
+	#var duration: float = 31.0
+	#var timer = get_tree().create_timer(duration)
+	#
+	#if not skipped:
+		#await timer.timeout
+		#skip.hide()
+	#else:
+		#SoundManager.stop_story()
 
-	SoundManager.play_sfx("InGameBGM")
 
-	
-	label.hide()
-	label2.hide()
-	label3.show()
-	label4.text = ""
-	label4.show()
-	
-	var gap: float = 0.5
-	await get_tree().create_timer(gap).timeout
-	diamond.show()
-	await get_tree().create_timer(gap).timeout
-	club.show()
-	await get_tree().create_timer(gap).timeout
-	heart.show()
-	await get_tree().create_timer(gap).timeout
-	spade.show()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -166,3 +150,22 @@ func _on_skip_pressed() -> void:
 	skipped = true
 	skip.hide()
 	SoundManager.stop_story()
+	SoundManager.play_sfx("InGameBGM")
+
+	
+	label.hide()
+	label2.hide()
+	game_intro.hide()
+	label3.show()
+	label4.text = ""
+	label4.show()
+	
+	var gap: float = 0.5
+	await get_tree().create_timer(gap).timeout
+	diamond.show()
+	await get_tree().create_timer(gap).timeout
+	club.show()
+	await get_tree().create_timer(gap).timeout
+	heart.show()
+	await get_tree().create_timer(gap).timeout
+	spade.show()
