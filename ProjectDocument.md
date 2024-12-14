@@ -109,20 +109,31 @@ Task Division and Team Coordination - I ensured that tasks were allocated fairly
 
 - [Class](https://github.com/quiet98k/BlackJack-Brawl/blob/2dc4056f18371ce15f78e83110ede0dcff79e039/cardgame/scripts/card_deck.gd) responsible for holding array of cards, represents every deck object in game (regular deck, display deck, used card deck, etc)
 - Contains functions that are used during game
+- CardDeck has Area2D and CollisionShape2D to detect clicks, used to implement function for looking into deck when you click on it
 
-- Signals/variables
-  - signal clicked, used for when a deck is clicked on when player wants to see its contents
+- Variables
   - cards array to hold all Card objects associated with CardDeck
   - deckContents, reference to DeckContents scene that is used to load scene where cards in deck are displayed
 - [generate_random_card](https://github.com/quiet98k/BlackJack-Brawl/blob/2dc4056f18371ce15f78e83110ede0dcff79e039/cardgame/scripts/card_deck.gd#L22)
   - Selects a random card from array of Cards using randi(), used when drawing card from deck
-- add_card
+- [add_card](https://github.com/quiet98k/BlackJack-Brawl/blob/b3673a23cc9823d2b404b3dfd90c2bd1f1ab699e/cardgame/scripts/card_deck.gd#L34)
+  - Appends a Card object to CardDeck's array
 - [move_card_to](https://github.com/quiet98k/BlackJack-Brawl/blob/2dc4056f18371ce15f78e83110ede0dcff79e039/cardgame/scripts/card_deck.gd#L41)
   - Accepts a Card and CardDeck, moves that Card in current CardDeck to another CardDeck
-  - Uses 
-- swap_decks
-- _on_area_2d_input_event
-- _process
+  - Uses add_card to add a card chosen using generate_random_card
+  - Removes card from curent CardDeck afterwards
+  - Simultes the drawing and placing down of a card in game
+- [swap_decks](https://github.com/quiet98k/BlackJack-Brawl/blob/b3673a23cc9823d2b404b3dfd90c2bd1f1ab699e/cardgame/scripts/card_deck.gd#L49)
+  - Swaps the Card arrays of two CardDecks
+  - Used when your main deck runs out of cards, can swap main deck with used card deck to repopulate main deck
+- [_on_area_2d_input_event](https://github.com/quiet98k/BlackJack-Brawl/blob/b3673a23cc9823d2b404b3dfd90c2bd1f1ab699e/cardgame/scripts/card_deck.gd#L68)
+  - When Area2D/CollisionShape2D has been clicked, function is called
+  - Adds the DeckContents child and calls its display_cards function to show Cards in CardDeck
+- [_process](https://github.com/quiet98k/BlackJack-Brawl/blob/b3673a23cc9823d2b404b3dfd90c2bd1f1ab699e/cardgame/scripts/card_deck.gd#L82)
+  - Called every frame
+  - Check if CardDeck is empty
+  - If empty, should have no texture, set texture to null
+  - If not empty, set texture to back of card asset
 
 ### DeckContents
 ### ScoreCard
