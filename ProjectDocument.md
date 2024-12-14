@@ -231,7 +231,7 @@ You should replay any **bold text** with your relevant information. Liberally us
 
 ## Gameplay Testing (Brian Li)
 
-**Add a link to the full results of your gameplay tests.**
+[Link to google drive folder of testing results](https://drive.google.com/drive/folders/1b3IGAFwrP21OeHma-0a1BsGwJ5iLdDh6?usp=sharing)
 
 **Summarize the key findings from your gameplay tests.**
 
