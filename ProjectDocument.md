@@ -144,12 +144,27 @@ You should replay any **bold text** with your relevant information. Liberally us
 
 ### DeckContents
 
-<<<<<<< HEAD
 - Scene that displays the Cards that a CardDeck has
 - If you hover over a card in this scene, this scene will display the description
+- Contains Label node and Button node (for exiting the scene)
 
-=======
->>>>>>> b3c85fb (update README.md)
+- Variables
+  - cards: array of Cards
+  - label_control and label: used to control position and text of Label node for displaying descriptoin
+  - button: reference to Button node
+  - deck: reference to original deck that wants to display its contents
+  - color_rect: background of scene
+- [_ready](https://github.com/quiet98k/BlackJack-Brawl/blob/5cda34829a99fd7293f271e03e56efe1bd757474/cardgame/scripts/deck_contents.gd#L14)
+  - Set up the window, background, label, etc
+  - Connect the signal "clicked" from the CardDeck to the function display_cards in DeckContents so it gets called when you click on a CardDeck
+- [_on_card_hovered](https://github.com/quiet98k/BlackJack-Brawl/blob/5cda34829a99fd7293f271e03e56efe1bd757474/cardgame/scripts/deck_contents.gd#L39)
+  - Accepts a Card object
+  - When called, sets label's text to card's description
+- _on_card_exited
+- _display_cards
+- exit_scene
+- _on_button_pressed
+
 ### ScoreCard
 
 ### StatusCard
