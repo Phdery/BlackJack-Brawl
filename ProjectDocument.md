@@ -173,7 +173,7 @@ You should replay any **bold text** with your relevant information. Liberally us
   - Leaves DeckContents scene to go back to game
   - Sets this scene to invisible
   - Removes all Card childen using remove_child
-- [_on_button_pressed](https://github.com/quiet98k/BlackJack-Brawl/blob/5cda34829a99fd7293f271e03e56efe1bd757474/cardgame/scripts/deck_contents.gd#L83
+- [_on_button_pressed](https://github.com/quiet98k/BlackJack-Brawl/blob/5cda34829a99fd7293f271e03e56efe1bd757474/cardgame/scripts/deck_contents.gd#L83)
   - Called when button node in DeckContents is pressed
   - When called, calls exit_scene function
 
