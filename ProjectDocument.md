@@ -89,7 +89,16 @@ You should replay any **bold text** with your relevant information. Liberally us
   - [New Game Button](https://github.com/quiet98k/BlackJack-Brawl/blob/48c79c4c7bc0d4afa46c2e691578f687b1a1cf4d/cardgame/ui/new_game_button.gd#L1): Control the function and the behavior of the "Start" button
   - [Exit Button](https://github.com/quiet98k/BlackJack-Brawl/blob/48c79c4c7bc0d4afa46c2e691578f687b1a1cf4d/cardgame/ui/exit_game_button.gd#L1): Control the function and the behavior of the "Exit" button
 
-- Select Menu
+### Select Menu
+- [_ready](https://github.com/quiet98k/BlackJack-Brawl/blob/6d54931fc3de6459a55263a9b4c2b9e4de6a02f1/cardgame/scripts/select_menu.gd#L23)
+  - Prepare the select scene for the start of the game
+  - Load player and the main table in the select scene
+  - Play the background story during the loading adn before the selection
+  - Show the card suits that the player can choose
+- [_on_skip_pressed](https://github.com/quiet98k/BlackJack-Brawl/blob/6d54931fc3de6459a55263a9b4c2b9e4de6a02f1/cardgame/scripts/select_menu.gd#L165C6-L165C22)
+  - Stop the playing of the background story
+  - Skip to the card suit selection
+- [Background Label](https://github.com/quiet98k/BlackJack-Brawl/blob/6d54931fc3de6459a55263a9b4c2b9e4de6a02f1/cardgame/scripts/select_menu.gd#L6)
 
 ## Game Logic (Cards) (Brian Li)
 
