@@ -208,7 +208,6 @@ func calculate_score(controller:Controller,hand: Array, max_score: int) -> int:
 	# Calculate the total score logic
 	for card in hand:
 		## FIXME
-		print(card)
 		var new_score = card.score
 		
 		score += new_score

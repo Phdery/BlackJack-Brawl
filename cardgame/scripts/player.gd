@@ -37,7 +37,6 @@ func _ready() -> void:
 func initialize_deck(suit: String) -> void:
 	
 	var scores = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
-	scores = [1,2]
 	var card_resource = preload("res://scenes/basic_card.tscn")
 	
 	# adds the 13 basic cards to deck
@@ -50,12 +49,10 @@ func initialize_deck(suit: String) -> void:
 	var aggie_card = preload("res://scenes/aggie_card.tscn").instantiate() as AggieCard
 	aggie_card.init()
 	card_deck.add_card(aggie_card)
-	print(aggie_card)
 	
 	var fool_card = preload("res://scenes/tarot_fool_card.tscn").instantiate() as TarotFoolCard
 	fool_card.init()
 	card_deck.add_card(fool_card)
-	print(fool_card)
 	
 	var plus_2_card = preload("res://scenes/uno_plus_2.tscn").instantiate() as UnoPlus2
 	plus_2_card.init()
@@ -134,7 +131,8 @@ func stop_turn() -> void:
 func reset_turn() -> void:
 	is_stopped = false
 	update_scores()
-	start_move_card_animation(displayed_cards.cards[len(displayed_cards.cards)-1], displayed_cards, used_card_deck)
+	if !displayed_cards.cards.is_empty():
+		start_move_card_animation(displayed_cards.cards[len(displayed_cards.cards)-1], displayed_cards, used_card_deck)
 	move_displayed_cards_to_used()
 	displayed_cards.texture = null
 	extra_points = 0
@@ -150,6 +148,7 @@ func shuffle(deck: Array) -> void:
 
 
 func start_move_card_animation(card:Card, _from_card_deck: CardDeck, _to_card_deck:CardDeck) -> void:
+	
 	from_card_deck = _from_card_deck
 	to_card_deck = _to_card_deck
 	move_thing = Sprite2D.new()
