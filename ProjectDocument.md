@@ -99,6 +99,9 @@ You should replay any **bold text** with your relevant information. Liberally us
   - This is a function that can translate the selected card suit to strings
   - Those strings are used to load card assets
 
+- [Scene Transition](https://github.com/quiet98k/BlackJack-Brawl/blob/7127080c822d2f173a1fa1492f0d664307100cbd/cardgame/scripts/scene_transition.gd#L1)
+  - Change scene from one to another
+
 ### Start Menu
 
 - Start Menu
