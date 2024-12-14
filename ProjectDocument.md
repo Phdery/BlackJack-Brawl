@@ -141,6 +141,22 @@ You should replay any **bold text** with your relevant information. Liberally us
   - Show the winner message according to the current winner
   - Play the winner bgm of player or enemy according to the current winner
   - Switch to corresbonded end screen
+
+### Winner Message
+
+- [Player Win](https://github.com/quiet98k/BlackJack-Brawl/blob/f46aae4e6619c1088efb63028dbb2869e98deba8/cardgame/ui/player_win_screen.gd#L1)
+  - Show winner message with the player win bgm
+  - Change to the end screen if "Continue" is pressed
+  - Set the background texture to win background
+  - Set the button of the end screen as "Main Menu"
+
+- [Enemy Win](https://github.com/quiet98k/BlackJack-Brawl/blob/f46aae4e6619c1088efb63028dbb2869e98deba8/cardgame/ui/player_fail_screen.gd#L1)
+  - Show winner message with the player fail bgm
+  - Change to the end screen if "Continue" is pressed
+  - Set the background texture to fail background
+  - Set the button of the end screen as "Try Again"
+
+### End Screen
   
 
 ## Game Logic (Cards) (Brian Li)
