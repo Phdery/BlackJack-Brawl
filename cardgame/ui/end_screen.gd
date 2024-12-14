@@ -48,16 +48,19 @@ func show_game_over() -> void:
 	show()
 
 
+# Button texture and sound implementation
 func _on_back_start_pressed() -> void:
 	SoundManager.play_sfx("ButtonStart")
 	get_tree().change_scene_to_file("res://ui/start_menu.tscn")
 
 
+# Button texture and sound implementation
 func _on_back_start_mouse_entered() -> void:
 	SoundManager.play_sfx("ButtonFocus")
 	back_button.icon = back_to_start_hover
 
 
+# Button texture and sound implementation
 func _on_back_start_mouse_exited() -> void:
 	if (GameGlobal.player_win):
 		back_button.icon = back_start_win
@@ -65,17 +68,20 @@ func _on_back_start_mouse_exited() -> void:
 		back_button.icon = back_to_start
 
 
+# Player win situation
 func on_player_win():
 	print("win called")
 	background.texture = background_win
 	back_button.icon = back_start_win
 
 
+# Player fail situation
 func on_player_fail():
 	background.texture = background_fail
 	back_button.icon = back_to_start
 
 
+# Exit the game
 func _on_exit_game_pressed() -> void:
 	SoundManager.play_sfx("ButtonPress")
 	get_tree().quit()

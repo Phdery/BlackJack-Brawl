@@ -18,6 +18,7 @@ func _on_mouse_exited() -> void:
 	icon = start_button
 
 
+# Go the selection menu
 func _on_pressed() -> void:
 	SoundManager.play_sfx("ButtonStart")
 	get_tree().change_scene_to_file("res://scenes/select_menu.tscn")

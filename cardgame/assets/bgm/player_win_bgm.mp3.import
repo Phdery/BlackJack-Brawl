@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/player_win_bgm.mp3-8c5a839a6074bd09a8419406cb
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

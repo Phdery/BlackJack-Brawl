@@ -58,6 +58,7 @@ func _process(delta: float) -> void:
 	pass
 
 
+# Chaneg texture and play animation of the button
 func _on_diamond_suit_mouse_entered() -> void:
 	SoundManager.play_sfx("ButtonFocus")
 	suit_special.text = "  When you win as 21, heal 21"
@@ -68,18 +69,21 @@ func _on_diamond_suit_mouse_entered() -> void:
 	await animation.finished
 
 
+# Chaneg texture and play animation of the button
 func _on_diamond_suit_mouse_exited() -> void:
 	var animation := create_tween()
 	animation.tween_property($CardSuit/DiamondSuit, "scale", Vector2(0.4, 0.4), 0.1)
 	await animation.finished
 
 
+# Chaneg texture and play animation of the button
 func _on_diamond_suit_pressed() -> void:
 	SoundManager.play_sfx("ButtonStart")
 	GameGlobal.chosen_suit = GameGlobal.Suit.DIAMONDS
 	get_tree().change_scene_to_file("res://scenes/table.tscn")
 
 
+# Chaneg texture and play animation of the button
 func _on_club_suit_mouse_entered() -> void:
 	SoundManager.play_sfx("ButtonFocus")
 	label4.text = "Club"
@@ -90,18 +94,21 @@ func _on_club_suit_mouse_entered() -> void:
 	await animation.finished
 
 
+# Chaneg texture and play animation of the button
 func _on_club_suit_mouse_exited() -> void:
 	var animation := create_tween()
 	animation.tween_property($CardSuit/ClubSuit, "scale", Vector2(0.4, 0.4), 0.1)
 	await animation.finished
 
 
+# Chaneg texture and play animation of the button
 func _on_club_suit_pressed() -> void:
 	SoundManager.play_sfx("ButtonStart")
 	GameGlobal.chosen_suit = GameGlobal.Suit.CLUBS
 	get_tree().change_scene_to_file("res://scenes/table.tscn")
 
 
+# Chaneg texture and play animation of the button
 func _on_heart_suit_mouse_entered() -> void:
 	SoundManager.play_sfx("ButtonFocus")
 	label4.text = "Heart"
@@ -112,18 +119,21 @@ func _on_heart_suit_mouse_entered() -> void:
 	await animation.finished
 
 
+# Chaneg texture and play animation of the button
 func _on_heart_suit_mouse_exited() -> void:
 	var animation := create_tween()
 	animation.tween_property($CardSuit/HeartSuit, "scale", Vector2(0.4, 0.4), 0.1)
 	await animation.finished
 
 
+# Chaneg texture and play animation of the button
 func _on_heart_suit_pressed() -> void:
 	SoundManager.play_sfx("ButtonStart")
 	GameGlobal.chosen_suit = GameGlobal.Suit.HEARTS
 	get_tree().change_scene_to_file("res://scenes/table.tscn")
 
 
+# Chaneg texture and play animation of the button
 func _on_spade_suit_mouse_entered() -> void:
 	SoundManager.play_sfx("ButtonFocus")
 	label4.text = "Spade"
@@ -134,18 +144,21 @@ func _on_spade_suit_mouse_entered() -> void:
 	await animation.finished
 
 
+# Chaneg texture and play animation of the button
 func _on_spade_suit_mouse_exited() -> void:
 	var animation := create_tween()
 	animation.tween_property($CardSuit/SpadeSuit, "scale", Vector2(0.4, 0.4), 0.1)
 	await animation.finished
 
 
+# Chaneg texture and play animation of the button
 func _on_spade_suit_pressed() -> void:
 	SoundManager.play_sfx("ButtonStart")
 	GameGlobal.chosen_suit = GameGlobal.Suit.SPADES
 	get_tree().change_scene_to_file("res://scenes/table.tscn")
 
 
+# Skip the intro and the story to start the game
 func _on_skip_pressed() -> void:
 	skipped = true
 	skip.hide()

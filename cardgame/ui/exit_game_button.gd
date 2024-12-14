@@ -18,6 +18,7 @@ func _on_mouse_exited() -> void:
 	icon = quit_button
 
 
+# Exit the game
 func _on_pressed() -> void:
 	SoundManager.play_sfx("ButtonPress")
 	get_tree().quit()
