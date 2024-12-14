@@ -157,6 +157,11 @@ You should replay any **bold text** with your relevant information. Liberally us
   - Set the button of the end screen as "Try Again"
 
 ### End Screen
+
+- Set the background texture as win or fail according to the current winner
+- Set the button texture as "Main Menu" or "Try Again" according to the current winner
+- Exit the game if "Exit" is pressed by the player
+- Back to the Start Menu if "Main Menu" or "Try Again" is pressed
   
 
 ## Game Logic (Cards) (Brian Li)
