@@ -130,6 +130,13 @@ You should replay any **bold text** with your relevant information. Liberally us
   - Change the scene to the main table after the selection
   - Make sure the card suit in the main table is the card suit selected by the player
 
+### Card Suit Initialize
+
+- [initialize_deck](https://github.com/quiet98k/BlackJack-Brawl/blob/868ac51d89db45261a767abd1424ca992da7d9c8/cardgame/scripts/player.gd#L37)
+  - Fill the player card deck for the first time with the selected card suit
+  - Fill the enemy card deck for the first time with the player selected card suit
+  - The player and the enemy will use the same card suit in the game
+
 ### Check Winner
 
 - [Check Winner](https://github.com/quiet98k/BlackJack-Brawl/blob/df53a2db5044aaa19ac6cfccd0ddacf564d40344/cardgame/scripts/table.gd#L68)
