@@ -130,6 +130,19 @@ You should replay any **bold text** with your relevant information. Liberally us
   - Change the scene to the main table after the selection
   - Make sure the card suit in the main table is the card suit selected by the player
 
+### Check Winner
+
+- [Check Winner](https://github.com/quiet98k/BlackJack-Brawl/blob/df53a2db5044aaa19ac6cfccd0ddacf564d40344/cardgame/scripts/table.gd#L68)
+  - Check the current winner if one of player and enemy hp goes to 0
+  - Set the game_over is True to prevent recrusive calls
+
+- [final_winner](https://github.com/quiet98k/BlackJack-Brawl/blob/df53a2db5044aaa19ac6cfccd0ddacf564d40344/cardgame/scripts/table.gd#L249)
+  - Reset the sound, stop the bgm if anyone wins
+  - Show the winner message according to the current winner
+  - Play the winner bgm of player or enemy according to the current winner
+  - Switch to corresbonded end screen
+  
+
 ## Game Logic (Cards) (Brian Li)
 
 ### Card, BasicCard, and special card classes
