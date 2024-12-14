@@ -82,6 +82,8 @@ You should replay any **bold text** with your relevant information. Liberally us
 
 ## Game Logic (Scenes) (Qingyue Yang)
 
+By overseeing scene transitions, managing the global game state, and integrating player-selected card suits into the core experience, I helped create a more immersive, responsive system. The player’s chosen suit affects the main table setup, the card decks, and the final outcome. I also connected meaningful background stories and cohesive audio elements. As a result, the user encounters a consistent flow from start to end, with clear visual and auditory feedback that enhances engagement. My work establishes a solid foundation for future expansions and refinements.
+
 ### Game Global
 
 - [Card Suits](https://github.com/quiet98k/BlackJack-Brawl/blob/308fa600c9bf294687599fbc324c0dd48de9d5f0/cardgame/scripts/game.gd#L7-L11)
