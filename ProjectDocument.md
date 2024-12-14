@@ -233,7 +233,21 @@ You should replay any **bold text** with your relevant information. Liberally us
 
 [Link to google drive folder of testing results](https://drive.google.com/drive/folders/1b3IGAFwrP21OeHma-0a1BsGwJ5iLdDh6?usp=sharing)
 
-**Summarize the key findings from your gameplay tests.**
+### Key Findings
+- Overall impression of game from testesr is that it's a fun game to pass time
+- Testers reacted positively to game's art style
+- Confusion over how to play the game
+- Lack of instructions at beginning
+- Some testers didn't know how to play blackjack
+- Mechanics like being able to look at deck and what special cards do not explained well enough
+- Game takes a long time to conclude, b/c damage done each round too small?
+- Not enough to do in game, only one boss and after you beat them in blackjack the game is over
+
+### Player Feedback
+- Add clearer instructions to game
+- Refine game mechanics so game is more skill based (adding more ways to use special cards?)
+- Make game not last as long
+- Add more levels/bosses?
 
 ##  Trailer (Alex Chen)
 
