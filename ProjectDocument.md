@@ -179,7 +179,19 @@ You should replay any **bold text** with your relevant information. Liberally us
 
 ### ScoreCard
 
+- [Class](https://github.com/quiet98k/BlackJack-Brawl/blob/3a04900bc5c2d9934496750d5fc3b832d6491f79/cardgame/scripts/score_card.gd) that keeps track of current hand total out of 21 for player and enemy
+- Extends Control class, has Label child node
+- Two variables current_score and max_score
+- Updates score using update_score, updates max score using update_max
+- Changes text of Label
+
 ### StatusCard
+
+- [Class](https://github.com/quiet98k/BlackJack-Brawl/blob/3a04900bc5c2d9934496750d5fc3b832d6491f79/cardgame/scripts/status_card.gd) that keeps track of current HP for player and enemy
+- Extends Control class, has Label child node
+- Two variables current_hp and max_hp
+- Updates HP using update_hp, updates max_hp using update_max
+- Changes text of Label
 
 ## Game Logic (Table) (Stephanie Hsia)
 
