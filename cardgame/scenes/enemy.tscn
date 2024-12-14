@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://24xvop2usi1i"]
+[gd_scene load_steps=7 format=3 uid="uid://24xvop2usi1i"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_01k7d"]
 [ext_resource type="PackedScene" uid="uid://bdl8cf6iei7ss" path="res://scenes/score_card.tscn" id="3_2b4mx"]
+[ext_resource type="Texture2D" uid="uid://ce3xu4k3qqsdh" path="res://assets/enemy.png" id="4_7igvj"]
 [ext_resource type="PackedScene" uid="uid://ba1jh5kg03t1l" path="res://scenes/status_card.tscn" id="4_cbnlh"]
 [ext_resource type="PackedScene" uid="uid://kq24ujwnhrf2" path="res://scenes/card_deck.tscn" id="4_h4oqg"]
 [ext_resource type="Texture2D" uid="uid://dj12bmvmxj3cg" path="res://assets/cards/carb_back_1.png" id="5_koi7s"]
@@ -18,12 +19,18 @@ custom_minimum_size = Vector2(500, 100)
 layout_mode = 2
 
 [node name="EnemyScoreCard" parent="VBoxContainer/CenterContainer" instance=ExtResource("3_2b4mx")]
-custom_minimum_size = Vector2(250, 0)
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 
 [node name="EnemyStatusCard" parent="VBoxContainer/CenterContainer" instance=ExtResource("4_cbnlh")]
-custom_minimum_size = Vector2(250, 0)
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("4_7igvj")
+expand_mode = 2
+stretch_mode = 3
 
 [node name="CenterContainer2" type="CenterContainer" parent="VBoxContainer"]
 layout_mode = 2

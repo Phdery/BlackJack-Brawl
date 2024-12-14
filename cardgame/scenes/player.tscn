@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bcjxs6ha8opch"]
+[gd_scene load_steps=7 format=3 uid="uid://bcjxs6ha8opch"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_5ynjo"]
+[ext_resource type="Texture2D" uid="uid://xat2lcx1p5nr" path="res://assets/aggie.png" id="2_ueno7"]
 [ext_resource type="PackedScene" uid="uid://ba1jh5kg03t1l" path="res://scenes/status_card.tscn" id="4_1o48l"]
 [ext_resource type="PackedScene" uid="uid://bdl8cf6iei7ss" path="res://scenes/score_card.tscn" id="4_blbev"]
 [ext_resource type="PackedScene" uid="uid://kq24ujwnhrf2" path="res://scenes/card_deck.tscn" id="4_wb2o2"]
@@ -18,12 +19,18 @@ offset_bottom = 500.0
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("2_ueno7")
+expand_mode = 2
+stretch_mode = 3
+
 [node name="PlayerStatusCard" parent="VBoxContainer/CenterContainer" instance=ExtResource("4_1o48l")]
-custom_minimum_size = Vector2(259, 0)
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 
 [node name="PlayerScoreCard" parent="VBoxContainer/CenterContainer" instance=ExtResource("4_blbev")]
-custom_minimum_size = Vector2(250, 0)
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/CenterContainer/PlayerScoreCard"]
