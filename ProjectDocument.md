@@ -31,7 +31,7 @@ There are four "classes" of deck in BlackJack Brawl (2 defense and 2 offense): C
 
 Before the game begins, the player selects what suit they want their deck to be. This adds an element of strategization to the game, as the player must consider their playstyle and what type of power up they think will benefit them the most. This turns blackjack from a wholly luck based game to a part luck part skill game. The enemy is also assigned a suit.
 
-There are also 5 special cards that are included in the player's deck, each with a special effect.
+There are also 5 special cards that are included in the player's deck, each with a special effect. **You can click the cards on the table to see them**
 
 - **Uno Stop**: forcibly end the enemy's turn, worth 5 points
 - **Uno +2**: add 2 points to your enemy's total, worth 2 points
