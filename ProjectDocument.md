@@ -206,18 +206,23 @@ The table scene is the main scene we see in the game, it contains the player, th
 
 **Checking Winner**
 
-All possible scenerios:
+Checks all possible scenerios:
 - Same score or both bust: no change
 - Only enemy bust: player win
 - Only player bust: enemy win
-- 
-The score is calculated in the table by checking the current cards in the player and enemy's hand, and using that we can determine who wins and how much damage is supposed to be dealt.
-- Tie
-- 
+- Both don't bust: Compare score
+
+The score is calculated in the table by checking the current cards in the player and enemy's hand (which includes ace logic within, whether ace is 1 or 11), and using that we can determine who wins and how much damage is supposed to be dealt.
 
 **Suit Effect if player wins**
 
+If the player wins, we also apply the suit effects and change the damage/heal to enemy/player:
+- Club: deals 1.5x damage to the opponent when you win
+- Spades: when you win with a hand of 21, deal double damage to the opponent
+- Heart: when you win, heal yourself half of the amount of damage you do
+- Diamond: when you win with a hand of 21, heal 21 hp
 
+**Main UI**
 
 As for the IU of the table, I used hboxes and vboxes to organize where the player, enemy, avatars, and buttons would go.
 - Main (hbox):
@@ -227,7 +232,7 @@ As for the IU of the table, I used hboxes and vboxes to organize where the playe
     - Stand button
   - Enemy 
 
-Also checks if there are anymore enemies left after defeating one, which we didn't end up using.
+Table also checks if there are any more enemies left after defeating one and loads enemy, which we didn't end up using.
 
 ## Game Logic (Player/Enemy) (Alex Chen)
 
