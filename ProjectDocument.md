@@ -252,3 +252,9 @@ Since this is a complicated card game and not everyone knows how to play blackja
 ## Visuals (Stephanie Hsia)
 
 **Describe.**
+
+# Future development
+- [ ] Adding more special cards
+- [ ] Adding more enemies that have different special cards and mechanism
+- [ ] Level-up mechanism: player can gain more special card when they defeat a enemy
+- [ ] Chips: Player can choose a chip as their secret weapon that affect the game
