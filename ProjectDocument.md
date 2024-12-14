@@ -12,7 +12,7 @@ Special cards and power-ups spice things up, letting players turn the tables and
 
 [Web-playable version of your game.](https://quiet98k.itch.io/blackjack-brawl)  
 [Trailor](https://youtube.com)  
-[Press Kit](https://dopresskit.com/)  
+[Press Kit](https://sharp-newsboy-291.notion.site/BlackJack-Brawl-15ca08c15c838004b487e09409507af3)
 [Proposal: make your own copy of the linked doc.](https://docs.google.com/document/d/1dR0EvuOv7iCBKyy8sixcwPdA1tQQCq9yUs0h4VcHsjM/edit?usp=sharing)
 
 ## Gameplay Explanation
