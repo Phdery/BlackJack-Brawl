@@ -310,7 +310,6 @@ Table also checks if there are any more enemies left after defeating one and loa
 **Include links to your presskit materials and trailer.**
 see the trailer [here](https://drive.google.com/file/d/1FUhhViIdNXrACNLh4Fh6wDndCZsBT-Ut/view?usp=drive_link)
 
-**Describe how you showcased your work. How did you choose what to show in the trailer? Why did you choose your screenshots?**
 I add our unique special cards and some typical gameplay videos. Also I include some Moments of Excitement.
 
 ## Press Kit (Yiming Feng)
