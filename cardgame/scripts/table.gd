@@ -13,7 +13,7 @@ var enemy_count: int = 1
 var end_scene = preload("res://ui/end_screen.tscn")
 var player_win_instance
 var player_fail_instance
-var game_over = false
+var game_over: bool = false
 
 @onready var player:Player = $MainLayout/PlayerBox/Player
 @onready var enemy:Enemy = $MainLayout/EnemyBox/Enemy
@@ -31,7 +31,7 @@ func _ready():
 	#background.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(button_disabled_timer)
 	button_disabled_timer.one_shot = true
-	# initialize and start
+	
 	player_win_instance = player_win_screen.instantiate()
 	add_child(player_win_instance)
 	player_win_instance.hide()
@@ -42,6 +42,9 @@ func _ready():
 	player_fail_instance.hide()
 	player_fail_instance.layer = 0
 	
+	# initialize and start
+	enemy.status_card.update_max(50)
+	enemy.status_card.update_hp(50)
 	_start_round()
 
 	
@@ -68,32 +71,21 @@ func _process(delta: float) -> void:
 	
 
 func _start_round():
+	# enemy first turn
 	enemy.decide_action(enemy,player)
-	print("Enemy draw a card.")
-	print("Enemy Display Card Deck:", enemy.displayed_cards)
-	print("Enemy Card Deck:", enemy.card_deck)
-	print("Enemy Used Deck:", enemy.used_card_deck)
-	enemy.status_card.update_max(50)
-	enemy.status_card.update_hp(50)
-	enemy_score = calculate_score(enemy, enemy.displayed_cards.cards, 21)
+	enemy_score = calculate_score(enemy, enemy.displayed_cards.cards, enemy.score_card.max_score)
 	enemy.score_card.update_score(enemy_score)
 	player_turn = true
 	enemy_stand_label.visible = false
 	
-
 func _on_hit_button_pressed() -> void:
 	if enemy.is_stopped:
-		disable_buttons_for_2_seconds()
-	#player_score = calculate_score(player.displayed_cards.cards, player.score_card.max_score)
+		_disable_buttons_for_2_seconds()
 	if player_turn and player_score < player.score_card.max_score:
 		SoundManager.play_sfx("ButtonStart")
 		player.draw_and_execute_card(player, enemy)
 		player_score = calculate_score(player, player.displayed_cards.cards, player.score_card.max_score)
 		player.score_card.update_score(player_score)
-		#print("Player draw a card.")
-		#print("Player Display Card Deck:", player.displayed_cards)
-		#print("Player Card Deck:", player.card_deck)
-		#print("Player Used Deck:", player.used_card_deck)
 		if player_score >= player.score_card.max_score:
 			player.is_stopped = true
 			if enemy.is_stopped:
@@ -105,7 +97,6 @@ func _on_hit_button_pressed() -> void:
 			if !enemy.is_stopped:
 				player_turn = false
 				enemy_turn()
-
 
 func _on_stand_button_pressed() -> void:
 	#player_score = calculate_score(player.displayed_cards.cards, player.score_card.max_score)
@@ -119,22 +110,18 @@ func _on_stand_button_pressed() -> void:
 		else:
 			check_winner()
 
-
+# buttons
 func _on_hit_button_button_down() -> void:
 	hit_button.icon = preload("res://assets/table/hit_button_pressed.png")
-
 
 func _on_hit_button_button_up() -> void:
 	hit_button.icon = preload("res://assets/table/hit_button.png")
 
-
 func _on_stand_button_button_down() -> void:
 	stand_button.icon = preload("res://assets/table/stand_button_pressed.png")
 
-
 func _on_stand_button_button_up() -> void:
 	stand_button.icon = preload("res://assets/table/stand_button.png")
-
 
 func _player_win():
 	print("Enemy defeated!")
@@ -145,14 +132,13 @@ func _player_win():
 		load_new_enemy()
 	else:
 		print("Player defeated all enemies! Victory!")
-		#TODO victory scene
-	
+		# victory scene
 	
 func _enemy_win():
 	print("Player lost!")
-	#TODO player lose scene
+	# player lose scene
 
-func disable_buttons_for_2_seconds():
+func _disable_buttons_for_2_seconds():
 	hit_button.disabled = true
 	stand_button.disabled = true
 	button_disabled_timer.start(2.0)
@@ -161,19 +147,18 @@ func check_winner() -> void:
 	player_turn = false
 	player_score = calculate_score(player, player.displayed_cards.cards, player.score_card.max_score)
 	player.score_card.update_score(player_score)
-	enemy_score = calculate_score(enemy, enemy.displayed_cards.cards, 21)
+	enemy_score = calculate_score(enemy, enemy.displayed_cards.cards, enemy.score_card.max_score)
 	enemy.score_card.update_score(enemy_score)
 	var score_difference = player_score - enemy_score
 	var damage: int = 0
 	var player_win: bool
 	# same score or both bust
-	if score_difference == 0 or (player_score > player.score_card.max_score and enemy_score > 21):
+	if score_difference == 0 or (player_score > player.score_card.max_score and enemy_score > enemy.score_card.max_score):
 		#TODO: tie animation
 		compare.texture = load("res://assets/table/tie.png")
 		pass
 	# only enemy bust
-	elif enemy_score > 21:
-		#TODO: player win animation
+	elif enemy_score > enemy.score_card.max_score:
 		compare.texture = load("res://assets/table/win.png")
 		player_win = true
 		damage = suit_execute(player_score, player_win, player_score)
@@ -181,7 +166,6 @@ func check_winner() -> void:
 		$EnemyHpChange.text = "-" + str(damage)
 	# only player bust
 	elif player_score > player.score_card.max_score:
-		#TODO: enemy win animation
 		compare.texture = load("res://assets/table/lose.png")
 		player_win = false
 		damage = suit_execute(-enemy_score, player_win, player_score)
@@ -191,7 +175,6 @@ func check_winner() -> void:
 	else:
 		# player win
 		if score_difference > 0:
-			#TODO: player win animation
 			compare.texture = load("res://assets/table/win.png")
 			player_win = true
 			damage = suit_execute(score_difference, player_win, player_score)
@@ -199,7 +182,6 @@ func check_winner() -> void:
 			$EnemyHpChange.text = "-" + str(damage)
 		# enemy win
 		else:
-			#TODO: enemy win animation
 			compare.texture = load("res://assets/table/lose.png")
 			player_win = false
 			damage = suit_execute(score_difference, player_win, player_score)
@@ -212,15 +194,11 @@ func check_winner() -> void:
 	# reset round
 	round_done()
 	
-	
-func calculate_score(controller:Controller,hand: Array, max_score: int) -> int:
+func calculate_score(controller:Controller, hand: Array, max_score: int) -> int:
 	var score: int = 0
 	# Calculate the total score logic
 	for card in hand:
-		## FIXME
-		var new_score = card.score
-		
-		score += new_score
+		score += card.score
 		if card.score == 11:
 			_have_ace = true
 	score += controller.extra_points
@@ -229,27 +207,21 @@ func calculate_score(controller:Controller,hand: Array, max_score: int) -> int:
 		score -= 10
 	return score
 
-
 func enemy_turn():
 	await get_tree().create_timer(2).timeout
 	while !player_turn and !enemy.is_stopped:
-		#TODO enemy logic
 		#enemy.card_deck.texture = load("res://assets/cards/card_back_1.png")
 		enemy.decide_action(enemy, player)
-		print("Enemy draw a card.")
-		print("Enemy Display Card Deck:", enemy.displayed_cards)
-		print("Enemy Card Deck:", enemy.card_deck)
-		print("Enemy Used Deck:", enemy.used_card_deck)
-		enemy_score = calculate_score(enemy,enemy.displayed_cards.cards, 21)
+		enemy_score = calculate_score(enemy,enemy.displayed_cards.cards, enemy.score_card.max_score)
 		enemy.score_card.update_score(enemy_score)
-		if enemy_score >= 21:
+		if enemy_score >= enemy.score_card.max_score:
 			enemy.is_stopped = true
 		if !player.is_stopped or enemy.is_stopped:
 			player_turn = true
 	if player.is_stopped and enemy.is_stopped:
 		check_winner()
 	else:
-		enemy_score = calculate_score(enemy, enemy.displayed_cards.cards, 21)
+		enemy_score = calculate_score(enemy, enemy.displayed_cards.cards, enemy.score_card.max_score)
 		enemy.score_card.update_score(enemy_score)
 		player_score = calculate_score(player, player.displayed_cards.cards, player.score_card.max_score)
 		player.score_card.update_score(player_score)
@@ -265,7 +237,7 @@ func round_done():
 		enemy_score = 0
 		compare.texture = null
 		enemy.decide_action(enemy, player)
-		enemy_score = calculate_score(enemy, enemy.displayed_cards.cards, 21)
+		enemy_score = calculate_score(enemy, enemy.displayed_cards.cards, enemy.score_card.max_score)
 		enemy.score_card.update_score(enemy_score)
 		player_turn = true
 		_have_ace = false
