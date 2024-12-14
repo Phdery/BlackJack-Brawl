@@ -2,8 +2,6 @@
 
 ## Summary
 
-![](example-images/main-gameplay.png)
-
 BlackJack Brawl is a fresh take on the classic card game of Blackjack, with exciting new twists. Inspired by the indie game [Dungeons & Degenerate Gamblers](https://store.steampowered.com/app/2400510), it adds unique mechanics to make the gameplay more fun and action-packed. Players face off against a computer opponent in rounds of Blackjack, where winning a round damages the loser’s health. The game ends when one player’s HP drops to zero.
 
 Special cards and power-ups spice things up, letting players turn the tables and add new strategies to the game. These features make each match unique and exciting. BlackJack Brawl takes a classic game and turns it into an intense, fun-filled battle.
@@ -237,15 +235,19 @@ You should replay any **bold text** with your relevant information. Liberally us
 
 **Summarize the key findings from your gameplay tests.**
 
-## Narrative Design (Alex Chen)
-
-**Document how the narrative is present in the game via assets, gameplay systems, and gameplay.**
-
-## Press Kit and Trailer (Yiming Feng)
+##  Trailer (Alex Chen)
 
 **Include links to your presskit materials and trailer.**
 
 **Describe how you showcased your work. How did you choose what to show in the trailer? Why did you choose your screenshots?**
+
+## Press Kit (Yiming Feng)
+
+**Include links to your presskit materials and trailer.**
+see the presskit [here](https://sharp-newsboy-291.notion.site/BlackJack-Brawl-15ca08c15c838004b487e09409507af3?pvs=4)
+
+Since this is a complicated card game and not everyone knows how to play blackjack. So for the presskit, I focus on explaining how to play our game, the game mechanism, and the key features of our game. I also put the trailer, some screenshots of the game, and all the necessary links.
+
 
 ## Visuals (Stephanie Hsia)
 
