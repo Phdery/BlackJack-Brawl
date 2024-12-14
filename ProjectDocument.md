@@ -14,7 +14,7 @@ Special cards and power-ups spice things up, letting players turn the tables and
 
 [Press Kit](https://sharp-newsboy-291.notion.site/BlackJack-Brawl-15ca08c15c838004b487e09409507af3)
 
-[Proposal: make your own copy of the linked doc.](https://docs.google.com/document/d/1dR0EvuOv7iCBKyy8sixcwPdA1tQQCq9yUs0h4VcHsjM/edit?usp=sharing)
+[Proposal](https://docs.google.com/document/d/1dR0EvuOv7iCBKyy8sixcwPdA1tQQCq9yUs0h4VcHsjM/edit?usp=sharing)
 
 ## Gameplay Explanation
 
@@ -198,7 +198,9 @@ You should replay any **bold text** with your relevant information. Liberally us
 
 The table scene is the main scene we see in the game, it contains the player, the enemy, the hit button, and the stand button. On the player side the player (packedscene) is loaded in, and the enemy (packedscene) is loaded in on the enemy's side. At the top of each side a notebook style tile set was used to display player and enemy's hp, score, and hp change. As well as in the middle, at the end of each round a comparision symbol is shown (tie: equal, player win: greater than, player lose: less than).
 
-**Trun Mangaement**
+**Turn Management**
+
+Order of turns:
 - At the start of a round, the enemy draws a card, and the player's buttons are enabled.
 - After the player's turn, the enemy takes their turn (player buttons are disabled), and so on.
 - When both the player and the enemy stops, by either busting or standing, the winner of the round is checked.
@@ -207,11 +209,11 @@ The table scene is the main scene we see in the game, it contains the player, th
 
 **Checking Winner**
 
-Checks all possible scenerios:
-- Same score or both bust: no change
+Checks all possible scenarios after player and enemy both stop:
+- Same score or both bust: tie
 - Only enemy bust: player win
 - Only player bust: enemy win
-- Both don't bust: Compare score
+- Both don't bust: compare score
 
 The score is calculated in the table by checking the current cards in the player and enemy's hand (which includes ace logic within, whether ace is 1 or 11), and using that we can determine who wins and how much damage is supposed to be dealt.
 
@@ -227,11 +229,12 @@ If the player wins, we also apply the suit effects and change the damage/heal to
 
 As for the IU of the table, I used hboxes and vboxes to organize where the player, enemy, avatars, and buttons would go.
 - Main (hbox):
-  - Player 
+  - Player: includes current score, current hp, displays heal or damage received
   - Center controls (vbox)
-	- Hit buton
-	- Stand button
-  - Enemy 
+    - Round winner
+    - Hit button
+    - Stand button
+  - Enemy: includes current score, current hp, displays heal or damage received
 
 Table also checks if there are any more enemies left after defeating one and loads enemy, which we didn't end up using.
 
@@ -325,13 +328,13 @@ To fit our school theme, I drew a lot of the assets in a hand-drawn, kinda sketc
 - Card deck:
   - Basic cards: by me via Procreate
   - Aggie card: by me via Procreate
-  - Joker card: https://www.flickr.com/photos/83670821@N04/7759264414 and edited by me
-  - Uno card: https://narogame.itch.io/uno-game-assets and edited by me
-  - Tarot card: https://dettamada.itch.io/tarot-playing-cards and edited by me
-- Paper tile set: https://srtoasty.itch.io/ui-assets-pack-2
+  - Joker card: from [flickr](https://www.flickr.com/photos/83670821@N04/7759264414) and edited by me
+  - Uno card: from [narogame on itch.io](https://narogame.itch.io/uno-game-assets) and edited by me
+  - Tarot card: from [dettamada on itch.io](https://dettamada.itch.io/tarot-playing-cards) and edited by me
+- Paper tile set: from [srtoasty on itch.io](https://srtoasty.itch.io/ui-assets-pack-2)
 - Table: photo taken of a UCD table in the library and edited by me
-- Hit and stand buttons: https://npkuu.itch.io/pixelgui and edited by me
-- Title and end scenes (blackboards) + buttons/hover: by me
+- Hit and stand buttons: from [npkuu on itch.io](https://npkuu.itch.io/pixelgui) and edited by me
+- Title and end scenes (blackboards) + buttons/hover: by me via Procreate
 
 
 # Future development
