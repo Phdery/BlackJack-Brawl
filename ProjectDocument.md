@@ -377,6 +377,7 @@ Table also checks if there are any more enemies left after defeating one and loa
 **Describe the implementation of your audio system.**
 
 - SoundManager
+  - This scene is autoloaded and can be used as SoundManager
   - All the bgms and sfxs are used as an AudioStreamPlayer node
   - Use all sfxs by names of the nodes
   - [play_bgm](https://github.com/quiet98k/BlackJack-Brawl/blob/42400fa47d259199ca269c624364158c4d09f5dc/cardgame/scripts/sound_manager.gd#L30): Play the bgm that can be used in the whole game
@@ -385,9 +386,14 @@ Table also checks if there are any more enemies left after defeating one and loa
   - [stop_audio_smooth](https://github.com/quiet98k/BlackJack-Brawl/blob/42400fa47d259199ca269c624364158c4d09f5dc/cardgame/scripts/sound_manager.gd#L54): Stop the current playing sfx or bgm smoothly
   - [tween_complete](https://github.com/quiet98k/BlackJack-Brawl/blob/42400fa47d259199ca269c624364158c4d09f5dc/cardgame/scripts/sound_manager.gd#L64): Helper function for the stop_audio_smooth
   - [stop_start/story](https://github.com/quiet98k/BlackJack-Brawl/blob/42400fa47d259199ca269c624364158c4d09f5dc/cardgame/scripts/sound_manager.gd#L70-L77): Stop specific bgm or sfx
-  - []
+  - [play_finished](https://github.com/quiet98k/BlackJack-Brawl/blob/42400fa47d259199ca269c624364158c4d09f5dc/cardgame/scripts/sound_manager.gd#L79): Indicate that the audio is finished
+  - [get_audio_durition](https://github.com/quiet98k/BlackJack-Brawl/blob/42400fa47d259199ca269c624364158c4d09f5dc/cardgame/scripts/sound_manager.gd#L89): Get the duration of the audio
+  - [stop_all](https://github.com/quiet98k/BlackJack-Brawl/blob/42400fa47d259199ca269c624364158c4d09f5dc/cardgame/scripts/sound_manager.gd#L96): Stop all the bgms and sfxs
 
 **Document the sound style.**
+
+- bgm
+  
 
 ## Gameplay Testing (Brian Li)
 
