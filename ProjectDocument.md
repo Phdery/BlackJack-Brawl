@@ -82,7 +82,14 @@ You should replay any **bold text** with your relevant information. Liberally us
 
 ## Game Logic (Scenes) (Qingyue Yang)
 
-**Describe**
+### Start Menu
+
+- Start Menu
+  - [Main Control](https://github.com/quiet98k/BlackJack-Brawl/blob/48c79c4c7bc0d4afa46c2e691578f687b1a1cf4d/cardgame/ui/start_menu.gd#L1C12-L12C11): Control the background music logic and the loop music logic
+  - [New Game Button](https://github.com/quiet98k/BlackJack-Brawl/blob/48c79c4c7bc0d4afa46c2e691578f687b1a1cf4d/cardgame/ui/new_game_button.gd#L1): Control the function and the behavior of the "Start" button
+  - [Exit Button](https://github.com/quiet98k/BlackJack-Brawl/blob/48c79c4c7bc0d4afa46c2e691578f687b1a1cf4d/cardgame/ui/exit_game_button.gd#L1): Control the function and the behavior of the "Exit" button
+
+- Select Menu
 
 ## Game Logic (Cards) (Brian Li)
 
