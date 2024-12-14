@@ -24,12 +24,14 @@ var game_over = false
 @onready var compare = $TileMap/TextureRect
 @onready var player_win_screen = preload("res://ui/player_win_screen.tscn")
 @onready var player_fail_screen = preload("res://ui/player_fail_screen.tscn")
+@onready var button_disabled_timer = Timer.new()
 
 
 func _ready():
 	#background.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(button_disabled_timer)
+	button_disabled_timer.one_shot = true
 	# initialize and start
-	
 	player_win_instance = player_win_screen.instantiate()
 	add_child(player_win_instance)
 	player_win_instance.hide()
@@ -48,8 +50,12 @@ func _process(delta: float) -> void:
 		hit_button.disabled = true
 		stand_button.disabled = true
 	else:
-		hit_button.disabled = false
-		stand_button.disabled = false
+		if !button_disabled_timer.is_stopped():
+			hit_button.disabled = true
+			stand_button.disabled = true
+		else:
+			hit_button.disabled = false
+			stand_button.disabled = false
 	
 	if enemy.is_stopped and enemy.score_card.current_score <= enemy.score_card.max_score:
 		enemy_stand_label.visible = true
@@ -62,7 +68,6 @@ func _process(delta: float) -> void:
 	
 
 func _start_round():
-	
 	enemy.decide_action(enemy,player)
 	print("Enemy draw a card.")
 	print("Enemy Display Card Deck:", enemy.displayed_cards)
@@ -77,7 +82,8 @@ func _start_round():
 	
 
 func _on_hit_button_pressed() -> void:
-	print("pressed")
+	if enemy.is_stopped:
+		disable_buttons_for_2_seconds()
 	#player_score = calculate_score(player.displayed_cards.cards, player.score_card.max_score)
 	if player_turn and player_score < player.score_card.max_score:
 		SoundManager.play_sfx("ButtonStart")
@@ -146,6 +152,10 @@ func _enemy_win():
 	print("Player lost!")
 	#TODO player lose scene
 
+func disable_buttons_for_2_seconds():
+	hit_button.disabled = true
+	stand_button.disabled = true
+	button_disabled_timer.start(2.0)
 
 func check_winner() -> void:
 	player_turn = false
@@ -176,7 +186,7 @@ func check_winner() -> void:
 		player_win = false
 		damage = suit_execute(-enemy_score, player_win, player_score)
 		player.modify_health(damage)
-		$PlayerHpChange.text = damage
+		$PlayerHpChange.text = str(damage)
 	# both didn't bust
 	else:
 		# player win
