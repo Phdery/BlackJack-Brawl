@@ -2026,6 +2026,16 @@ offset_right = 992.0
 offset_bottom = 140.0
 label_settings = SubResource("LabelSettings_blfba")
 
+[node name="TipLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 516.0
+offset_right = 772.0
+offset_bottom = 598.0
+theme_override_fonts/font = ExtResource("7_s1wxs")
+theme_override_font_sizes/font_size = 41
+text = "Click card decks to see your or enemy cards"
+
 [connection signal="button_down" from="MainLayout/CenterLayout/HitButton" to="." method="_on_hit_button_button_down"]
 [connection signal="button_up" from="MainLayout/CenterLayout/HitButton" to="." method="_on_hit_button_button_up"]
 [connection signal="mouse_entered" from="MainLayout/CenterLayout/HitButton" to="." method="_on_hit_button_mouse_entered"]

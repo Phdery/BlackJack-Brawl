@@ -22,6 +22,7 @@ var game_over: bool = false
 @onready var background = $TextureRect
 @onready var enemy_stand_label: Label = $EnemyStandLabel
 @onready var compare = $TileMap/TextureRect
+@onready var tips = $TipLabel
 @onready var player_win_screen = preload("res://ui/player_win_screen.tscn")
 @onready var player_fail_screen = preload("res://ui/player_fail_screen.tscn")
 @onready var button_disabled_timer = Timer.new()
@@ -46,6 +47,10 @@ func _ready():
 	enemy.status_card.update_max(50)
 	enemy.status_card.update_hp(50)
 	_start_round()
+	
+	# Hide the tips
+	await get_tree().create_timer(5).timeout
+	tips.hide()
 
 	
 func _process(delta: float) -> void:
