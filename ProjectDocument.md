@@ -19,7 +19,7 @@ Special cards and power-ups spice things up, letting players turn the tables and
 
 **In this section, explain how the game should be played. Treat this as a manual within a game. Explaining the button mappings and the most optimal gameplay strategy is encouraged.**
 
-In BlackJack Brawl, the player plays a modified version of blackjack with augmented rules against a computer enemy. In regular blackjack, the player(s) and the dealer take turns drawing a random card from your deck (aka "hitting") and adding its value to their total. The players stop when they feel they don't need to draw more cards (aka "standing"). Whoever gets closest to a total of 21 without going over is the winner. If you go over 21, you "bust" and automatically lose. 
+In BlackJack Brawl, the player plays a modified version of blackjack with augmented rules against a computer enemy. In regular blackjack, the player(s) and the dealer take turns drawing a random card from your deck (aka "hitting") and adding its value to their total. The players stop when they feel they don't need to draw more cards (aka "standing"). Whoever gets closest to a total of 21 without going over is the winner. If you go over 21, you "bust" and automatically lose.
 
 There are four "classes" of deck in BlackJack Brawl (2 defense and 2 offense): Club, Spades, Heart, and Diamond.
 
@@ -71,9 +71,13 @@ You should replay any **bold text** with your relevant information. Liberally us
 
 **Describe the steps you took in your role as producer. Typical items include group scheduling mechanisms, links to meeting notes, descriptions of team logistics problems with their resolution, project organization tools (e.g., timelines, dependency/task tracking, Gantt charts, etc.), and repository management methodology.**
 
-Team Scheduling and Meeting Coordination - As the producer, I organized team meetings, coordinating times that accommodated everyone’s availability. I ensured these meetings remained focused by preparing agendas and setting clear goals.
+**Team Scheduling and Meeting Coordination** - As the producer, I organized team meetings, coordinating times that accommodated everyone’s availability. I ensured these meetings remained focused by preparing agendas and setting clear goals.
 
-Task Division and Team Coordination - I ensured that tasks were allocated fairly and strategically among team members, considering their specific strengths and availability.
+**Task Division and Team Coordination** - I ensured that tasks were allocated fairly and strategically among team members, considering their specific strengths and availability. Task dependencies and deadlines were mapped out to prevent bottlenecks, implementing principles from agile project management and dependency mapping. See [notion tasks page](https://sharp-newsboy-291.notion.site/13ea08c15c83813ba1effd58b22c3db9?v=13ea08c15c8381fd9583000c428402b8) for details. (press the triangle on the leftside of the task to see subtasks)
+
+**Project Structure Framework Design** - I developed the framework that serves as the foundation for our game. This structure included defining key classes such as `Player`, `Enemy`, `Card`, `ScoreCard`, and `Table`, along with their interactions. The framework was built to align with our modified blackjack-inspired mechanics, ensuring scalability for future additions like more unique card effects or extra game modes. See [project structure](https://sharp-newsboy-291.notion.site/ECS179-Game-Project-13ea08c15c838083bc21c00858d68d67) for details
+
+**Debugging and Development Assistance** - While primarily handling producer responsibilities, I assisted in debugging game mechanics and adding features. Specifically, I improved the [main game logic](https://github.com/quiet98k/BlackJack-Brawl/commit/93896362294657897d887492bf6c17499899761b) in the Table class to ensure smooth gameplay and accurate scoring based on our blackjack-inspired mechanics. I implemented the [Enemy Stands label](https://github.com/quiet98k/BlackJack-Brawl/commit/de67d37ed218c20c31b5bf3fd4ce8a736993d6bf) to provide clear feedback to players during enemy turns. Additionally, I designed and implemented smooth [card movement animations](https://github.com/quiet98k/BlackJack-Brawl/commit/f8f19d69c1610bf399bb6d2ef484788620dd4eee) for added visual appeal and created the card [deck's on-click](https://github.com/quiet98k/BlackJack-Brawl/commit/02b4fed6955f97f2f71e309b0bd0878eb0c90356) functionality to display deck contents and allow users to interact directly with the deck
 
 ## Game Logic (Scenes) (Qingyue Yang)
 
@@ -81,8 +85,8 @@ Task Division and Team Coordination - I ensured that tasks were allocated fairly
 
 ## Game Logic (Cards) (Brian Li)
 
-
 - [Sprite2D class Card](https://github.com/quiet98k/BlackJack-Brawl/blob/dea31049cd3000e62e12b0fdd22d3fd3b690acc3/cardgame/scripts/card.gd), which is the base class that all card objects used in game inherit from
+
   - Contains variables for score, suit, and description of card
   - mechanism function (only used by special card classes that extend card) that takes in two Controller parameters
   - Has two signals, mouse_entered and mouse_exited
@@ -92,6 +96,7 @@ Task Division and Team Coordination - I ensured that tasks were allocated fairly
   - Two signals used later to allow for description of card to appear when hovered over
 
 - [BasicCard class](https://github.com/quiet98k/BlackJack-Brawl/blob/6c873e40aeb55534ed1f27a433dd6390ee750e68/cardgame/scripts/basic_card.gd), extends Card and is used for all of the basic poker cards used in game (A, 2, 3, ..., K).
+
   - Has a custom_init function that can be used to set score and suit of a BasicCard
   - Makes it so that when we need to populate deck with cards, just create new instances of BasicCard with different parameters
   - In custom_init, matches are used to assign the appropriate score
@@ -105,13 +110,14 @@ Task Division and Team Coordination - I ensured that tasks were allocated fairly
   - [UnoPlus2](https://github.com/quiet98k/BlackJack-Brawl/blob/c6fedfd6110b2126e87fc6e66ac0255d2e7054b3/cardgame/scripts/uno_plus_2.gd): Score = 2, uses ScoreCard's update_score function to increase enemy's score by 2
   - [UnoStop](https://github.com/quiet98k/BlackJack-Brawl/blob/c6fedfd6110b2126e87fc6e66ac0255d2e7054b3/cardgame/scripts/uno_stop_card.gd): Score = 5, sets the enemy's is_stopped bool variable to true to forcibly end their turn
 
-### CardDeck 
+### CardDeck
 
 - [Class](https://github.com/quiet98k/BlackJack-Brawl/blob/2dc4056f18371ce15f78e83110ede0dcff79e039/cardgame/scripts/card_deck.gd) responsible for holding array of cards, represents every deck object in game (regular deck, display deck, used card deck, etc)
 - Contains functions that are used during game
 - CardDeck has Area2D and CollisionShape2D to detect clicks, used to implement function for looking into deck when you click on it
 
-- Variables
+- Signals/variables
+  - signal clicked, used for when a deck is clicked on when player wants to see its contents
   - cards array to hold all Card objects associated with CardDeck
   - deckContents, reference to DeckContents scene that is used to load scene where cards in deck are displayed
 - [generate_random_card](https://github.com/quiet98k/BlackJack-Brawl/blob/2dc4056f18371ce15f78e83110ede0dcff79e039/cardgame/scripts/card_deck.gd#L22)
@@ -135,12 +141,17 @@ Task Division and Team Coordination - I ensured that tasks were allocated fairly
   - If empty, should have no texture, set texture to null
   - If not empty, set texture to back of card asset
 
+
 ### DeckContents
 
+<<<<<<< HEAD
 - Scene that displays the Cards that a CardDeck has
 - If you hover over a card in this scene, this scene will display the description
 
+=======
+>>>>>>> b3c85fb (update README.md)
 ### ScoreCard
+
 ### StatusCard
 
 ## Game Logic (Table) (Stephanie Hsia)
