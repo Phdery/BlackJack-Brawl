@@ -120,10 +120,8 @@ You should replay any **bold text** with your relevant information. Liberally us
   - signal clicked, used for when a deck is clicked on when player wants to see its contents
   - cards array to hold all Card objects associated with CardDeck
   - deckContents, reference to DeckContents scene that is used to load scene where cards in deck are displayed
-- [generate_random_card](https://github.com/quiet98k/BlackJack-Brawl/blob/2dc4056f18371ce15f78e83110ede0dcff79e039/cardgame/scripts/card_deck.gd#L22)
-  - Selects a random card from array of Cards using randi(), used when drawing card from deck
-- [add_card](https://github.com/quiet98k/BlackJack-Brawl/blob/b3673a23cc9823d2b404b3dfd90c2bd1f1ab699e/cardgame/scripts/card_deck.gd#L34)
-  - Appends a Card object to CardDeck's array
+- [generate_random_card](https://github.com/quiet98k/BlackJack-Brawl/blob/2dc4056f18371ce15f78e83110ede0dcff79e039/cardgame/scripts/card_deck.gd#L22): Selects a random card from array of Cards using randi(), used when drawing card from deck
+- [add_card](https://github.com/quiet98k/BlackJack-Brawl/blob/b3673a23cc9823d2b404b3dfd90c2bd1f1ab699e/cardgame/scripts/card_deck.gd#L34): Appends a Card object to CardDeck's array
 - [move_card_to](https://github.com/quiet98k/BlackJack-Brawl/blob/2dc4056f18371ce15f78e83110ede0dcff79e039/cardgame/scripts/card_deck.gd#L41)
   - Accepts a Card and CardDeck, moves that Card in current CardDeck to another CardDeck
   - Uses add_card to add a card chosen using generate_random_card
