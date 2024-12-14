@@ -82,6 +82,23 @@ You should replay any **bold text** with your relevant information. Liberally us
 
 ## Game Logic (Scenes) (Qingyue Yang)
 
+### Game Global
+
+- [Card Suits](https://github.com/quiet98k/BlackJack-Brawl/blob/308fa600c9bf294687599fbc324c0dd48de9d5f0/cardgame/scripts/game.gd#L7-L11)
+  - The current card suit that will be used in the main table
+  - Can be updated by the player in the select menu
+  - The default is HEARTS if not selected
+
+- [Game State](https://github.com/quiet98k/BlackJack-Brawl/blob/308fa600c9bf294687599fbc324c0dd48de9d5f0/cardgame/scripts/game.gd#L15-L19)
+  - The current winner status of the game
+  - The default is set as UNKNOWN
+  - Game State will change to PLAYER_WIN if enemy hp goes to 0
+  - Game State will change to PLAYER_Fail if player hp goes to 0
+
+- [Load Resources](https://github.com/quiet98k/BlackJack-Brawl/blob/308fa600c9bf294687599fbc324c0dd48de9d5f0/cardgame/scripts/game.gd#L37)
+  - This is a function that can translate the selected card suit to strings
+  - Those strings are used to load card assets
+
 ### Start Menu
 
 - Start Menu
