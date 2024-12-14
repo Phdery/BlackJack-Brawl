@@ -136,6 +136,10 @@ Task Division and Team Coordination - I ensured that tasks were allocated fairly
   - If not empty, set texture to back of card asset
 
 ### DeckContents
+
+- Scene that displays the Cards that a CardDeck has
+- If you hover over a card in this scene, this scene will display the description
+
 ### ScoreCard
 ### StatusCard
 
