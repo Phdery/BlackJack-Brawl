@@ -229,15 +229,34 @@ As for the IU of the table, I used hboxes and vboxes to organize where the playe
 - Main (hbox):
   - Player 
   - Center controls (vbox)
-    - Hit buton
-    - Stand button
+	- Hit buton
+	- Stand button
   - Enemy 
 
 Table also checks if there are any more enemies left after defeating one and loads enemy, which we didn't end up using.
 
 ## Game Logic (Player/Enemy) (Alex Chen)
 
-**Describe**
+### Player and Enemy
+
+**Player**
+
+- Initialize player card deck, including special cards
+- Manage Player health
+- Manage Player Card Shuffle and Refill
+- Manage Player score
+- Manage Player turn
+- Manage the card movement animation
+
+**Enemy**
+
+- Initialize enemy card deck, including special cards
+- Manage Enemy health
+- Manage Enemy Card Shuffle and Refill
+- Manage Enemy score
+- Manage Enemy turn
+- Manage the card movement animation
+- Manage Enemy Behavior (hit or stand)
 
 # Sub-Roles
 
@@ -289,8 +308,10 @@ Table also checks if there are any more enemies left after defeating one and loa
 ##  Trailer (Alex Chen)
 
 **Include links to your presskit materials and trailer.**
+see the trailer [here](https://drive.google.com/file/d/1FUhhViIdNXrACNLh4Fh6wDndCZsBT-Ut/view?usp=drive_link)
 
 **Describe how you showcased your work. How did you choose what to show in the trailer? Why did you choose your screenshots?**
+I add our unique special cards and some typical gameplay videos. Also I include some Moments of Excitement.
 
 ## Press Kit (Yiming Feng)
 
